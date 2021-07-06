@@ -15,3 +15,6 @@ class Event(models.Model):
     date_of_event =  models.DateField(auto_now=False)
     date_created = models.DateField(auto_now=True)
     volunteer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,)
+
+    def __str__(self):
+        return self.volunteer

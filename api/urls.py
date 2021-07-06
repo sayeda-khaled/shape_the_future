@@ -1,7 +1,8 @@
-# from django.urls import path, include
-#
-# from . import views
+from django.urls import path, include
 
-# urlpatterns = [
-# path('users/', include('accounts.urls')),
-# ]
+from . import views
+
+urlpatterns = [
+path('events/', include('events.urls')),
+path('users/', include('accounts.urls')),
+]
