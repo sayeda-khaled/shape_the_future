@@ -27,6 +27,7 @@ class Navigation extends Component {
             <NavLink to='/' className="mr-2">Home</NavLink>
             <NavLink to='/login' className="mr-2">Login</NavLink>
             <NavLink to='/register' className="mr-2">Register</NavLink>
+            <NavLink to='/profile' className="mr-2">Profile</NavLink>
             <button className="btn" onClick={() => this.props.handleLogout()}>Logout</button>
           </Nav>
         </Navbar.Collapse>

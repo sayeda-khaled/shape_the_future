@@ -12,8 +12,8 @@ from django.conf import settings
 
 class Event(models.Model):
     grade = models.IntegerField()
-    date_of_event =  models.DateField(auto_now=False)
-    date_created = models.DateField(auto_now=True)
+    date_of_event =  models.DateTimeField(auto_now=False)
+    date_created = models.DateTimeField(auto_now=True)
     volunteer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,)
 
     def __str__(self):

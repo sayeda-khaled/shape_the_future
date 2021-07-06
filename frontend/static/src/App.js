@@ -7,6 +7,7 @@ import Navbar from './components/Navbar.js';
 import MainPage from './components/MainPage.js';
 import Registration from './components/Registration.js';
 import Login from './components/Login.js';
+import Profile from './components/Profile.js'
 
 import "./index.css";
 import './App.css';
@@ -143,7 +144,7 @@ class App extends Component{
             path='/login'
             render={(props) => (
               <Login {...props} handleLogin={this.handleLogin} isAuthed={true} />
-        
+
             )}
           />
           <Route
@@ -152,6 +153,15 @@ class App extends Component{
               <Registration {...props} handleRegistration={this.handleRegistration} />
             )}
           />
+
+          <Route
+            path='/profile'
+            render={(props) => (
+              <Profile {...props} isAuthed={true} />
+
+            )}
+          />
+
 
         <Route exact path="/">
            <MainPage />
