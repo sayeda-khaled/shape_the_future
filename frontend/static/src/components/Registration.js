@@ -30,7 +30,7 @@ class Registration extends Component{
           <input class="un" type="email" name="email" align="center" placeholder="e-mail" onChange={this.handleInput} value={this.state.email} />
           <input class="pass" type="password" name="password1" align="center" autoComplete="off" required onChange={this.handleInput} value={this.state.password1} placeholder="Password"/>
           <input class="pass" type="password" name="password2" align="center" autoComplete="off" required onChange={this.handleInput} value={this.state.password2} placeholder="Confirm Password"/>
-          <button class="submit" align="center" onClick={() => this.props.handleSelection('registration')}>Register</button>
+          <button class="submit" align="center" onClick={() => this.props.handleRegistration(this.state)}>Register</button>
         </form>
       </div>
     );

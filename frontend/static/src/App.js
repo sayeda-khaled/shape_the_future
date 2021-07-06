@@ -25,24 +25,24 @@ class App extends Component{
   }
 
   async handleLogin(user) {
-    alert('Hey, Sayeda!');
+    // alert('Hey, Sayeda!');
 
-    // const options = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'X-CSRFToken': Cookies.get('csrftoken'),
-    //   },
-    //   body: JSON.stringify(user),
-    // };
-    // const handleError = (error) => console.warn(error);
-    // const response = await fetch('/rest-auth/login/', options).catch(handleError);
-    //
-    // if(response.ok) {
-    //   const data = await response.json().catch(handleError);
-    //   Cookies.set('Authorization', `Token ${data.key}`);
-    //   this.setState({ selection: 'MainPage' });
-    //   }
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+      body: JSON.stringify(user),
+    };
+    const handleError = (error) => console.warn(error);
+    const response = await fetch('/rest-auth/login/', options).catch(handleError);
+
+    if(response.ok) {
+      const data = await response.json().catch(handleError);
+      Cookies.set('Authorization', `Token ${data.key}`);
+      this.setState({ selection: 'MainPage' });
+      }
     }
 
   async handleRegistration(user) {
@@ -104,18 +104,40 @@ class App extends Component{
   //       </div>
   // </Router>
 
+
+  //
+  // <Route path="/login" component>
+  //   <Login handleLogin={this.handleLogin}/>
+  // </Route>
+//   <Route path="/register">
+//     <Registration handleRegistration={this.handleRegistration}/>
+//   </Route>
+//   <Route exact path="/">
+//      <MainPage />
+//   </Route>
+// </Switch>
+// </>
+// );
+
   render() {
 
   return(
     <>
       <Navbar handleLogout={this.handleLogout} />
       <Switch>
-        <Route path="/login">
-          <Login handleLogin={this.handleLogin}/>
-        </Route>
-        <Route path="/register">
-          <Registration />
-        </Route>
+          <Route
+            path='/login'
+            render={(props) => (
+              <Login {...props} handleLogin={this.handleLogin} isAuthed={true} />
+            )}
+          />
+          <Route
+            path='/register'
+            render={(props) => (
+              <Registration {...props} handleRegistration={this.handleRegistration} />
+            )}
+          />
+
         <Route exact path="/">
            <MainPage />
         </Route>

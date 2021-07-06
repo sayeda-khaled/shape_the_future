@@ -15,6 +15,8 @@ import Button from 'react-bootstrap/Button';
 // <button className="btn" onClick={() => this.props.handleLogout()}>Logout</button>
 
 
+  // <NavLink to='/logout' className="mr-2">Logout</NavLink>
+
 class Navigation extends Component {
   render() {
     return(
@@ -22,9 +24,10 @@ class Navigation extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto align-items-baseline">
+            <NavLink to='/' className="mr-2">Home</NavLink>
             <NavLink to='/login' className="mr-2">Login</NavLink>
-            <NavLink to='/register'>Register</NavLink>
-            <button className="btn btn-link" onClick={() => this.props.handleLogout()}>Logout</button>
+            <NavLink to='/register' className="mr-2">Register</NavLink>
+            <button className="btn" onClick={() => this.props.handleLogout()}>Logout</button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
