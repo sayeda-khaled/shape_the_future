@@ -15,7 +15,7 @@ class App extends Component{
   constructor(props) {
     super(props);
     this.state={
-        selection: !!Cookies.get('Authorization') ? 'MainPage' : 'MainPage'
+        login: false,
     }
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegistration = this.handleRegistration.bind(this);
@@ -41,7 +41,7 @@ class App extends Component{
     if(response.ok) {
       const data = await response.json().catch(handleError);
       Cookies.set('Authorization', `Token ${data.key}`);
-      this.setState({ selection: 'MainPage' });
+      // this.setState({ selection: 'MainPage' });
       }
     }
 
@@ -59,7 +59,7 @@ class App extends Component{
     if (response.ok) {
       const data = await response.json().catch(handleError);
       Cookies.set('Authorization', `Token ${data.key}`);
-      this.setState({ selection: 'MainPage' });
+      // this.setState({ selection: 'MainPage' });
     }
   }
 
@@ -76,7 +76,7 @@ class App extends Component{
 
     if(response.ok) {
       Cookies.remove('Authorization');
-      this.setState({ selection: 'MainPage' });
+      // this.setState({ selection: 'MainPage' });
     }
   }
 
@@ -119,6 +119,20 @@ class App extends Component{
 // </>
 // );
 
+// <Switch>
+//     <Route
+//       path='/login'
+//       render={(props) => (
+//         <Login {...props} handleLogin={this.handleLogin} isAuthed={true} />
+//       )}
+//     />
+//     <Route
+//       path='/register'
+//       render={(props) => (
+//         <Registration {...props} handleRegistration={this.handleRegistration} />
+//       )}
+//     />
+
   render() {
 
   return(
@@ -129,6 +143,7 @@ class App extends Component{
             path='/login'
             render={(props) => (
               <Login {...props} handleLogin={this.handleLogin} isAuthed={true} />
+        
             )}
           />
           <Route
