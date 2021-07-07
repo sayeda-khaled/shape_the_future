@@ -14,7 +14,7 @@ class Event(models.Model):
     grade = models.IntegerField()
     date_of_event =  models.DateTimeField(auto_now=False)
     date_created = models.DateTimeField(auto_now=True)
-    volunteer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,)
+    volunteer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, blank=True, null=True)
 
-    def __str__(self):
-        return self.volunteer
+    # def __str__(self):
+    #     return self.volunteer

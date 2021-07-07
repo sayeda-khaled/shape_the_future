@@ -5,6 +5,8 @@ from .models import Event
 
 class EventSerializer(serializers.ModelSerializer):
 
+    volunteer = serializers.StringRelatedField()
+
     class Meta:
         model = Event
         fields = '__all__'

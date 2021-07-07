@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import Cookies from 'js-cookie';
 
-class Profile extends Component {
+
+class Profile extends Component{
 
   constructor(props) {
     super(props);
@@ -11,24 +12,25 @@ class Profile extends Component {
       preview: '',
     }
     this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleImage = this.handleImage.bind(this);
-
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.editProfile = this.editProfile.bind(this);
   }
 
   componentDidMount(){
     fetch('/api/v1/users/profiles/user/')
     .then(response => {
       if(!response.ok) {
-        throw new Error('Network response was not ok')
+        throw new Error('Network response was not ok');
       }
       return response.json();
     })
-    .then(data =>this.setState({ data }))
+    .then(data => this.setState({ data  }))
     .catch(error => {
-      console.error('there has been a problem with your request')
+      console.error('There has been a problem with youor fetch operation:', error);
     });
   }
+
 
   handleInput(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -36,62 +38,79 @@ class Profile extends Component {
 
   handleImage(e) {
     let file = e.target.files[0];
-    this.setState({
-      [e.target.name]: file,
-      });
+      this.setState({
+       [e.target.name]: file,
+     });
     let reader = new FileReader();
     reader.onloadend = () => {
       this.setState({
         preview: reader.result,
       });
-      }
+    }
     reader.readAsDataURL(file);
-    }
+  }
 
-    async handleSubmit(e) {
-      e.preventDefault();
-      let formData = new FormData();
-      formData.append('avatar', this.state.avatar);
-      formData.append('display_name', this.state.display_name);
-      const options = {
-          method: 'POST',
-          headers: {
-            'X-CSRFToken': Cookies.get('csrftoekn'),
-          },
-          body: formData,
+  async handleSubmit(e) {
+    e.preventDefault();
+    let formData= new FormData();
+    formData.append('avatar', this.state.avatar);
+    formData.append('display_name', this.state.display_name);
+    const options = {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': Cookies.get('csrftoken'),
+        },
+        body: formData,
+      }
+      const response = await fetch('/api/v1/users/profiles/', options);
+      this.setState({ response })
+      // console.log(response);
+  }
+
+  editProfile(profile) {
+    const options ={
+      method: 'PUT',
+      headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+      body: JSON.stringify(profile)
+    }
+    fetch('/api/v1/users/profile/user', options)
+      .then(response =>{
+        if(!response.ok) {
+          throw new Error('Error');
         }
-        const response = await fetch('/api/v1/users/profiles/', options);
-        this.setState({ response })
-    }
+        return response.json()
+      })
+  }
 
-  render() {
-
-    return(
-      <>
-        <form onSubmit={this.handleSubmit}>
+  render(){
+  return (
+    <>
+      <form onSubmit={this.handleSubmit}>
           <input type='text' name="display_name" value={this.state.display_name} onChange={this.handleInput} />
-          <input type="file" name="avatar" onChange={this.handleImage} />
+          <input type="file" name="avatar" onChange={this.handleImage}/>
           {this.state.avatar
             ? <img src={this.state.preview} alt=""/>
             : null
           }
-          <button type="submit"> Save Profile!</button>
-        </form>
+          <button type="submit">Save Profile!</button>
+      </form>
 
-        {this.state.data
-          ? (
-              <section className="profile">
-                <header class="profile-card">
-                  <h2>{this.state.data.display_name}</h2>
-                  <img src={this.state.data.avatar} class="hoverZoomLink" alt=""/>
-                </header>
-              </section>
-            )
-          : null
-        }
-      </>
-    );
-  }
+      {this.state.data
+        ? (
+            <section className="profile">
+              <header class="profile-card">
+                <h2>{this.state.data.display_name}</h2>
+                <img src={this.state.data.avatar} class="hoverZoomLink" alt=""/>
+              </header>
+            </section>
+          )
+        : null
+      }
+    </>
+  )}
 }
 
 export default Profile;

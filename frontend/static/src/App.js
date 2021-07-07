@@ -8,6 +8,7 @@ import MainPage from './components/MainPage.js';
 import Registration from './components/Registration.js';
 import Login from './components/Login.js';
 import Profile from './components/Profile.js'
+import AdminPage from './components/AdminPage.js'
 
 import "./index.css";
 import './App.css';
@@ -139,6 +140,7 @@ class App extends Component{
   return(
     <>
       <Navbar handleLogout={this.handleLogout} />
+      <AdminPage />
       <Switch>
           <Route
             path='/login'

@@ -168,6 +168,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.User'
 
+# Manage profiles#
+# https://docs.djangoproject.com/en/3.2/ref/settings/#std:setting-MEDIA_ROOT
+# https://docs.djangoproject.com/en/3.2/topics/files/
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 # require('dotenv').config();
 # console.log('Your environment variable TWILIO_ACCOUNT_SID has the value: ', process.env.TWILIO_ACCOUNT_SID);
 
