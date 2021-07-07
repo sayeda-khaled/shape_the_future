@@ -8,8 +8,8 @@ class AdminPageDetail extends Component {
 
     this.state = {
       isEditing: false,
-      grade: this.props.events.grade,
-      date: this.props.events.date
+      grade: this.props.events?.grade,
+      date: this.props.events?.date
     }
     this.handleInput = this.handleInput.bind(this);
     this.saveEvent = this.saveEvent.bind(this);

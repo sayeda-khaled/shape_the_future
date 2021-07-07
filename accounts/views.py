@@ -2,8 +2,11 @@ from rest_framework import generics
 
 from .models import Profile
 from .serializers import ProfileSerializer
+from .serializers import UserSerializer
 from .permissions import IsAuthOrReadOnly
 from django.shortcuts import render, get_object_or_404
+
+
 
 class ProfileListAPIView(generics.ListCreateAPIView):
     queryset = Profile.objects.all()

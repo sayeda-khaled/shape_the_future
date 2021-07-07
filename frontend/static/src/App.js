@@ -43,6 +43,7 @@ class App extends Component{
     if(response.ok) {
       const data = await response.json().catch(handleError);
       Cookies.set('Authorization', `Token ${data.key}`);
+      this.props.history.push('/profile/')
       // this.setState({ selection: 'MainPage' });
       }
     }
@@ -140,7 +141,7 @@ class App extends Component{
   return(
     <>
       <Navbar handleLogout={this.handleLogout} />
-      <AdminPage />
+
       <Switch>
           <Route
             path='/login'
@@ -153,6 +154,13 @@ class App extends Component{
             path='/register'
             render={(props) => (
               <Registration {...props} handleRegistration={this.handleRegistration} />
+            )}
+          />
+
+          <Route
+            path='/admin'
+            render={(props) => (
+              <AdminPage {...props} isAuthed={true} />
             )}
           />
 
@@ -175,4 +183,4 @@ class App extends Component{
 
 }
 
-export default App;
+export default withRouter(App);

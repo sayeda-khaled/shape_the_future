@@ -10,7 +10,7 @@ class AdminPage extends Component {
     this.state={
       events: [],
       grade: null,
-      date: ''
+      date: null
     }
     this.addEvent = this.addEvent.bind(this);
     this.editEvent = this.editEvent.bind(this);
@@ -120,9 +120,9 @@ class AdminPage extends Component {
         <>
           <ul>{events}</ul>
             <section className="submit">
-                <form onSubmit={this.addevent}>
+                <form onSubmit={this.addEvent}>
                   <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Date</label>
+                    <label for="exampleFormControlInput1" class="form-label">Grade</label>
                     <input type="number" min="1" max="5" class="form-control" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
                     </div>
                   <div class="mb-3">
