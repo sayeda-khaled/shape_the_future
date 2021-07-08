@@ -2,19 +2,21 @@ from rest_framework import generics
 
 from .models import Event
 from .serializers import EventSerializer, StaffEventSerializer
+from .permissions import AdminPermissions, IsAuthOrReadOnly
 
-class EventListAPIView(generics.ListAPIView):
+class EventListAPIView(generics.ListCreateAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
 
-class EventDetailAPIView(generics.RetrieveUpdateAPIView):
+class EventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    permission_classes = (IsAuthOrReadOnly,)
 
 class VolunteerEventListAPIView(generics.ListCreateAPIView):
     serializer_class = EventSerializer
-    # permission_classes = (IsAuthOrReadOnly,)
+    permission_classes = (IsAuthOrReadOnly,)
 
     def get_queryset(self):
         volunteer = self.request.user
@@ -22,7 +24,7 @@ class VolunteerEventListAPIView(generics.ListCreateAPIView):
 
 class VolunteerEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EventSerializer
-    # permission_classes = (IsAuthOrReadOnly,)
+    permission_classes = (IsAuthOrReadOnly,)
 
     def get_queryset(self):
         volunteer = self.request.user
@@ -36,6 +38,7 @@ class StaffEventListAPIView(generics.ListCreateAPIView):
 class StaffEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = StaffEventSerializer
+    permission_classes = (AdminPermissions,)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

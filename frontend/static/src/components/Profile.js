@@ -62,7 +62,7 @@ class Profile extends Component{
         },
         body: formData,
       }
-      const response = await fetch('/api/v1/users/profiles/', options);
+      const response = await fetch('/api/v1/users/profiles/user/', options);
       this.setState({ response })
       // console.log(response);
   }
@@ -88,15 +88,19 @@ class Profile extends Component{
   render(){
   return (
     <>
-      <form onSubmit={this.handleSubmit}>
-          <input type='text' name="display_name" value={this.state.display_name} onChange={this.handleInput} />
-          <input type="file" name="avatar" onChange={this.handleImage}/>
-          {this.state.avatar
-            ? <img src={this.state.preview || this.state.avatar} alt=""/>
-            : null
-          }
-          <button type="submit">Save Profile!</button>
-      </form>
+
+        <form onSubmit={this.handleSubmit}>
+            <section className="profile">
+              <input type='text' name="display_name" value={this.state.display_name} onChange={this.handleInput} />
+              <input type="file" name="avatar" onChange={this.handleImage}/>
+              {this.state.avatar
+                ? <img src={this.state.preview || this.state.avatar} alt=""/>
+                : null
+              }
+            </section>
+            <button type="submit">Save Profile!</button>
+        </form>
+
 
 
     </>

@@ -16,7 +16,7 @@ class VolunteerPage extends Component {
     }
 
     componentDidMount(){
-      fetch('/api/v1/events/user/')
+      fetch('/api/v1/events/volunteer/')
       .then(response => {
         if(!response.ok) {
           throw new Error('Network response was not ok');
@@ -42,7 +42,7 @@ class VolunteerPage extends Component {
           'X-CSRFToken': Cookies.get('csrftoken'),
           },
         }
-        fetch(`/api/v1/events/user/${id}/`, options)
+        fetch(`/api/v1/events/volunteer/${id}/`, options)
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not ok');

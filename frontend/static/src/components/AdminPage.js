@@ -16,14 +16,18 @@ class AdminPage extends Component {
     this.editEvent = this.editEvent.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.getEvents = this.getEvents.bind(this);
 
   }
 
 
     // if the user is authenticated pull their events otherwise pull published events
 
-
     componentDidMount(){
+      this.getEvents();
+
+    }
+    getEvents(){
       fetch('/api/v1/events/')
       .then(response => {
         if(!response.ok) {
@@ -45,9 +49,11 @@ class AdminPage extends Component {
     e.preventDefault();
     const event = {
       grade: this.state.grade,
-      date: this.state.date,
+      date_of_event: this.state.date, //This is the key at the backend.. 
       // volunteer: this.state.volunteer
+
     };
+    console.log(event);
     const options = {
       method: 'POST',
       headers: {
@@ -81,10 +87,12 @@ class AdminPage extends Component {
             throw new Error('Network response was not ok');
           }
           const events = [...this.state.events];
+          console.log(events);
           const index = events.findIndex(event => event.id === event.id);
           events[index].grade = event.grade;
           events[index].date = event.date;
           this.setState({ events });
+          this.getEvents();
         });
       }
 
@@ -127,7 +135,7 @@ class AdminPage extends Component {
                     </div>
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Event Date</label>
-                    <input type="datetime-local" name="datetime" id="datetime" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date} onChange={this.handleInput} rows="3"/>
+                    <input type="datetime-local" name="date" id="datetime" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date} onChange={this.handleInput} rows="3"/>
                   </div>
               <button type="submit" onClick={this.addevent} class="btn btn-primary offset">Submit</button>
             </form>
