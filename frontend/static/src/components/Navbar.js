@@ -18,18 +18,40 @@ import Button from 'react-bootstrap/Button';
   // <NavLink to='/logout' className="mr-2">Logout</NavLink>
 
 class Navigation extends Component {
+
   render() {
+    const isStaff = this.props.isStaff;
     return(
       <Navbar bg="light" expand="lg" className="navbar">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto align-items-baseline">
             <NavLink to='/' className="mr-2">Home</NavLink>
-            <NavLink to='/login' className="mr-2">Login</NavLink>
-            <NavLink to='/register' className="mr-2">Register</NavLink>
-            <NavLink to='/EventsList' className="mr-2">Events</NavLink>
-            <NavLink to='/profile' className="mr-2">Profile</NavLink>
-            <button className="btn" onClick={() => this.props.handleLogout()}>Logout</button>
+
+            {this.props.loggedIn && isStaff && <NavLink to='/events/admin/' className="mr-2">Admin Events</NavLink>}
+
+            {this.props.loggedIn && !isStaff && (
+              <>
+                <NavLink to='/events/volunteer/' className="mr-2">Available Events</NavLink>
+                <NavLink to='/events/my-events/' className="mr-2">My Events</NavLink>
+              </>
+              )
+            }
+
+            {
+              this.props.loggedIn
+              ?
+                <>
+                  <NavLink to='/profile' className="mr-2">Profile</NavLink>
+                  <button className="btn" onClick={() => this.props.handleLogout()}>Logout</button>
+                </>
+
+              :
+                <>
+                  <NavLink to='/login' className="mr-2">Login</NavLink>
+                  <NavLink to='/register' className="mr-2">Register</NavLink>
+                </>
+            }
           </Nav>
         </Navbar.Collapse>
       </Navbar>

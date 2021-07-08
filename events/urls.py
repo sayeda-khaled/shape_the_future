@@ -5,11 +5,11 @@ from .views import EventListAPIView, EventDetailAPIView, VolunteerEventListAPIVi
 App_name = 'events'
 
 urlpatterns = [
-    path('', EventListAPIView.as_view(), name="event_list"),
-    path('<int:pk>/', EventDetailAPIView.as_view(), name='event_list_detail'),
-    path('volunteer/', VolunteerEventListAPIView.as_view(), name="volunteer_event_list"),
-    path('volunteer/<int:pk>/', VolunteerEventDetailAPIView.as_view(), name="volunteer_event_list_detail"),
-    path('staff/', StaffEventListAPIView.as_view(), name="staff_event_list"),
-    path('staff/<int:pk>/', StaffEventDetailAPIView.as_view(), name="staff_event_list_detail"),
 
+    path('volunteer/<int:pk>/', VolunteerEventDetailAPIView.as_view(), name="volunteer_event_list_detail"),
+    path('volunteer/', VolunteerEventListAPIView.as_view(), name="volunteer_event_list"),
+    path('staff/<int:pk>/', StaffEventDetailAPIView.as_view(), name="staff_event_list_detail"),
+    path('staff/', StaffEventListAPIView.as_view(), name="staff_event_list"),
+    path('<int:pk>/', EventDetailAPIView.as_view(), name='event_list_detail'),
+    path('', EventListAPIView.as_view(), name="event_list"),
 ]

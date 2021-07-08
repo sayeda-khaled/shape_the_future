@@ -20,8 +20,8 @@ class App extends Component{
   constructor(props) {
     super(props);
     this.state={
-      logged_in: localStorage.getItem('token') ? true : false,
-      username:''
+      loggedIn: !!Cookies.get('Authorization') ? true : false,
+      isStaff: !!JSON.parse(localStorage.getItem('user'))?.is_staff,
 
     }
     this.handleLogin = this.handleLogin.bind(this);
@@ -48,11 +48,21 @@ class App extends Component{
 
     if(response.ok) {
       const data = await response.json().catch(handleError);
+      // console.log(data);
       Cookies.set('Authorization', `Token ${data.key}`);
-      this.props.history.push('/events/')
-      // this.setState({ selection: 'MainPage' });
+      // this.props.history.push('/events/')
+      localStorage.setItem('user', JSON.stringify(data.user));
+
+
+      this.setState({isStaff: data.user.is_staff, loggedIn: true});
+
+      if(data.user.is_staff) {
+        this.props.history.push('/events/admin/');
+      } else {
+        this.props.history.push('/events/volunteer/');
       }
     }
+  }
 
   async handleRegistration(user) {
     const options = {
@@ -67,8 +77,12 @@ class App extends Component{
     const response = await fetch('/rest-auth/registration/', options).catch(handleError);
     if (response.ok) {
       const data = await response.json().catch(handleError);
+
       Cookies.set('Authorization', `Token ${data.key}`);
-      // this.setState({ selection: 'MainPage' });
+      localStorage.setItem('user', JSON.stringify(data.user));
+
+      this.setState({loggedIn: true});
+      this.props.history.push('/events/volunteer/');
     }
   }
 
@@ -85,11 +99,13 @@ class App extends Component{
 
     if(response.ok) {
       Cookies.remove('Authorization');
-      this.props.history.push('/')
+      this.props.history.push('/');
+      this.setState({loggedIn: false});
+      localStorage.removeItem('user');
     }
   }
 
-  
+
 
 // <Switch>
 //     <Route
@@ -109,7 +125,7 @@ class App extends Component{
 
   return(
     <>
-      <Navbar handleLogout={this.handleLogout} />
+      <Navbar loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} isStaff={this.state.isStaff} />
 
       <Switch>
           <Route
@@ -127,20 +143,21 @@ class App extends Component{
           />
 
           <Route
-            path='/events'
+            path='/events/volunteer/'
             render={(props) => (
               <EventsList {...props} />
             )}
           />
+
           <Route
-            path='/admin'
+            path='/events/admin/'
             render={(props) => (
               <AdminPage {...props} isAuthed={true} />
             )}
           />
 
           <Route
-            path='/volunteer'
+            path='/events/my-events/'
             render={(props) => (
               <VolunteerPage {...props} isAuthed={true} />
             )}
@@ -158,6 +175,7 @@ class App extends Component{
         <Route exact path="/">
            <MainPage />
         </Route>
+
       </Switch>
     </>
   );
