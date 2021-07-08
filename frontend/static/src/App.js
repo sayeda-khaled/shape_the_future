@@ -7,8 +7,11 @@ import Navbar from './components/Navbar.js';
 import MainPage from './components/MainPage.js';
 import Registration from './components/Registration.js';
 import Login from './components/Login.js';
-import Profile from './components/Profile.js'
-import AdminPage from './components/AdminPage.js'
+import Profile from './components/Profile.js';
+import AdminPage from './components/AdminPage.js';
+import EventsList from './components/EventsList.js';
+import VolunteerPage from './components/VolunteerPage.js';
+
 
 import "./index.css";
 import './App.css';
@@ -17,7 +20,9 @@ class App extends Component{
   constructor(props) {
     super(props);
     this.state={
-        login: false,
+      logged_in: localStorage.getItem('token') ? true : false,
+      username:''
+
     }
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegistration = this.handleRegistration.bind(this);
@@ -25,6 +30,7 @@ class App extends Component{
     this.handleLogout = this.handleLogout.bind(this);
 
   }
+
 
   async handleLogin(user) {
     // alert('Hey, Sayeda!');
@@ -43,7 +49,7 @@ class App extends Component{
     if(response.ok) {
       const data = await response.json().catch(handleError);
       Cookies.set('Authorization', `Token ${data.key}`);
-      this.props.history.push('/profile/')
+      this.props.history.push('/events/')
       // this.setState({ selection: 'MainPage' });
       }
     }
@@ -79,48 +85,11 @@ class App extends Component{
 
     if(response.ok) {
       Cookies.remove('Authorization');
-      // this.setState({ selection: 'MainPage' });
+      this.props.history.push('/')
     }
   }
 
-  // async handleSelection(selection) {
-  //   this.setState({selection});
-  // }
-
-
-  //    <Router>
-  //      <div className="App">
-  //        <navbar handleSelection={this.handleSelection}/>
-  //         <main className="contnet">
-  //           <Switch>
-  //             <Route exact path="/">
-  //                <MainPage />
-  //             </Route>
-  //             <Route exact path="/Login">
-  //               <Login />
-  //             </Route>
-  //             <Route exact path="/Registration">
-  //               <Registration />
-  //             </Route>
-  //           </Switch>
-  //         </main>
-  //       </div>
-  // </Router>
-
-
-  //
-  // <Route path="/login" component>
-  //   <Login handleLogin={this.handleLogin}/>
-  // </Route>
-//   <Route path="/register">
-//     <Registration handleRegistration={this.handleRegistration}/>
-//   </Route>
-//   <Route exact path="/">
-//      <MainPage />
-//   </Route>
-// </Switch>
-// </>
-// );
+  
 
 // <Switch>
 //     <Route
@@ -158,9 +127,22 @@ class App extends Component{
           />
 
           <Route
+            path='/events'
+            render={(props) => (
+              <EventsList {...props} />
+            )}
+          />
+          <Route
             path='/admin'
             render={(props) => (
               <AdminPage {...props} isAuthed={true} />
+            )}
+          />
+
+          <Route
+            path='/volunteer'
+            render={(props) => (
+              <VolunteerPage {...props} isAuthed={true} />
             )}
           />
 

@@ -12,6 +12,22 @@ class EventDetailAPIView(generics.RetrieveAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
+class VolunteerEventListAPIView(generics.ListCreateAPIView):
+    serializer_class = EventSerializer
+    # permission_classes = (IsAuthOrReadOnly,)
+
+    def get_queryset(self):
+        volunteer = self.request.user
+        return Event.objects.filter(volunteer=user)
+
+class VolunteerEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = EventSerializer
+    # permission_classes = (IsAuthOrReadOnly,)
+
+    def get_queryset(self):
+        volunteer = self.request.user
+        return Article.objects.filter(volunteer=user)
+
 
 class StaffEventListAPIView(generics.ListCreateAPIView):
     queryset = Event.objects.all()
