@@ -70,17 +70,39 @@ class EventsList extends Component {
 
 
         // <Moment format="1976-04-19T12:59-0500">{event.date}</Moment>
-    render() {
-      const events = this.state.events.map((event, index)=> (
-        <div key = {index}>
-            <h2>{event.grade}</h2>
-            <time>{event.date_of_event}</time>
-            <button className ="settingButtons" type ='button' onClick={() => this.signUp(event.id)}>Sign Up</button>
+    // render() {
+    //   const events = this.state.events.map((event, index)=> (
+    //     <div key = {index}>
+    //         <h2>{event.grade}</h2>
+    //         <time>{event.date_of_event}</time>
+    //         <button className ="settingButtons" type ='button' onClick={() => this.signUp(event.id)}>Sign Up</button>
+    //     </div>
+    //
+    //   ));
+
+      render() {
+        const events = this.state.events.map((event, index)=> (
+          <div key = {index}>
+
+            <section >
+                <form className="list">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Grade</label>
+                    <p class="form-control" id="exampleFormControlInput1" name="grade">{event.grade} </p>
 
 
-        </div>
+                    <label for="exampleFormControlTextarea1" class="form-label">Event Date</label>
+                    <time class="form-control" id="exampleFormControlInput1" rows="3">{event.date_of_event}</time>
 
-      ));
+                  <button id="signUp" class="btn btn-primary offset"type ='button' onClick={() => this.signUp(event.id)}>Sign Up</button>
+              </div>
+          </form>
+          </section>
+
+
+          </div>
+
+        ));
 
       return (
 

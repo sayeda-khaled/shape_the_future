@@ -48,7 +48,7 @@ class AdminPageDetail extends Component {
               : (
                   <>
                     <h2>{events.grade}</h2>
-                    <time>{events.date}</time>
+                    <time>{events.date_of_event}</time>
                     <p>{events.volunteer}</p>
                   </>
                 )

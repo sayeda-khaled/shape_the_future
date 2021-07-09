@@ -65,7 +65,7 @@ class VolunteerPage extends Component {
         <div key = {index}>
             <h2>{event.grade}</h2>
             <time>{event.date_of_event}</time>
-            <button onClick={() => this.props.cancelEvent(events.id)}>Cancel</button>
+            <button onClick={() => this.cancelEvent(events.id)}>Cancel</button>
 
 
         </div>

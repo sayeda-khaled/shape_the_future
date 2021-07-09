@@ -49,7 +49,7 @@ class AdminPage extends Component {
     e.preventDefault();
     const event = {
       grade: this.state.grade,
-      date_of_event: this.state.date, //This is the key at the backend.. 
+      date_of_event: this.state.date, //This is the key at the backend..
       // volunteer: this.state.volunteer
 
     };
@@ -135,7 +135,7 @@ class AdminPage extends Component {
                     </div>
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Event Date</label>
-                    <input type="datetime-local" name="date" id="datetime" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date} onChange={this.handleInput} rows="3"/>
+                    <input type="datetime-local" name="date" id="datetime" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date_of_event} onChange={this.handleInput} rows="3"/>
                   </div>
               <button type="submit" onClick={this.addevent} class="btn btn-primary offset">Submit</button>
             </form>
