@@ -35,34 +35,54 @@ class VolunteerPage extends Component {
       }
 
 
-      cancelEvent(id) {
-        const options= {
-          method: 'PUT',
-          headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': Cookies.get('csrftoken'),
-          },
-        }
-        fetch(`/api/v1/events/volunteer/${id}/`, options)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            const events = [...this.state.events];
+      cancelEvent(e, event) {
+          e.preventDefault();
 
-            const index = events.findIndex(event => event.id === event.id);
-            events[index].volunteer = true;
-            this.setState({ events });
-            //
-            // const index = events.findIndex(event => events.id === id);
-            //
-            // events.splice(index, 1);
-            // this.setState({ events });
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-        }
+          const id = event.id;
+
+          const options = {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: JSON.stringify(event),
+          }
+          fetch(`/api/v1/events/volunteer/${id}/`, options)
+            .then(response => {
+              if(!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              const events = [...this.state.events];
+              // console.log(events);
+              const index = events.findIndex(event => event.id === id);
+              // events[index].volunteer = true;
+              this.setState({ events });
+            });
+
+          }
+        // const options= {
+        //   method: 'PUT',
+        //   headers: {
+        //   'Content-Type': 'application/json',
+        //   'X-CSRFToken': Cookies.get('csrftoken'),
+        //   },
+        // }
+        // fetch(`/api/v1/events/volunteer/${id}/`, options)
+        //   .then(response => {
+        //     if (!response.ok) {
+        //       throw new Error('Network response was not ok');
+        //     }
+        //     const events = [...this.state.events];
+        //
+        //     const index = events.findIndex(event => event.id === event.id);
+        //     events[index].volunteer = true;
+        //     this.setState({ events });
+        //   })
+        //   .catch((error) => {
+        //     console.error('Error:', error);
+        //   });
+        // }
 
 
 
@@ -72,7 +92,7 @@ class VolunteerPage extends Component {
         <div key = {index}>
             <h2>{event.grade}</h2>
             <time>{event.date_of_event}</time>
-            <button onClick={() => this.cancelEvent(events.id)}>Cancel</button>
+            <button onClick={(e) => this.cancelEvent(e,event)}>Cancel</button>
 
 
         </div>

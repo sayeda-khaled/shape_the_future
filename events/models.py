@@ -15,6 +15,13 @@ class Event(models.Model):
     date_of_event =  models.DateTimeField(auto_now=False)
     date_created = models.DateTimeField(auto_now=True)
     volunteer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, blank=True, null=True)
-
+    memo = models.TextField(blank = True)
     # def __str__(self):
     #     return self.volunteer
+
+
+# class Memo(models.Model):
+#     text = models.TextField()
+#     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="memo")
+#     # text =
+    # event = event

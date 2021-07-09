@@ -31,7 +31,7 @@ class EventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 class VolunteerEventListAPIView(generics.ListCreateAPIView):
     serializer_class = EventSerializer
-    permission_classes = (IsAuthOrReadOnly,)
+    # permission_classes = (IsAuthOrReadOnly,)
 
     def get_queryset(self):
         volunteer = self.request.user
