@@ -34,6 +34,7 @@ class VolunteerPage extends Component {
         this.setState({ [event.target.name]: event.target.value });
       }
 
+
       cancelEvent(id) {
         const options= {
           method: 'DELETE',

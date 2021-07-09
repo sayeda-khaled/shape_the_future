@@ -9,7 +9,7 @@ class IsAuthOrReadOnly(permissions.BasePermission): # the IsAuthOrReadOnly is th
         if request.method == 'DELETE':
             return obj.volunteer == request.user or request.user.is_staff # return True if user is the author or user is staff
         if request.method == 'PUT':
-            return obj.volunteer == request.user # return True if user is author
+            return obj.volunteer == request.user or request.user.is_staff # return True if user is the author or user is staff
 
 class AdminPermissions(permissions.BasePermission):
 
