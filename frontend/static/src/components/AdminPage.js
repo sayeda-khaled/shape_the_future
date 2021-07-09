@@ -9,6 +9,7 @@ class AdminPage extends Component {
     super(props);
     this.state={
       events: [],
+      students: [],
       grade: null,
       date: null
     }
@@ -24,9 +25,21 @@ class AdminPage extends Component {
     // if the user is authenticated pull their events otherwise pull published events
 
     componentDidMount(){
-      this.getEvents();
-
+      Promise.all([fetch('/api/v1/events/'), fetch('/api/v1/students/')])
+      .then(responses => {
+        return Promise.all(responses.map(function (response) {
+      		return response.json();
+      	}));
+      })
+      .then(data => {
+        const [events, students] = data;
+        this.setState({events, students});
+      });
     }
+
+
+
+
     getEvents(){
       fetch('/api/v1/events/')
       .then(response => {
