@@ -37,7 +37,7 @@ class VolunteerPage extends Component {
 
       cancelEvent(id) {
         const options= {
-          method: 'DELETE',
+          method: 'PUT',
           headers: {
           'Content-Type': 'application/json',
           'X-CSRFToken': Cookies.get('csrftoken'),
@@ -49,9 +49,15 @@ class VolunteerPage extends Component {
               throw new Error('Network response was not ok');
             }
             const events = [...this.state.events];
-            const index = events.findIndex(event => events.id === id);
-            events.splice(index, 1);
+
+            const index = events.findIndex(event => event.id === event.id);
+            events[index].volunteer = true;
             this.setState({ events });
+            //
+            // const index = events.findIndex(event => events.id === id);
+            //
+            // events.splice(index, 1);
+            // this.setState({ events });
           })
           .catch((error) => {
             console.error('Error:', error);

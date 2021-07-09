@@ -23,12 +23,10 @@ class EventListAPIView(generics.ListCreateAPIView):
 class EventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
-    permission_classes = (IsAuthOrReadOnly,)
+    # permission_classes = (IsAuthOrReadOnly,)
 
     def perform_update(self, serializer):
         serializer.save(volunteer=self.request.user)
-
-
 
 
 class VolunteerEventListAPIView(generics.ListCreateAPIView):
@@ -39,6 +37,7 @@ class VolunteerEventListAPIView(generics.ListCreateAPIView):
         volunteer = self.request.user
         return Event.objects.filter(volunteer=volunteer)
 
+
 class VolunteerEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EventSerializer
     permission_classes = (IsAuthOrReadOnly,)
@@ -46,6 +45,7 @@ class VolunteerEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         volunteer = self.request.user
         return Article.objects.filter(volunteer=volunteer)
+
 
 class StaffEventListAPIView(generics.ListCreateAPIView):
     queryset = Event.objects.all()
