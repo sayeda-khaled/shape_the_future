@@ -63,26 +63,28 @@ class EventsList extends Component {
       }
 
       render() {
+
         const events = this.state.events.map((event, index)=> (
           <div key = {index}>
 
             <section >
-                <form onSubmit={(e) => this.signUp(e, event)} className="list">
+                <form onSubmit={(e) => this.signUp(e, event)} className="form-1 bg-purple-100 m-6 p-4 rounded-3xl m-auto block max-w-md mt-20">
                   <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Grade</label>
-                    <p class="form-control" id="exampleFormControlInput1" name="grade">{event.grade} </p>
+                    <label for="exampleFormControlInput1" class="form-label text-gray-500 block text-sm mr-2">Grade:</label>
+                    <p class="form-control pb-3" id="exampleFormControlInput1" name="grade">{event.grade} </p>
 
 
-                    <label for="exampleFormControlTextarea1" class="form-label">Event Date</label>
-                    <time class="form-control" id="exampleFormControlInput1" rows="3">{event.date_of_event}</time>
+                    <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm mr-2">Event Date:</label>
+                    <time class="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.date_of_event}</time>
 
-                  <button id="signUp" class="btn btn-primary offset"type ='button' onClick={(e) => this.signUp(e, event)}>Sign Up</button>
+                  <div class="btn-signup bg-blue pb-2"type ='button' onClick={(e) => this.signUp(e, event)}>Sign Up</div>
               </div>
           </form>
           </section>
 
 
           </div>
+
 
         ));
 

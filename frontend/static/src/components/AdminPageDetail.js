@@ -71,13 +71,13 @@ class AdminPageDetail extends Component {
                 )
             }
             {
-            <button class="btn-edit bg-blue" onClick={() => this.props.deleteEvent(events.id)}>delete</button>
+            <button class="btn-edit bg-blue rounded-full py-3 px-6" onClick={() => this.props.deleteEvent(events.id)}>delete</button>
 
             }
             {
             this.state.isEditing
               ? <button class="btn-edit bg-blue flex-col ml-2 mt-2" type='button' onClick={this.saveEvent}>Save</button>
-              : <button class="btn-edit bg-blue flex-col ml-2 mt-2" onClick={() => this.setState({isEditing: true})}>Edit</button>
+              : <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded-full py-3 px-6" onClick={() => this.setState({isEditing: true})}>Edit</button>
             }
         </div>
       </li>
