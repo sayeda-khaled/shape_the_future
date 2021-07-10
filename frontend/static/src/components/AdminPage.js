@@ -17,6 +17,7 @@ class AdminPage extends Component {
     this.editEvent = this.editEvent.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.assignStudent = this.assignStudent.bind(this);
     // this.getEvents = this.getEvents.bind(this);
 
   }
@@ -86,7 +87,6 @@ class AdminPage extends Component {
 
     editEvent(event) {
 
-
       const options = {
         method: 'PUT',
         headers: {
@@ -133,28 +133,51 @@ class AdminPage extends Component {
           });
         }
 
+      assignStudent(event, student) {
+
+        event.preventDefault();
+
+        const id = student.id;
+
+        const options = {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': Cookies.get('csrftoken'),
+          },
+          body: JSON.stringify(student),
+        }
+        fetch(`/api/v1/students/${id}/`, options)
+          .then(response => {
+            if(!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            const students = [...this.state.students];
+            console.log(students);
+            const index = students.findIndex(event => student.id === id);
+            student[index].event = null;
+            this.setState({ students });
+          });
+
+          }
+
     render() {
       const events = this.state.events.map(event => (
         <AdminPageDetail key={event.id} event={event} deleteEvent={this.deleteEvent} editEvent={this.editEvent} />
       ));
 
-  //     const students = this.state.students.map(student => (
-  //       <div className="students" key={student.id} student={student}>
-  //     <label for="student-select" name="students">Choose a student:</label>
-  //
-  //       <select name="student" id="student-select">
-  //     <option value="{this.state.student.first_name}">--Please choose an option--</option>
-  //
-  // </select>
-  //
-  //       </div>
-  //     ));
+      const students = this.state.students.map(student => (
+        <AdminPageDetail className="students" key={student.id} assignStudent={this.assignStudent} student={student}/>
+
+      ));
 
 
       return (
         <>
+      
           <section className="events-container flex">
                 <ul>{events}</ul>
+
 
                 <section className="form-container sticky mt-12" style={{top:10+"VH"}}>
                     <form class="form-1" onSubmit={this.addEvent}>

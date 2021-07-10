@@ -177,38 +177,42 @@ class StudentList extends Component {
 
       return (
         <>
-          <ul>{students}</ul>
-            <section className="submit">
-                <form onSubmit={this.addStudent}>
-                <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">First Name</label>
-                  <input type="text" name="firstName" required class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.first_name} onChange={this.handleInput} rows="3"/>
-                </div>
+          <section className="events-container flex">
 
-                <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">Last Name</label>
-                  <input type="text" name="lastName" required class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.last_name} onChange={this.handleInput} rows="3"/>
-                </div>
+              <ul>{students}</ul>
 
-                <div class="mb-3">
-                  <label for="exampleFormControlInput1" class="form-label">Student ID</label>
-                  <input type="number" class="form-control" required id="exampleFormControlInput1" autoComplete="off" name="studentId" value={this.state.student_id} onChange={this.handleInput} placeholder="Insert the student ID"/>
-                  </div>
-
-
-                <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">Primary Contact</label>
-                  <input type="text" name="primaryContact" required class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.primary_contact} onChange={this.handleInput} rows="3"/>
-                </div>
-
-
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Grade</label>
-                    <input type="number" min="1" max="5" required class="form-control" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
+                <section className="form-container-2 sticky mt-12" style={{top:10+"VH"}}>
+                    <form class="form-1" onSubmit={this.addStudent}>
+                    <div class="mb-3">
+                      <label for="exampleFormControlTextarea1" class="form-label">First Name</label>
+                      <input type="text" name="firstName" required class="form-control input-1" autoComplete="off" id="exampleFormControlInput1"  value={this.state.first_name} onChange={this.handleInput} rows="3"/>
                     </div>
 
-              <button type="submit" onClick={this.addStudent} class="btn btn-primary offset">Submit</button>
-            </form>
+                    <div class="mb-3">
+                      <label for="exampleFormControlTextarea1" class="form-label">Last Name</label>
+                      <input type="text" name="lastName" required class="form-control input-1" autoComplete="off" id="exampleFormControlInput1"  value={this.state.last_name} onChange={this.handleInput} rows="3"/>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Student ID</label>
+                      <input type="number" class="form-control input-1" required id="exampleFormControlInput1" autoComplete="off" name="studentId" value={this.state.student_id} onChange={this.handleInput} placeholder="Insert the student ID"/>
+                      </div>
+
+
+                    <div class="mb-3">
+                      <label for="exampleFormControlTextarea1" class="form-label ">Primary Contact</label>
+                      <input type="text" name="primaryContact" required class="form-control input-1" autoComplete="off" id="exampleFormControlInput1"  value={this.state.primary_contact} onChange={this.handleInput} rows="3"/>
+                    </div>
+
+
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Grade</label>
+                        <input type="number" min="1" max="5" required class="form-control input-1" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
+                        </div>
+
+                  <button type="submit" onClick={this.addStudent} class="btn-submit bg-blue"  >Submit</button>
+                </form>
+              </section>
           </section>
 
         </>

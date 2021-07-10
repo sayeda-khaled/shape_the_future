@@ -9,7 +9,9 @@ class AdminPageDetail extends Component {
     this.state = {
       isEditing: false,
       grade: this.props.events?.grade,
-      date: this.props.events?.date
+      date: this.props.events?.date,
+      // firstNmae: this.props.students?.firstName,
+      // lastName: this.props.students?.lastName
     }
     this.handleInput = this.handleInput.bind(this);
     this.saveEvent = this.saveEvent.bind(this);
@@ -31,8 +33,18 @@ class AdminPageDetail extends Component {
 
   // <input type="text" value={this.state.volunteer} onChange={this.handleInput} name="volunteer"/>
 
+//   <label for="pet-select">Choose a pet:</label>
+//
+// <select name="students" id="student-select">
+//     <option value="">--Please choose a student--</option>
+//
+//     <option value={students.first_name} name="firstName">First Name</option>
+//     <option value="students.firstName">Last Name</option>
+//
+// </select>
 
   render() {
+    const students = this.props.student;
     const events = this.props.event;
     return(
       <li className="bg-purple-100 m-6 p-4 rounded">
@@ -59,13 +71,13 @@ class AdminPageDetail extends Component {
                 )
             }
             {
-            <button onClick={() => this.props.deleteEvent(events.id)}>delete</button>
+            <button class="btn-edit bg-blue" onClick={() => this.props.deleteEvent(events.id)}>delete</button>
 
             }
             {
             this.state.isEditing
-              ? <button type='button' onClick={this.saveEvent}>Save</button>
-              : <button onClick={() => this.setState({isEditing: true})}>Edit</button>
+              ? <button class="btn-editt bg-blue flex-col ml-2 mt-2" type='button' onClick={this.saveEvent}>Save</button>
+              : <button class="btn-edit bg-blue flex-col ml-2 mt-2" onClick={() => this.setState({isEditing: true})}>Edit</button>
             }
         </div>
       </li>

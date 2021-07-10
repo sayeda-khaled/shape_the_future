@@ -17,14 +17,6 @@ class EventsList extends Component {
     // this.submitEvent = this.submitEvent.bind(this);
     }
 
-    // componentDidMount(){
-    //   fetch('/api/v1/events/')
-    //   .then(response => response.json())
-    //   .then(data => console.log(data));
-    //   }
-
-
-
     componentDidMount(){
       fetch('/api/v1/events/')
       .then(response => {
@@ -39,35 +31,9 @@ class EventsList extends Component {
       });
     }
 
-
       handleInput(event) {
         this.setState({ [event.target.name]: event.target.value });
       }
-
-      // signUp(e) {
-      //   // e.preventDefault();
-      //   const event = {
-      //     grade: this.state.grade,
-      //     date: this.state.date,
-      //     // volunteer: this.state.volunteer
-      //   };
-      //   const options = {
-      //     method: 'PUT',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //       'X-CSRFToken': Cookies.get('csrftoken'),
-      //     },
-      //     body: JSON.stringify(event),
-      //   }
-      //   fetch('/api/v1/events/', options)
-      //     .then(response => response.json())
-      //     .then(data => {
-      //       const events = [...this.state.events, data];
-      //       // events.push(data);
-      //       this.setState({events, grade: '', date: '', selection: null});
-      //     });
-      // }
-
 
     signUp(e, event) {
       e.preventDefault();

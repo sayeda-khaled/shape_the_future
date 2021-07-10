@@ -24,13 +24,13 @@ class Registration extends Component{
 
   render(){
     return(
-      <div class="main">
-        <form class="form1" onSubmit={this.handleSubmit}>
-          <input class="un" type="text"  name="username" autoComplete="off" required onChange={this.handleInput} value={this.state.username} align="center" placeholder="Username"/>
-          <input class="un" type="email" name="email" align="center" placeholder="e-mail" onChange={this.handleInput} value={this.state.email} />
-          <input class="pass" type="password" name="password1" align="center" autoComplete="off" required onChange={this.handleInput} value={this.state.password1} placeholder="Password"/>
-          <input class="pass" type="password" name="password2" align="center" autoComplete="off" required onChange={this.handleInput} value={this.state.password2} placeholder="Confirm Password"/>
-          <button class="submit" align="center" onClick={() => this.props.handleRegistration(this.state)}>Register</button>
+      <div class="form-container">
+        <form class="form-1" onSubmit={this.handleSubmit}>
+          <input class="input-1" type="text"  name="username" autoComplete="off" required onChange={this.handleInput} value={this.state.username} align="center" placeholder="Username"/>
+          <input class="input-1" type="email" name="email" align="center" placeholder="e-mail" onChange={this.handleInput} value={this.state.email} />
+          <input class="input-1" type="password" name="password1" align="center" autoComplete="off" required onChange={this.handleInput} value={this.state.password1} placeholder="Password"/>
+          <input class="input-1" type="password" name="password2" align="center" autoComplete="off" required onChange={this.handleInput} value={this.state.password2} placeholder="Confirm Password"/>
+          <button class="btn-submit" align="center" onClick={() => this.props.handleRegistration(this.state)}>Register</button>
         </form>
       </div>
     );
