@@ -76,7 +76,7 @@ class AdminPageDetail extends Component {
             }
             {
             this.state.isEditing
-              ? <button class="btn-editt bg-blue flex-col ml-2 mt-2" type='button' onClick={this.saveEvent}>Save</button>
+              ? <button class="btn-edit bg-blue flex-col ml-2 mt-2" type='button' onClick={this.saveEvent}>Save</button>
               : <button class="btn-edit bg-blue flex-col ml-2 mt-2" onClick={() => this.setState({isEditing: true})}>Edit</button>
             }
         </div>

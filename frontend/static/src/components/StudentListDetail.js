@@ -43,7 +43,7 @@ class StudentListDetail extends Component {
   render() {
     const students = this.props.student;
     return(
-      <li>
+        <li className="bg-purple-100 m-6 p-4 rounded">
         <div>
             {
             this.state.isEditing
@@ -59,28 +59,38 @@ class StudentListDetail extends Component {
               : (
                   <>
 
-                    <p>{students.first_name}</p>
-                    <p>{students.last_name}</p>
-                    <p>{students.student_id}</p>
-                    <p>{students.primary_contact}</p>
-                    <h2>{students.grade}</h2>
+
+                    <label className="text-gray-500 block text-sm mr-2">First Name:</label>
+                        <p>{students.first_name}</p>
+                    <label className="text-gray-500 block text-sm mr-2">Last Name:</label>
+                        <p>{students.last_name}</p>
+                    <label className="text-gray-500 block text-sm mr-2">Student ID:</label>
+                        <p>{students.student_id}</p>
+                    <label className="text-gray-500 block text-sm mr-2">Primary Contact:</label>
+                        <p>{students.primary_contact}</p>
+                    <div className="flex items-center" >
+                      <label className="text-gray-500 block text-sm mr-2">Grade:</label>
+                      <h2 className="bg-white rounded-full py-2 px-4">{students.grade}</h2>
+                    </div>
+
                   </>
                 )
             }
             {
             (
             <>
-              <button onClick={() => this.props.deleteStudent(students.id)}>delete</button>
-              <button onClick={() => this.props.deactivateStudent(students.id)}> Deactivate </button>
+              <button class="btn-edit bg-blue flex-col ml-.5 mt-2 rounded" onClick={() => this.props.deleteStudent(students.id)}>delete</button>
+              <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" onClick={() => this.props.deactivateStudent(students.id)}> Deactivate </button>
             </>
             )
             }
             {
             this.state.isEditing
-              ? <button type='button' onClick={this.saveStudent}>Save</button>
-              : <button onClick={() => this.setState({isEditing: true})}>Edit</button>
+              ? <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={this.saveStudent}>Save</button>
+              : <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={() => this.setState({isEditing: true})}>Edit</button>
             }
-        </div>
+
+          </div>
       </li>
     )
   }
