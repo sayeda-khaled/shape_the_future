@@ -153,10 +153,10 @@ class AdminPage extends Component {
 
       return (
         <>
-          <section className="events-container">
+          <section className="events-container flex">
                 <ul>{events}</ul>
 
-                <section className="form-container">
+                <section className="form-container sticky mt-12" style={{top:10+"VH"}}>
                     <form class="form-1" onSubmit={this.addEvent}>
                       <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label block">Grade</label>

@@ -126,6 +126,7 @@ class App extends Component{
 
   return(
     <>
+    <main className="max-w-screen-lg m-auto  ">
       <Navbar loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} isStaff={this.state.isStaff} />
 
       <Switch>
@@ -188,7 +189,9 @@ class App extends Component{
         </Route>
 
       </Switch>
+  </main>
     </>
+
   );
 }
 

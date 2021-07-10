@@ -26,8 +26,6 @@ class StudentList extends Component {
   }
 
 
-    // if the user is authenticated pull their events otherwise pull published events
-
     componentDidMount(){
       fetch('/api/v1/students/')
       .then(response => {

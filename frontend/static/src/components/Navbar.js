@@ -1,9 +1,6 @@
 import { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
+
 // import { Link } from 'react-router-dom';
 
 // <Link to="/">MainPage</Link>
@@ -15,23 +12,23 @@ import Button from 'react-bootstrap/Button';
 // <button className="btn" onClick={() => this.props.handleLogout()}>Logout</button>
 
 
-  // <NavLink to='/logout' className="mr-2">Logout</NavLink>
+  // <NavLink to='/logout' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Logout</NavLink>
 
 class Navigation extends Component {
 
   render() {
     const isStaff = this.props.isStaff;
     return(
-      <Navbar bg="light" expand="lg" className="navbar">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto align-items-baseline">
-            <NavLink to='/' className="mr-2">Home</NavLink>
+      <div bg="light" expand="lg" className="navbar">
+        <div aria-controls="basic-navbar-nav" />
+        <div id="basic-navbar-nav">
+          <nav className="flex ml-12 my-6 mr-auto align-items-baseline">
+            <NavLink to='/' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Home</NavLink>
 
             {this.props.loggedIn && isStaff && (
                 <>
-              <NavLink to='/events/admin/' className="mr-2">Admin Events</NavLink>
-              <NavLink to='/students' className="mr-2">Student List</NavLink>
+              <NavLink to='/events/admin/' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Admin Events</NavLink>
+              <NavLink to='/students' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Student List</NavLink>
                 </>
               )
             }
@@ -39,8 +36,8 @@ class Navigation extends Component {
 
             {this.props.loggedIn && !isStaff && (
               <>
-                <NavLink to='/events/volunteer/' className="mr-2">Available Events</NavLink>
-                <NavLink to='/events/my-events/' className="mr-2">My Events</NavLink>
+                <NavLink to='/events/volunteer/' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Available Events</NavLink>
+                <NavLink to='/events/my-events/' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">My Events</NavLink>
               </>
               )
             }
@@ -49,19 +46,19 @@ class Navigation extends Component {
               this.props.loggedIn
               ?
                 <>
-                  <NavLink to='/profile' className="mr-2">Profile</NavLink>
+                  <NavLink to='/profile' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Profile</NavLink>
                   <button className="btn" onClick={() => this.props.handleLogout()}>Logout</button>
                 </>
 
               :
                 <>
-                  <NavLink to='/login' className="mr-2">Login</NavLink>
-                  <NavLink to='/register' className="mr-2">Register</NavLink>
+                  <NavLink to='/login' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Login</NavLink>
+                  <NavLink to='/register' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Register</NavLink>
                 </>
             }
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+          </nav>
+        </div>
+      </div>
     )
   }
 }
