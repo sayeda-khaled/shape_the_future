@@ -3,6 +3,8 @@ from django.db import models
 from django.conf import settings
 
 
+
+
 # class Student(models.Model):
 #     name = models.CharField(max_length=128)
 #

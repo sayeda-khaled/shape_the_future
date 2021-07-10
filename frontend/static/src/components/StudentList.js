@@ -17,8 +17,10 @@ class StudentList extends Component {
     }
     this.addStudent = this.addStudent.bind(this);
     this.editStudent = this.editStudent.bind(this);
-    // this.deleteStudent = this.deleteStudent.bind(this);
+    this.deleteStudent = this.deleteStudent.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.deactivateStudent = this.deactivateStudent.bind(this);
+
     // this.getEvents = this.getEvents.bind(this);
 
   }
@@ -89,7 +91,7 @@ class StudentList extends Component {
             throw new Error('Network response was not ok');
           }
           const students = [...this.state.students];
-          console.log(students);
+          // console.log(students);
           const index = students.findIndex(student => student.id === student.id);
           students[index].firstName = student.firstName;
           students[index].lastName = student.lastName;
@@ -100,6 +102,39 @@ class StudentList extends Component {
           this.setState({ students });
         });
       }
+
+
+    deactivateStudent(student) {
+      const id = student.id;
+      const active = {
+        active: false,
+      }
+      const options = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': Cookies.get('csrftoken'),
+        },
+        body: JSON.stringify(active),
+      }
+      fetch(`/api/v1/students/${id}/`, options)
+        .then(response => {
+          if(!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+
+        })
+
+        .then(data => {
+            const students = [...this.state.students];
+            // console.log(students);
+            const index = students.findIndex(student => student.id === id);
+            students[index].active = true;
+            this.setState({ students });
+            });
+      }
+
 
       deleteStudent(id) {
         const options= {
@@ -126,7 +161,7 @@ class StudentList extends Component {
 
     render() {
       const students = this.state.students.map(student => (
-        <StudentListDetail key={student.id} student={student} deleteStudent={this.deleteStudent} editStudent={this.editStudent} />
+        <StudentListDetail key={student.id} student={student} deactivateStudent={this.deactivateStudent} deleteStudent={this.deleteStudent} editStudent={this.editStudent} />
       ));
 
   //     const students = this.state.students.map(student => (

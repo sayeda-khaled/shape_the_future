@@ -153,20 +153,23 @@ class AdminPage extends Component {
 
       return (
         <>
-          <ul>{events}</ul>
-            <section className="submit">
-                <form onSubmit={this.addEvent}>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Grade</label>
-                    <input type="number" min="1" max="5" class="form-control" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
-                    </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Event Date</label>
-                    <input type="datetime-local" name="date" id="datetime" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date_of_event} onChange={this.handleInput} rows="3"/>
-                  </div>
-              <button type="submit" onClick={this.addevent} class="btn btn-primary offset">Submit</button>
-            </form>
-          </section>
+          <section className="events-container">
+                <ul>{events}</ul>
+
+                <section className="form-container">
+                    <form class="form-1" onSubmit={this.addEvent}>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label block">Grade</label>
+                        <input type="number" min="1" max="5" class="input-1" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
+                        </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label block">Event Date</label>
+                        <input type="datetime-local"  class="input-1" name="date" id="datetime" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date_of_event} onChange={this.handleInput} rows="3"/>
+                      </div>
+                  <button type="submit" onClick={this.addevent} class="btn-submit bg-blue">Submit</button>
+                </form>
+              </section>
+            </section>
 
         </>
         )

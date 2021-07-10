@@ -9,6 +9,10 @@ class Student(models.Model):
     student_id =  models.IntegerField()
     primary_contact = models.CharField(max_length=255)
     grade = models.IntegerField()
+    active = models.BooleanField(default=True)
+
+    # event = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, blank=True, null=True)
+    # event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 
 

@@ -68,8 +68,12 @@ class StudentListDetail extends Component {
                 )
             }
             {
-            <button onClick={() => this.props.deleteStudent(students.id)}>delete</button>
-
+            (
+            <>
+              <button onClick={() => this.props.deleteStudent(students.id)}>delete</button>
+              <button onClick={() => this.props.deactivateStudent(students.id)}> Deactivate </button>
+            </>
+            )
             }
             {
             this.state.isEditing
