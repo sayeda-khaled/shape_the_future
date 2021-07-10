@@ -17,7 +17,7 @@ class AdminPage extends Component {
     this.editEvent = this.editEvent.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.getEvents = this.getEvents.bind(this);
+    // this.getEvents = this.getEvents.bind(this);
 
   }
 
@@ -39,20 +39,20 @@ class AdminPage extends Component {
 
 
 
-
-    getEvents(){
-      fetch('/api/v1/events/')
-      .then(response => {
-        if(!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => this.setState({ events: data  }))
-      .catch(error => {
-        console.error('There has been a problem with youor fetch operation:', error);
-      });
-    }
+    //
+    // getEvents(){
+    //   fetch('/api/v1/events/')
+    //   .then(response => {
+    //     if(!response.ok) {
+    //       throw new Error('Network response was not ok');
+    //     }
+    //     return response.json();
+    //   })
+    //   .then(data => this.setState({ events: data  }))
+    //   .catch(error => {
+    //     console.error('There has been a problem with youor fetch operation:', error);
+    //   });
+    // }
 
   handleInput(event) {
     this.setState({ [event.target.name]: event.target.value });
@@ -86,6 +86,7 @@ class AdminPage extends Component {
 
     editEvent(event) {
 
+
       const options = {
         method: 'PUT',
         headers: {
@@ -105,7 +106,7 @@ class AdminPage extends Component {
           events[index].grade = event.grade;
           events[index].date = event.date;
           this.setState({ events });
-          this.getEvents();
+          // this.getEvents();
         });
       }
 
@@ -136,6 +137,19 @@ class AdminPage extends Component {
       const events = this.state.events.map(event => (
         <AdminPageDetail key={event.id} event={event} deleteEvent={this.deleteEvent} editEvent={this.editEvent} />
       ));
+
+  //     const students = this.state.students.map(student => (
+  //       <div className="students" key={student.id} student={student}>
+  //     <label for="student-select" name="students">Choose a student:</label>
+  //
+  //       <select name="student" id="student-select">
+  //     <option value="{this.state.student.first_name}">--Please choose an option--</option>
+  //
+  // </select>
+  //
+  //       </div>
+  //     ));
+
 
       return (
         <>

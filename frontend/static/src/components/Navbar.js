@@ -28,7 +28,14 @@ class Navigation extends Component {
           <Nav className="mr-auto align-items-baseline">
             <NavLink to='/' className="mr-2">Home</NavLink>
 
-            {this.props.loggedIn && isStaff && <NavLink to='/events/admin/' className="mr-2">Admin Events</NavLink>}
+            {this.props.loggedIn && isStaff && (
+                <>
+              <NavLink to='/events/admin/' className="mr-2">Admin Events</NavLink>
+              <NavLink to='/students' className="mr-2">Student List</NavLink>
+                </>
+              )
+            }
+
 
             {this.props.loggedIn && !isStaff && (
               <>
