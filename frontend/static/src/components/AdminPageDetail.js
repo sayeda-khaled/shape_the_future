@@ -10,6 +10,8 @@ class AdminPageDetail extends Component {
       isEditing: false,
       grade: this.props.events?.grade,
       date: this.props.events?.date,
+      startTime: this.props.events?.startTime,
+      endTime: this.props.events?.endTime,
       // firstNmae: this.props.students?.firstName,
       // lastName: this.props.students?.lastName
     }
@@ -64,9 +66,15 @@ class AdminPageDetail extends Component {
                     <h2 className="bg-white rounded-full py-2 px-4">{events.grade}</h2>
                     </div>
                       <label className="text-gray-500 block text-sm">Date:</label>
-                    <time>{events.date_of_event}</time>
+                          <time>{events.date_of_event}</time>
+                    <div className="flex items-center">
+                      <label className="text-gray-500 block text-sm">From:</label>
+                          <time className="mr-4">{events.start_of_event}</time>
+                      <label className="text-gray-500 block text-sm ">To:</label>
+                          <time>{events.end_of_event}</time>
+                    </div>
                       <label className="text-gray-500 block text-sm">Volunteer:</label>
-                    <p>{events.volunteer}</p>
+                          <p>{events.volunteer}</p>
                   </>
                 )
             }

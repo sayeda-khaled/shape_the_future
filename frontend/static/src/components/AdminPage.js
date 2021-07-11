@@ -13,7 +13,9 @@ class AdminPage extends Component {
       events: [],
       students: [],
       grade: null,
-      date: null
+      date: null,
+      startTime: null,
+      endTime: null,
     }
     this.addEvent = this.addEvent.bind(this);
     this.editEvent = this.editEvent.bind(this);
@@ -50,8 +52,8 @@ class AdminPage extends Component {
     const event = {
       grade: this.state.grade,
       date_of_event: this.state.date, //This is the key at the backend..
-      // volunteer: this.state.volunteer
-
+      start_of_event: this.state.startTime,
+      end_of_event: this.state.endTime,
     };
     // console.log(event);
     const options = {
@@ -67,7 +69,7 @@ class AdminPage extends Component {
       .then(data => {
         const events = [...this.state.events, data];
         // events.push(data);
-        this.setState({events, grade: '', date: ''});
+        this.setState({events, grade: '', date: null, startTime: null, endTime: null});
       });
   }
 
@@ -91,12 +93,15 @@ class AdminPage extends Component {
           const index = events.findIndex(event => event.id === event.id);
           events[index].grade = event.grade;
           events[index].date = event.date;
+          events[index].startTime = event.startTime;
+          events[index].endTime = event.endTime;
           this.setState({ events });
           // this.getEvents();
         });
       }
 
-      deleteEvent(id) {
+      deleteEvent(id, e) {
+        e.preventDefault();
         const options= {
           method: 'DELETE',
           headers: {
@@ -163,7 +168,7 @@ class AdminPage extends Component {
 
           <section className="events-container flex">
                 <ul>{events}</ul>
-                <section className="form-container sticky mt-12" style={{top:10+"VH"}}>
+                <section className="form-container-2 sticky mt-12" style={{top:10+"VH"}}>
                     <form class="form-1" onSubmit={this.addEvent}>
                       <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label block">Grade</label>
@@ -171,8 +176,21 @@ class AdminPage extends Component {
                         </div>
                       <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label block">Event Date</label>
-                        <input type="datetime-local"  class="input-1" name="date" id="datetime" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date_of_event} onChange={this.handleInput} rows="3"/>
+                        <input type="date"  min="2021-11-07" max="2021-12-31" class="input-1" name="date" id="start" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date_of_event} onChange={this.handleInput} rows="3" required/>
                       </div>
+
+                      <div class="mb-3">
+                        <label for="exampleFormControlTextarea1"  class="form-label block">Start Time</label>
+                        <input type="time"  class="input-1" name="startTime"  min="08:00" max="15:00" required autoComplete="off" id="exampleFormControlInput1"  value={this.state.start_of_event} onChange={this.handleInput} rows="3"/>
+                      </div>
+
+
+                      <div class="mb-3">
+                        <label for="exampleFormControlTextarea1"  class="form-label block">End Time</label>
+                        <input type="time"  class="input-1" name="endTime"  min="08:00" max="15:00" required autoComplete="off" id="exampleFormControlInput1"  value={this.state.end_of_event} onChange={this.handleInput} rows="3"/>
+                      </div>
+
+
                   <button type="submit" onClick={this.addevent} class="btn-submit bg-blue">Submit</button>
                 </form>
               </section>
