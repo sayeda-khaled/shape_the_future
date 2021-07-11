@@ -35,7 +35,7 @@ class Navigation extends Component {
                ?
                  <>
                    <NavLink to='/profile' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Profile</NavLink>
-                   <button id="btn-logout" className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md " onClick={() => this.props.handleLogout()}>Logout</button>
+                   <button id="btn-logout" className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md" onClick={() => this.props.handleLogout()}>Logout</button>
                  </>
 
                :

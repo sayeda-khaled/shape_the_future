@@ -1,23 +1,21 @@
-from django.db import models
-
-from django.conf import settings
-
-
-
-
-# class Student(models.Model):
-#     name = models.CharField(max_length=128)
+# from django.db import models
 #
-#     def __str__(self):
-#         return self.name
-
-
-class Event(models.Model):
-    grade = models.IntegerField()
-    date_of_event =  models.DateTimeField(auto_now=False)
-    date_created = models.DateTimeField(auto_now=True)
-    volunteer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, blank=True, null=True)
-    memo = models.TextField(blank = True)
+# from django.conf import settings
+#
+# from students.models import Student
+#
+#
+#
+#
+# class Event(models.Model):
+#     grade = models.IntegerField()
+#     date_of_event =  models.DateField(auto_now=False)
+#     start_of_event = models.TimeField(auto_now=False, auto_now_add=False, null=True)
+#     end_of_event = models.TimeField(auto_now=False, auto_now_add=False, null=True)
+#     date_created = models.DateTimeField(auto_now=True)
+#     volunteer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, blank=True, null=True)
+#     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="event", blank=True, null=True)
+#     memo = models.TextField(blank = True)
     # def __str__(self):
     #     return self.volunteer
 

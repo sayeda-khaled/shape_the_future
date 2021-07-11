@@ -43,12 +43,13 @@ class StudentListDetail extends Component {
   render() {
     const students = this.props.student;
     return(
-        <li className="bg-purple-100 m-6 p-4 rounded">
+        <li className="bg-purple-100 m-6 p-4 rounded-xl">
         <div>
             {
             this.state.isEditing
               ? (
                   <>
+                  
                     <input type="text" name="firstName" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.first_name} onChange={this.handleInput} rows="3"placeholder="Insert the student first name"/>
                     <input type="text" name="lastName" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.last_name} onChange={this.handleInput} rows="3"placeholder="Insert the student last name"/>
                     <input type="number" class="form-control" id="exampleFormControlInput1" autoComplete="off" name="studentId" value={this.state.student_id} onChange={this.handleInput} placeholder="Insert the student ID"/>
@@ -60,10 +61,10 @@ class StudentListDetail extends Component {
                   <>
 
 
-                    <label className="text-gray-500 block text-sm mr-2">First Name:</label>
-                        <p>{students.first_name}</p>
+                    <label className="text-gray-500 block text-sm mr-2 ">First Name:</label>
+                        <p className="font-semibold">{students.first_name}</p>
                     <label className="text-gray-500 block text-sm mr-2">Last Name:</label>
-                        <p>{students.last_name}</p>
+                        <p className="font-semibold">{students.last_name}</p>
                     <label className="text-gray-500 block text-sm mr-2">Student ID:</label>
                         <p>{students.student_id}</p>
                     <label className="text-gray-500 block text-sm mr-2">Primary Contact:</label>

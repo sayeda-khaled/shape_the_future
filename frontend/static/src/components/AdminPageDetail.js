@@ -47,7 +47,7 @@ class AdminPageDetail extends Component {
     const students = this.props.student;
     const events = this.props.event;
     return(
-      <li className="bg-purple-100 m-6 p-4 rounded">
+      <li className="bg-purple-100 m-6 p-4 rounded w-screen">
         <div>
             {
             this.state.isEditing

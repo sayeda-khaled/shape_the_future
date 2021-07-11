@@ -2,7 +2,7 @@ import { Component } from 'react';
 import AdminPageDetail from './AdminPageDetail.js';
 
 import Cookies from 'js-cookie';
-import Moment from 'react-moment';
+// import Moment from 'react-moment';
 
 
 
@@ -53,7 +53,7 @@ class AdminPage extends Component {
       // volunteer: this.state.volunteer
 
     };
-    console.log(event);
+    // console.log(event);
     const options = {
       method: 'POST',
       headers: {
@@ -61,7 +61,7 @@ class AdminPage extends Component {
         'X-CSRFToken': Cookies.get('csrftoken'),
       },
       body: JSON.stringify(event),
-    }
+      }
     fetch('/api/v1/events/', options)
       .then(response => response.json())
       .then(data => {
