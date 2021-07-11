@@ -198,21 +198,14 @@ font-size: 13px;
 box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
 
-/* #signUp {
-  height: 10%;
-  width: 20%;
-  display: inline-block;
-  margin-right: 40%;
+/* .navbar {
+  background-color: rgba(94, 32, 111, 1);
 } */
 
-.block{
-  display: block;
+.main-page {
+  background-image: url(https://thumbs.dreamstime.com/b/child-reading-book-3278281.jpg);
+  background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+/* opacity: 0.5; */
 }
-
-.bg-blue{
-  background: linear-gradient(to right, #4d27b0, #418ffb);
-}
-
-/* .events-container{
-
-} */

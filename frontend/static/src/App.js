@@ -126,7 +126,7 @@ class App extends Component{
 
   return(
     <>
-    <main className="max-w-screen-lg m-auto  ">
+    <main className="max-w-screen-lg m-auto  main-page ">
       <Navbar loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} isStaff={this.state.isStaff} />
 
       <Switch>
