@@ -7,7 +7,7 @@ class IsAuthOrReadOnly(permissions.BasePermission):
             return True
 
         if request.method == 'DELETE':
-            return obj.user == request.user or request.user.is_staff
+            return obj.user == request.user 
 
         # if request.method == 'PUT':
             return obj.user == request.user

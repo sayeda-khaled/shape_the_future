@@ -2,6 +2,8 @@ import { Component } from 'react';
 import AdminPageDetail from './AdminPageDetail.js';
 
 import Cookies from 'js-cookie';
+import Moment from 'react-moment';
+
 
 
 class AdminPage extends Component {
@@ -38,22 +40,6 @@ class AdminPage extends Component {
       });
     }
 
-
-
-    //
-    // getEvents(){
-    //   fetch('/api/v1/events/')
-    //   .then(response => {
-    //     if(!response.ok) {
-    //       throw new Error('Network response was not ok');
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(data => this.setState({ events: data  }))
-    //   .catch(error => {
-    //     console.error('There has been a problem with youor fetch operation:', error);
-    //   });
-    // }
 
   handleInput(event) {
     this.setState({ [event.target.name]: event.target.value });
@@ -174,7 +160,7 @@ class AdminPage extends Component {
 
       return (
         <>
-      
+
           <section className="events-container flex">
                 <ul>{events}</ul>
 

@@ -10,7 +10,7 @@ class Navigation extends Component {
       <div bg="light" expand="lg" className="navbar">
         <div aria-controls="basic-navbar-nav" />
         <div id="basic-navbar-nav">
-          <nav className="flex ml-12 my-6 mr-auto align-items-baseline">
+          <nav className="flex ml-12 my-6 mr-auto align-items-baseline bg-gray-50">
             <NavLink to='/' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Home</NavLink>
 
              {this.props.loggedIn && isStaff && (
@@ -35,7 +35,7 @@ class Navigation extends Component {
                ?
                  <>
                    <NavLink to='/profile' className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md">Profile</NavLink>
-                   <button className="btn" onClick={() => this.props.handleLogout()}>Logout</button>
+                   <button id="btn-logout" className="hover:bg-purple-700 mr-4 px-4 py-2 rounded-md " onClick={() => this.props.handleLogout()}>Logout</button>
                  </>
 
                :

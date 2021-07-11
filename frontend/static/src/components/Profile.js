@@ -10,6 +10,7 @@ class Profile extends Component{
       display_name: '',
       avatar: null,
       preview: '',
+      isEditing: false
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleImage = this.handleImage.bind(this);
@@ -68,27 +69,38 @@ class Profile extends Component{
   }
 
   editProfile(profile) {
-    const options ={
-      method: 'PATCH',
-      headers: {
-      'Content-Type': 'application/json',
-      'X-CSRFToken': Cookies.get('csrftoken'),
-      },
-      body: JSON.stringify(profile)
-    }
-    fetch('/api/v1/users/profile/user/', options)
-      .then(response =>{
-        if(!response.ok) {
-          throw new Error('Error');
-        }
-        return response.json()
-      })
+      let formData= new FormData();
+
+      if (this.state.avatar) {
+      formData.append('avatar', this.state.avatar);
+      }
+      if (this.state.display_name) {
+          formData.append('display_name', this.state.display_name);
+      }
+
+      const options ={
+        method: 'PATCH',
+        headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+        },
+        body: JSON.stringify(profile)
+      }
+      fetch('/api/v1/users/profile/user/', options)
+
+        .then(response =>{
+          if(!response.ok) {
+            throw new Error('Error');
+          }
+          return response.json()
+          this.setState({ isEditing: false });
+        })
+
   }
 
   render(){
   return (
     <>
-
         <form onSubmit={this.handleSubmit}>
             <section className="profile">
               <input type='text' name="display_name" value={this.state.display_name} onChange={this.handleInput} />

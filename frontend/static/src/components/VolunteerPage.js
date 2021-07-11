@@ -101,7 +101,7 @@ class VolunteerPage extends Component {
                   <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm mr-2">Event Date:</label>
                   <time class="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.date_of_event}</time>
 
-                <div class="btn-signup bg-blue pb-2"type ='button' onClick={(e) => this.cancelEvent(e,event)}>Sign Up</div>
+                <div class="btn-signup bg-blue pb-2"type ='button' onClick={(e) => this.cancelEvent(e,event)}>Cancel</div>
             </div>
         </form>
         </section>
