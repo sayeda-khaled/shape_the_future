@@ -13,6 +13,7 @@ class StudentListDetail extends Component {
       studentId: this.props.studentId,
       primanryContact: this.props.primanryContact,
       grade: this.props.grade,
+      isActive: false,
 
     }
     this.handleInput = this.handleInput.bind(this);
@@ -41,6 +42,9 @@ class StudentListDetail extends Component {
   deactivateStudent() {
     const student = this.props.student;
     this.props.deactivateStudent(student);
+    this.setState(prevState => ({
+      isActive: !prevState.isActive
+    }));
   }
 
   // <input type="text" value={this.state.volunteer} onChange={this.handleInput} name="volunteer"/>
@@ -48,6 +52,7 @@ class StudentListDetail extends Component {
 
   render() {
     const students = this.props.student;
+    console.log(students.active);
     return(
         <li className="bg-purple-100 m-6 p-4 rounded-xl">
         <div>
@@ -87,7 +92,7 @@ class StudentListDetail extends Component {
             (
             <>
               <button class="btn-edit bg-blue flex-col ml-.5 mt-2 rounded" onClick={() => this.props.deleteStudent(students.id)}>delete</button>
-              <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" onClick={() => this.deactivateStudent(students.id)}> Inactive </button>
+              <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" onClick={() => this.deactivateStudent(students.id)}>{students.active && 'Deactivate'} {!students.active && 'Active'}</button>
             </>
             )
             }

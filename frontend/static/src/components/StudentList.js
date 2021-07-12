@@ -104,7 +104,7 @@ class StudentList extends Component {
     deactivateStudent(student) {
       // event.preventDefault();
       const id = student.id;
-      // console.log(id);
+      // console.log(student);
 
       const options = {
         method: 'PATCH',
@@ -112,7 +112,7 @@ class StudentList extends Component {
           'Content-Type': 'application/json',
           'X-CSRFToken': Cookies.get('csrftoken'),
         },
-        body: JSON.stringify({ active: false }),
+        body: JSON.stringify(student),
       }
       fetch(`/api/v1/students/${id}/`, options)
         .then(response => response.json())
