@@ -12,11 +12,12 @@ class AdminPageDetail extends Component {
       date: this.props.events?.date,
       startTime: this.props.events?.startTime,
       endTime: this.props.events?.endTime,
-      // firstNmae: this.props.students?.firstName,
-      // lastName: this.props.students?.lastName
+      // firstName: this.props.students.firstName,
+      // lastName: this.props.students.lastName
     }
     this.handleInput = this.handleInput.bind(this);
     this.saveEvent = this.saveEvent.bind(this);
+    this.assignStudent = this.assignStudent.bind(this);
 
   }
 
@@ -33,21 +34,17 @@ class AdminPageDetail extends Component {
     this.setState({ isEditing: false });
   }
 
-  // <input type="text" value={this.state.volunteer} onChange={this.handleInput} name="volunteer"/>
+  assignStudent(event) {
+    const eventID = this.props.event.id;
+    const studentID = event.target.value;
+    this.props.assignStudent(eventID, studentID);
+  }
 
-//   <label for="pet-select">Choose a pet:</label>
-//
-// <select name="students" id="student-select">
-//     <option value="">--Please choose a student--</option>
-//
-//     <option value={students.first_name} name="firstName">First Name</option>
-//     <option value="students.firstName">Last Name</option>
-//
-// </select>
 
   render() {
     const students = this.props.student;
-    const events = this.props.event;
+    const event = this.props.event;
+    const options = this.props.students.map(student =>  <option value={student.id} selected={event.student === student.id}>{`${student.last_name}, ${student.first_name}`}</option>)
     return(
       <li className="bg-purple-100 m-6 p-4 rounded w-80">
         <div>
@@ -62,24 +59,32 @@ class AdminPageDetail extends Component {
               : (
                   <>
                   <div className="flex items-center" >
-                    <label className="text-gray-500 block text-sm mr-2">Grade:</label>
-                    <h2 className="bg-white rounded-full py-2 px-4">{events.grade}</h2>
+                      <label className="text-gray-500 block text-sm mr-2">Grade:</label>
+                      <h2 className="bg-white rounded-full py-2 px-4">{event.grade}</h2>
                     </div>
-                      <label className="text-gray-500 block text-sm">Date:</label>
-                          <time>{events.date_of_event}</time>
+                        <label className="text-gray-500 block text-sm">Date:</label>
+                        <time>{event.date_of_event}</time>
                     <div className="flex items-center">
-                      <label className="text-gray-500 block text-sm">From:</label>
-                          <time className="mr-4">{events.start_of_event}</time>
-                      <label className="text-gray-500 block text-sm ">To:</label>
-                          <time>{events.end_of_event}</time>
+                        <label className="text-gray-500 block text-sm">From:</label>
+                            <time className="mr-4">{event.start_of_event}</time>
+                        <label className="text-gray-500 block text-sm ">To:</label>
+                            <time>{event.end_of_event}</time>
                     </div>
-                      <label className="text-gray-500 block text-sm">Volunteer:</label>
-                          <p>{events.volunteer}</p>
+                        <label className="text-gray-500 block text-sm">Volunteer:</label>
+                            <p>{event.volunteer}</p>
+
+                        <label for="student-select">Choose a student:</label>
+                        <select name="" id="" onChange={this.assignStudent}>
+                          <option value=""> --Please choose a student-- </option>
+                          {options}
+                        </select>
+
+
                   </>
                 )
             }
             {
-            <button class="btn-edit bg-blue rounded-full py-3 px-6" onClick={() => this.props.deleteEvent(events.id)}>delete</button>
+            <button class="btn-edit bg-blue rounded-full py-3 px-6" onClick={() => this.props.deleteEvent(event.id)}>delete</button>
 
             }
             {

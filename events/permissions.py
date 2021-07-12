@@ -10,14 +10,11 @@ class IsAuthOrReadOnly(permissions.BasePermission): # the IsAuthOrReadOnly is th
             return obj.volunteer == request.user or request.user.is_staff # return True if user is the author or user is staff
         if request.method == 'PUT':
             return obj.volunteer == request.user or request.user.is_staff # return True if user is the author or user is staff
-
-class AdminPermissions(permissions.BasePermission):
-
-    def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
-
-        if request.method == 'DELETE':
-            return obj.user.is_staff == request.user.is_staff
-        # if request.method == 'PUT':
-        return obj.user.is_staff == request.user.is_staff
+# 
+# class AdminPermissions(permissions.BasePermission):
+#
+#     def has_object_permission(self, request, view, obj):
+#         if request.method in permissions.SAFE_METHODS:
+#             return True
+#
+#         return request.user.is_staff

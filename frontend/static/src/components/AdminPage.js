@@ -22,15 +22,11 @@ class AdminPage extends Component {
     this.deleteEvent = this.deleteEvent.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.assignStudent = this.assignStudent.bind(this);
-    // this.getEvents = this.getEvents.bind(this);
-
   }
 
 
-    // if the user is authenticated pull their events otherwise pull published events
-
     componentDidMount(){
-      Promise.all([fetch('/api/v1/events/'), fetch('/api/v1/students/')])
+      Promise.all([fetch('/api/v1/events/staff/'), fetch('/api/v1/students/')])
       .then(responses => {
         return Promise.all(responses.map(function (response) {
       		return response.json();
@@ -43,35 +39,35 @@ class AdminPage extends Component {
     }
 
 
-  handleInput(event) {
-    this.setState({ [event.target.name]: event.target.value });
-  }
+    handleInput(event) {
+      this.setState({ [event.target.name]: event.target.value });
+    }
 
-  addEvent(e) {
-    e.preventDefault();
-    const event = {
-      grade: this.state.grade,
-      date_of_event: this.state.date, //This is the key at the backend..
-      start_of_event: this.state.startTime,
-      end_of_event: this.state.endTime,
-    };
-    // console.log(event);
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': Cookies.get('csrftoken'),
-      },
-      body: JSON.stringify(event),
-      }
-    fetch('/api/v1/events/', options)
-      .then(response => response.json())
-      .then(data => {
-        const events = [...this.state.events, data];
-        // events.push(data);
-        this.setState({events, grade: '', date: null, startTime: null, endTime: null});
-      });
-  }
+    addEvent(e) {
+      e.preventDefault();
+      const event = {
+        grade: this.state.grade,
+        date_of_event: this.state.date, //This is the key at the backend..
+        start_of_event: this.state.startTime,
+        end_of_event: this.state.endTime,
+      };
+      // console.log(event);
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': Cookies.get('csrftoken'),
+        },
+        body: JSON.stringify(event),
+        }
+      fetch('/api/v1/events/', options)
+        .then(response => response.json())
+        .then(data => {
+          const events = [...this.state.events, data];
+          // events.push(data);
+          this.setState({events, grade: '', date: null, startTime: null, endTime: null});
+        });
+    }
 
     editEvent(event) {
 
@@ -124,43 +120,40 @@ class AdminPage extends Component {
           });
         }
 
-      assignStudent(event, student) {
+      assignStudent(eventID, studentID) {
 
-        event.preventDefault();
-
-        const id = student.id;
+      // make a UPDATE request to the backend that saves the student to the event
 
         const options = {
-          method: 'PUT',
+          method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': Cookies.get('csrftoken'),
           },
-          body: JSON.stringify(student),
+          body: JSON.stringify({student: studentID}),
         }
-        fetch(`/api/v1/students/${id}/`, options)
+        fetch(`/api/v1/events/staff/${eventID}/`, options)
           .then(response => {
             if(!response.ok) {
               throw new Error('Network response was not ok');
             }
-            const students = [...this.state.students];
-            console.log(students);
-            const index = students.findIndex(event => student.id === id);
-            student[index].event = null;
-            this.setState({ students });
+            const events = [...this.state.events];
+            const index = events.findIndex(event => event.id === eventID);
+            events[index].student = studentID;
+            this.setState({ events });
           });
 
-          }
+    }
 
     render() {
       const events = this.state.events.map(event => (
-        <AdminPageDetail key={event.id} event={event} deleteEvent={this.deleteEvent} editEvent={this.editEvent} />
+        <AdminPageDetail key={event.id} event={event} deleteEvent={this.deleteEvent} editEvent={this.editEvent} students={this.state.students} assignStudent={this.assignStudent}/>
       ));
 
-      const students = this.state.students.map(student => (
-        <AdminPageDetail className="students" key={student.id} assignStudent={this.assignStudent} student={student}/>
-
-      ));
+      // const students = this.state.students.map(student => (
+      //   <AdminPageDetail className="students" key={student.id} assignStudent={this.assignStudent} student={student}/>
+      //
+      // ));
 
 
       return (
@@ -174,6 +167,7 @@ class AdminPage extends Component {
                         <label for="exampleFormControlInput1" class="form-label block">Grade</label>
                         <input type="number" min="1" max="5" class="input-1" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
                         </div>
+
                       <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label block">Event Date</label>
                         <input type="date"  min="2021-11-07" max="2021-12-31" class="input-1" name="date" id="start" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date_of_event} onChange={this.handleInput} rows="3" required/>

@@ -2,10 +2,11 @@ from datetime import datetime
 from django.db.models import Q
 
 from rest_framework import generics
+from rest_framework.permissions import IsAdminUser
 
 from .models import Event
 from .serializers import EventSerializer, StaffEventSerializer
-from .permissions import AdminPermissions, IsAuthOrReadOnly
+from .permissions import IsAuthOrReadOnly
 
 
 class EventListAPIView(generics.ListCreateAPIView):
@@ -50,11 +51,13 @@ class VolunteerEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 class StaffEventListAPIView(generics.ListCreateAPIView):
     queryset = Event.objects.all()
     serializer_class = StaffEventSerializer
+    permission_classes = (IsAdminUser,)
+
 
 class StaffEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = StaffEventSerializer
-    permission_classes = (AdminPermissions,)
+    permission_classes = (IsAdminUser,)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

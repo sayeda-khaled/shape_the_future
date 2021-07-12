@@ -10,13 +10,13 @@ class Navigation extends Component {
       <div bg="light" expand="lg" className="navbar">
         <div aria-controls="basic-navbar-nav" />
         <div id="basic-navbar-nav">
-          <nav className="flex ml-12 my-6 mr-auto align-items-baseline navbar ">
-            <NavLink to='/' className="hover:bg-purple-200 font-bold mr-4 px-4 py-2 rounded-md text-gray-900">Home</NavLink>
+          <nav className="flex ml-12 my-6 mr-auto align-items-baseline bg-gradient-to-r from-gray-800 to-gray-50 ">
+            <NavLink to='/' className="hover:bg-purple-200 font-extrabold mr-4 px-4 py-2 rounded-md">Home</NavLink>
 
              {this.props.loggedIn && isStaff && (
                  <>
-               <NavLink to='/events/admin/' className="hover:bg-purple-200 font-bold mr-4 px-4 py-2 rounded-md">Admin Events</NavLink>
-               <NavLink to='/students' className="hover:bg-purple-200 font-boldmr-4 px-4 py-2 rounded-md">Student List</NavLink>
+               <NavLink to='/events/admin/' className="hover:bg-purple-200 font-extrabold mr-4 px-4 py-2 rounded-md">Admin Events</NavLink>
+               <NavLink to='/students' className="hover:bg-purple-200 font-extrabold mr-4 px-4 py-2 rounded-md">Student List</NavLink>
                  </>
                )
              }
@@ -24,8 +24,8 @@ class Navigation extends Component {
 
              {this.props.loggedIn && !isStaff && (
                <>
-                 <NavLink to='/events/volunteer/' className="hover:bg-purple-200 font-bold mr-4 px-4 py-2 rounded-md">Available Events</NavLink>
-                 <NavLink to='/events/my-events/' className="hover:bg-purple-200 font-bold mr-4 px-4 py-2 rounded-md">My Events</NavLink>
+                 <NavLink to='/events/volunteer/' className="hover:bg-purple-200 font-extrabold mr-4 px-4 py-2 rounded-md">Available Events</NavLink>
+                 <NavLink to='/events/my-events/' className="hover:bg-purple-200 font-extrabold mr-4 px-4 py-2 rounded-md">My Events</NavLink>
                </>
                )
              }
@@ -35,13 +35,13 @@ class Navigation extends Component {
                ?
                  <>
                    <NavLink to='/profile' className="hover:bg-purple-200 font-boldmr-4 px-4 py-2 rounded-md">Profile</NavLink>
-                   <button id="btn-logout" className="hover:bg-purple-200 font-bold mr-4 px-4 py-2 rounded-md" onClick={() => this.props.handleLogout()}>Logout</button>
+                   <button id="btn-logout" className="hover:bg-purple-200 font-extrabold mr-4 px-4 py-2 rounded-md" onClick={() => this.props.handleLogout()}>Logout</button>
                  </>
 
                :
                  <>
-                   <NavLink to='/login' className="hover:bg-purple-200 font-bold mr-4 px-4 py-2 rounded-md">Login</NavLink>
-                   <NavLink to='/register' className="hover:bg-purple-200 font-bold mr-4 px-4 py-2 rounded-md">Register</NavLink>
+                   <NavLink to='/login' className="hover:bg-purple-200 font-extrabold mr-4 px-4 py-2 rounded-md">Login</NavLink>
+                   <NavLink to='/register' className="hover:bg-purple-200 font-extrabold mr-4 px-4 py-2 rounded-md">Register</NavLink>
                  </>
              }
            </nav>
