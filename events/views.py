@@ -18,7 +18,7 @@ class EventListAPIView(generics.ListCreateAPIView):
         # import pdb; pdb.set_trace()
         # Complex lookups with Q objects
         # https://docs.djangoproject.com/en/3.2/topics/db/queries/#complex-lookups-with-q-objects
-        return Event.objects.exclude(Q(volunteer=volunteer) | Q(date_of_event__lt=datetime.today())) # reverse this login
+        return Event.objects.exclude(Q(volunteer=volunteer) | Q(date_of_event__lt=datetime.today()))
 
 
 class EventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -30,7 +30,7 @@ class EventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
         serializer.save(volunteer=self.request.user)
 
 
-class VolunteerEventListAPIView(generics.ListCreateAPIView):
+class VolunteerEventListAPIView(generics.ListAPIView):
     serializer_class = EventSerializer
     # permission_classes = (IsAuthOrReadOnly,)
 
@@ -39,13 +39,14 @@ class VolunteerEventListAPIView(generics.ListCreateAPIView):
         return Event.objects.filter(volunteer=volunteer)
 
 
-class VolunteerEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+class VolunteerEventDetailAPIView(generics.RetrieveUpdateAPIView):
     serializer_class = EventSerializer
-    permission_classes = (IsAuthOrReadOnly,)
+    # permission_classes = (IsAuthOrReadOnly,)
 
     def get_queryset(self):
         volunteer = self.request.user
-        return Article.objects.filter(volunteer=volunteer)
+        return Event.objects.filter(volunteer=volunteer)
+
 
 
 class StaffEventListAPIView(generics.ListCreateAPIView):

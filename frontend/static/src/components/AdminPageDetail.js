@@ -77,6 +77,7 @@ class AdminPageDetail extends Component {
                         <select name="" id="" onChange={this.assignStudent}>
                           <option value=""> --Please choose a student-- </option>
                           {options}
+                          
                         </select>
 
 

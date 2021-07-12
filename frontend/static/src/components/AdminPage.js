@@ -142,7 +142,6 @@ class AdminPage extends Component {
             events[index].student = studentID;
             this.setState({ events });
           });
-
     }
 
     render() {
