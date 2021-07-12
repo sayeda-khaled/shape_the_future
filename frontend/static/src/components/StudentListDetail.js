@@ -37,6 +37,12 @@ class StudentListDetail extends Component {
     this.setState({ isEditing: false });
   }
 
+
+  deactivateStudent() {
+    const student = this.props.student;
+    this.props.deactivateStudent(student);
+  }
+
   // <input type="text" value={this.state.volunteer} onChange={this.handleInput} name="volunteer"/>
 
 
@@ -49,7 +55,7 @@ class StudentListDetail extends Component {
             this.state.isEditing
               ? (
                   <>
-                  
+
                     <input type="text" name="firstName" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.first_name} onChange={this.handleInput} rows="3"placeholder="Insert the student first name"/>
                     <input type="text" name="lastName" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.last_name} onChange={this.handleInput} rows="3"placeholder="Insert the student last name"/>
                     <input type="number" class="form-control" id="exampleFormControlInput1" autoComplete="off" name="studentId" value={this.state.student_id} onChange={this.handleInput} placeholder="Insert the student ID"/>
@@ -81,7 +87,7 @@ class StudentListDetail extends Component {
             (
             <>
               <button class="btn-edit bg-blue flex-col ml-.5 mt-2 rounded" onClick={() => this.props.deleteStudent(students.id)}>delete</button>
-              <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" onClick={() => this.props.deactivateStudent(students.id)}> Deactivate </button>
+              <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" onClick={() => this.deactivateStudent(students.id)}> Inactive </button>
             </>
             )
             }

@@ -101,37 +101,40 @@ class StudentList extends Component {
         });
       }
 
-
     deactivateStudent(student) {
+      // event.preventDefault();
       const id = student.id;
-      const active = {
-        active: false,
-      }
+      // console.log(id);
+
       const options = {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'X-CSRFToken': Cookies.get('csrftoken'),
         },
-        body: JSON.stringify(active),
+        body: JSON.stringify({ active: false }),
       }
       fetch(`/api/v1/students/${id}/`, options)
-        .then(response => {
-          if(!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-
-        })
-
+        .then(response => response.json())
         .then(data => {
+
             const students = [...this.state.students];
-            // console.log(students);
+            console.log(students);
             const index = students.findIndex(student => student.id === id);
-            students[index].active = true;
+            students[index].active = false;
             this.setState({ students });
-            });
+
+        });
       }
+
+      //   .then(data => {
+      //     const student = [...this.state.students];
+      //     // console.log(events);
+      //     const index = students.findIndex(student => student.id === id);
+      //     students[index].active = false;
+      //     this.setState({ students });
+      //       });
+      // }
 
 
       deleteStudent(id) {
@@ -210,7 +213,7 @@ class StudentList extends Component {
                         <input type="number" min="1" max="5" required class="form-control input-1" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
                         </div>
 
-                  <button type="submit" onClick={this.addStudent} class="btn-submit bg-blue"  >Submit</button>
+                  <button type="submit" onClick={this.addStudent} class="btn-submit bg-blue">Submit</button>
                 </form>
               </section>
           </section>

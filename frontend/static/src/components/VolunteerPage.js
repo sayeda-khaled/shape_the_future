@@ -59,33 +59,31 @@ class VolunteerPage extends Component {
       //     }
 
 
-          cancelEvent(e, event) {
-            e.preventDefault();
+        cancelEvent(e, event) {
+          e.preventDefault();
+          const id = event.id;
 
-            const id = event.id;
+          const options = {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+            body: JSON.stringify({ volunteer: null }),
+          }
+          fetch(`/api/v1/events/volunteer/${id}/`, options)
+            .then(response => {
+              if(!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              const events = [...this.state.events];
+              // console.log(events);
+              const index = events.findIndex(event => event.id === id);
+              events[index].volunteer = null;
+              this.setState({ events });
+            });
 
-
-            const options = {
-              method: 'PATCH',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': Cookies.get('csrftoken'),
-              },
-              body: JSON.stringify({ volunteer: null }),
-            }
-            fetch(`/api/v1/events/volunteer/${id}/`, options)
-              .then(response => {
-                if(!response.ok) {
-                  throw new Error('Network response was not ok');
-                }
-                const events = [...this.state.events];
-                // console.log(events);
-                const index = events.findIndex(event => event.id === id);
-                events[index].volunteer = null;
-                this.setState({ events });
-              });
-
-            }
+          }
 
 
 

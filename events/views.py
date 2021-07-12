@@ -61,7 +61,7 @@ class StaffEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAdminUser,)
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(is_staff=self.request.user)
 
     def Perform_update(self, serializer):
         instance = serializer.save(is_staff=self.request.user)
