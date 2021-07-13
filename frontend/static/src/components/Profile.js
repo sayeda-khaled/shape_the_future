@@ -17,7 +17,7 @@ class Profile extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.editProfile = this.editProfile.bind(this);
   }
-  // 
+  //
   // componentDidMount(){
   //   fetch('/api/v1/users/profiles/user')
   //   .then(response => response.json())
@@ -25,9 +25,9 @@ class Profile extends Component{
   // }
 
 
-
+    //
     componentDidMount(){
-      fetch('/api/v1/users/profiles/user')
+      fetch('/api/v1/users/profiles/user/')
       .then(response => {
         if(!response.ok) {
           throw new Error('Network response was not ok');
@@ -71,7 +71,7 @@ class Profile extends Component{
         },
         body: formData,
       }
-      const response = await fetch('/api/v1/users/profiles/', options);
+      const response = await fetch('/api/v1/users/profiles/user/', options);
       this.setState({ response })
       // console.log(response);
   }
@@ -94,7 +94,7 @@ class Profile extends Component{
         },
         body: JSON.stringify(profile)
       }
-      fetch('/api/v1/users/profile/user/', options)
+      fetch('/api/v1/users/profiles/user/', options)
 
         .then(response =>{
           if(!response.ok) {
