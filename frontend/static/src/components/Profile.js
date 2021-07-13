@@ -77,22 +77,23 @@ class Profile extends Component{
   }
 
   editProfile(profile) {
+
       let formData= new FormData();
+      formData.append('display_name', this.state.display_name);
 
-      if (this.state.avatar) {
-      formData.append('avatar', this.state.avatar);
-      }
-      if (this.state.display_name) {
-          formData.append('display_name', this.state.display_name);
+      if(this.state.avatar instanceof File) {
+        formData.append('avatar', this.state.avatar);
       }
 
-      const options ={
+      const profileKeys = Object.keys(profile);
+      profileKeys.foreach(key => formData.append(key, profile[key]));
+
+      const options = {
         method: 'PATCH',
         headers: {
-        'Content-Type': 'application/json',
         'X-CSRFToken': Cookies.get('csrftoken'),
         },
-        body: JSON.stringify(profile)
+        body: formData,
       }
       fetch('/api/v1/users/profiles/user/', options)
 
@@ -119,6 +120,8 @@ class Profile extends Component{
               }
             </section>
             <button type="submit">Save Profile!</button>
+
+
         </form>
 
 
