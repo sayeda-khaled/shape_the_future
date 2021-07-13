@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_auth.registration',
+    'phonenumber_field',
+
 
     #local
     'accounts.apps.AccountsConfig',
@@ -166,6 +168,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 REST_AUTH_SERIALIZERS = {
     'TOKEN_SERIALIZER': 'accounts.serializers.TokenSerializer',
 }
+
+# REST_AUTH_SERIALIZERS
+# https://django-rest-auth.readthedocs.io/en/latest/configuration.html?highlight=REGISTER_SERIALIZER#configuration
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.RegistrationSerializer',
+}
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

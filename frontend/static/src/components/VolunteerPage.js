@@ -56,6 +56,7 @@ class VolunteerPage extends Component {
             const index = events.findIndex(event => event.id === id);
             events[index].volunteer = null;
             this.setState({ events });
+            alert('Your session has been canceled!')
           });
 
         }

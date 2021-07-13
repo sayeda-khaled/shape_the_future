@@ -17,20 +17,28 @@ class Profile extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.editProfile = this.editProfile.bind(this);
   }
+  // 
+  // componentDidMount(){
+  //   fetch('/api/v1/users/profiles/user')
+  //   .then(response => response.json())
+  //   .then(data=> console.log(data));
+  // }
 
-  componentDidMount(){
-    fetch('/api/v1/users/profiles/user/')
-    .then(response => {
-      if(!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => this.setState({ ...data  }))
-    .catch(error => {
-      console.error('There has been a problem with youor fetch operation:', error);
-    });
-  }
+
+
+    componentDidMount(){
+      fetch('/api/v1/users/profiles/user')
+      .then(response => {
+        if(!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => this.setState({ ...data  }))
+      .catch(error => {
+        console.error('There has been a problem with youor fetch operation:', error);
+      });
+    }
 
 
   handleInput(e) {
@@ -63,7 +71,7 @@ class Profile extends Component{
         },
         body: formData,
       }
-      const response = await fetch('/api/v1/users/profiles/user/', options);
+      const response = await fetch('/api/v1/users/profiles/', options);
       this.setState({ response })
       // console.log(response);
   }

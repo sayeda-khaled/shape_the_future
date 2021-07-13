@@ -58,6 +58,7 @@ class EventsList extends Component {
           const index = events.findIndex(event => event.id === id);
           events[index].volunteer = false;
           this.setState({ events });
+          alert("Thank you for signing up")
         });
 
       }
