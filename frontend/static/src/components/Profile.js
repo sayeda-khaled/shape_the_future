@@ -98,7 +98,6 @@ class Profile extends Component {
   }
 
   saveUserInfo() {
-
     const user = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
@@ -139,34 +138,36 @@ class Profile extends Component {
       <>
 
         <section className="events-container flex bg-opacity-20">
-          <form onSubmit={this.handleSubmit} className="form-container-2 sticky mt-12 relative" style={{top: 10 + "VH"}}>
+          <form onSubmit={this.handleSubmit} className="form-container-2 sticky mt-12 " style={{top: 10 + "VH"}}>
 
-            <div>
+            <div className="relative w-20 ml-28 sticky">
               {image}
-              <input type="file" name="avatar" onChange={this.handleImage} />
+              <input type="file" name="avatar" onChange={this.handleImage} className="absolute inset-0 opacity-0"/>
             </div>
-
-            <label className="text-gray-500 block text-sm mr-2 ">User Name</label>
-            <input type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} className="form-control input-1" id="exampleFormControlInput1" rows="3" autoComplete="off"/>
-            <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={this.saveProfileInfo}>Save</button>
-
+            <div className="">
+            <label className="text-gray-500 block ">User Name</label>
+            <input type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} className="" autoComplete="off"/>
+            <button class="btn-submit" type='button' onClick={this.saveProfileInfo}>Save</button>
+            </div>
           </form>
-        </section>
+
 
         <section className="events-container flex bg-opacity-20">
-          <form className="form-container-2 sticky mt-12" style={{top: 10 + "VH"}}>
+          <form className="form-container-3 sticky mt-12" style={{top: 10 + "VH"}}>
             <label className="text-gray-500 block text-sm mr-2 ">First Name</label>
-            <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInput} class="form-control input-1" id="exampleFormControlInput1" rows="3" autoComplete="off"/>
+            <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInput} class="form-control input-1" rows="3" autoComplete="off"/>
             <label className="text-gray-500 block text-sm mr-2">Last Name</label>
-            <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleInput} class="form-control input-1" id="exampleFormControlInput1" rows="3" autoComplete="off"/>
+            <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleInput} class="form-control input-1" rows="3" autoComplete="off"/>
             <label className="text-gray-500 block text-sm mr-2">Email</label>
-            <input type="email" name="email" value={this.state.email} onChange={this.handleInput} placeholder="Insert email" class="form-control input-1" id="exampleFormControlInput1" rows="3" autoComplete="off"/>
+            <input type="email" name="email" value={this.state.email} onChange={this.handleInput} placeholder="Insert email" class="form-control input-1" rows="3" autoComplete="off"/>
             <label className="text-gray-500 block text-sm mr-2">Phone Number</label>
-            <input type="tel" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} class="form-control input-1" id="exampleFormControlInput1" rows="3"autoComplete="off"/>
-            <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={this.saveUserInfo}>Save</button>
+            <input type="tel" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} class="form-control input-1" rows="3"autoComplete="off"/>
+            <button className="btn-submit" type='button' onClick={this.saveUserInfo}>Save</button>
 
           </form>
         </section>
+
+      </section>
         </>
     );
   }

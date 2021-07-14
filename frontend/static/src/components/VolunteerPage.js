@@ -93,17 +93,10 @@ class VolunteerPage extends Component {
                   ?<input type="text" name="memo" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={event.memo} onChange={(e) => this.handleMemoInput(e, event)} rows="3"/>
                   :<p>Awaiting Student Assignment</p>
 
-
                 }
-
-
-
-
 
         </form>
         </section>
-
-
 
         </div>
 
