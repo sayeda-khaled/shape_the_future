@@ -3,7 +3,9 @@ from rest_framework import generics
 from .models import Profile
 from .serializers import ProfileSerializer
 # from .serializers import UserSerializer
-from .permissions import IsAuthOrReadOnly
+from .permissions import UserPermissions
+
+
 from django.shortcuts import render, get_object_or_404
 
 
@@ -20,7 +22,7 @@ class ProfileListAPIView(generics.ListCreateAPIView):
 class ProfileDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = (IsAuthOrReadOnly,)
+    permission_classes = (UserPermissions,)
 
     def perform_update(self, serializer):
         instance = serializer.save(user=self.request.user)

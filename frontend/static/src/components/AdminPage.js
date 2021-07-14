@@ -169,7 +169,7 @@ class AdminPage extends Component {
 
                       <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label block">Event Date</label>
-                        <input type="date"  min="2021-11-07" max="2021-12-31" class="input-1" name="date" id="start" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date_of_event} onChange={this.handleInput} rows="3" required/>
+                        <input type="date"  min="2021-7-07" max="2021-12-31" class="input-1" name="date" id="start" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date_of_event} onChange={this.handleInput} rows="3" required/>
                       </div>
 
                       <div class="mb-3">

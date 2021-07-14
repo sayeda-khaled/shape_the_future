@@ -40,7 +40,6 @@ class Profile extends Component {
   }
 
 
-
   handleInput(e) {
     this.setState({[e.target.name]: e.target.value});
   }
@@ -131,7 +130,7 @@ class Profile extends Component {
 
     let image;
     if (!this.state.avatar && !this.state.preview) {
-      image = <img src={defaultProfileImage} alt=""/>
+      image = <img  src={defaultProfileImage} alt=""/>
     } else {
       image = <img src={this.state.preview || this.state.avatar} alt=""/>
     }
@@ -140,9 +139,7 @@ class Profile extends Component {
       <>
 
         <section className="events-container flex bg-opacity-20">
-          <form onSubmit={this.handleSubmit} className="form-container-2 sticky mt-12" style={{
-              top: 10 + "VH"
-            }}>
+          <form onSubmit={this.handleSubmit} className="form-container-2 sticky mt-12 relative" style={{top: 10 + "VH"}}>
 
             <div>
               {image}
@@ -157,9 +154,7 @@ class Profile extends Component {
         </section>
 
         <section className="events-container flex bg-opacity-20">
-          <form className="form-container-2 sticky mt-12" style={{
-              top: 10 + "VH"
-            }}>
+          <form className="form-container-2 sticky mt-12" style={{top: 10 + "VH"}}>
             <label className="text-gray-500 block text-sm mr-2 ">First Name</label>
             <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInput} class="form-control input-1" id="exampleFormControlInput1" rows="3" autoComplete="off"/>
             <label className="text-gray-500 block text-sm mr-2">Last Name</label>

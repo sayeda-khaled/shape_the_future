@@ -9,9 +9,10 @@ class VolunteerPage extends Component {
     super(props);
     this.state={
       events: [],
-
+      memo: '',
       }
   this.cancelEvent = this.cancelEvent.bind(this);
+  this.handleMemoInput = this.handleMemoInput.bind(this);
 
     }
 
@@ -30,8 +31,11 @@ class VolunteerPage extends Component {
     }
 
 
-      handleInput(event) {
-        this.setState({ [event.target.name]: event.target.value });
+      handleMemoInput(e, memoEvent) {
+        const events = [...this.state.events]
+        const memoEventId = events.indexOf(memoEvent)
+        events[memoEventId].memo = e.target.value
+        this.setState(events)
       }
 
       cancelEvent(e, event) {
@@ -62,14 +66,12 @@ class VolunteerPage extends Component {
         }
 
 
-
-        // <Moment format="1976-04-19T12:59-0500">{event.date}</Moment>
     render() {
       const events = this.state.events.map((event, index)=> (
         <div key = {index}>
 
           <section >
-              <form onSubmit={(e) => this.signUp(e, event)} className="form-1 bg-purple-100 m-6 p-4 rounded-3xl m-auto block max-w-md mt-6">
+              <form  className="form-1 bg-purple-100 m-6 p-4 rounded-3xl m-auto block max-w-md mt-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label text-gray-500 block text-sm mr-2">Grade:</label>
                     <p class="form-control pb-3" id="exampleFormControlInput1" name="grade">{event.grade} </p>
@@ -84,9 +86,19 @@ class VolunteerPage extends Component {
 
                     <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm mr-2">To:</label>
                     <time class="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.end_of_event}</time>
-                </div>
+                <div class="btn-signup bg-blue pb-2"type ='button' onClick={(e) => this.cancelEvent(e,event)}>Cancel</div>
 
-                    <div class="btn-signup bg-blue pb-2"type ='button' onClick={(e) => this.cancelEvent(e,event)}>Cancel</div>
+                </div>
+                {event.student
+                  ?<input type="text" name="memo" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={event.memo} onChange={(e) => this.handleMemoInput(e, event)} rows="3"/>
+                  :<p>Awaiting Student Assignment</p>
+
+
+                }
+
+
+
+
 
         </form>
         </section>
