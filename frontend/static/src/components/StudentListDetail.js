@@ -33,7 +33,6 @@ class StudentListDetail extends Component {
     student.primary_contact = this.state.primaryContact;
     student.grade = this.state.grade;
 
-    // event.volunteer = this.state.volunteer;
     this.props.editStudent(student);
     this.setState({ isEditing: false });
   }

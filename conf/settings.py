@@ -167,14 +167,18 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # https://django-rest-auth.readthedocs.io/en/latest/configuration.html
 REST_AUTH_SERIALIZERS = {
     'TOKEN_SERIALIZER': 'accounts.serializers.TokenSerializer',
+    'USER_DETAILS_SERIALIZER': 'accounts.serializers.UserSerializer',
 }
+
 
 # REST_AUTH_SERIALIZERS
 # https://django-rest-auth.readthedocs.io/en/latest/configuration.html?highlight=REGISTER_SERIALIZER#configuration
 
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'accounts.serializers.RegistrationSerializer',
+
 }
+
 
 
 
