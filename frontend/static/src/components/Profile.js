@@ -138,17 +138,18 @@ class Profile extends Component {
       <>
 
         <section className="events-container flex bg-opacity-20">
-          <form onSubmit={this.handleSubmit} className="form-container-2 sticky mt-12 " style={{top: 10 + "VH"}}>
+          <form onSubmit={this.handleSubmit} className="form-container-3 sticky mt-12 " style={{top: 10 + "VH"}}>
 
-            <div className="relative w-20 ml-28 sticky">
+            <div className="relative sticky">
               {image}
               <input type="file" name="avatar" onChange={this.handleImage} className="absolute inset-0 opacity-0"/>
             </div>
-            <div className="">
-            <label className="text-gray-500 block ">User Name</label>
-            <input type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} className="" autoComplete="off"/>
-            <button class="btn-submit" type='button' onClick={this.saveProfileInfo}>Save</button>
+            <div className="pt-3.5 ml-36 pb-2 ">
+            <label className="text-gray-500 block text-xs	">User Name</label>
+            <input type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} className="text-lg font-bold" autoComplete="off"/>
             </div>
+            <button class="btn-submit" type='button' onClick={this.saveProfileInfo}>Save</button>
+
           </form>
 
 
