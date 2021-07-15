@@ -20,7 +20,6 @@ class EventListAPIView(generics.ListCreateAPIView):
         # https://docs.djangoproject.com/en/3.2/topics/db/queries/#complex-lookups-with-q-objects
         return Event.objects.exclude(Q(volunteer=volunteer) | Q(date_of_event__lt=datetime.today()))
 
-
 class EventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer

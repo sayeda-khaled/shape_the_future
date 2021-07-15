@@ -1,8 +1,15 @@
 from celery import Celery
 from celery.schedules import crontab
+# import pdb
+# from .models import Event
+
+from .models import Event
 
 app = Celery()
 
+test = models.Event.objects.filter(date_of_event=timezone.now())
+
+print(test)
 
 # Download the helper library from https://www.twilio.com/docs/python/install
 import os
@@ -22,7 +29,8 @@ message = client.messages \
                      to='+18645185262'
                  )
 
-print(message.sid)
+# print(message.sid)
+
 # @app.on_after_configure.connect
 # def setup_periodic_tasks(sender, **kwargs):
 #     # Calls test('hello') every 10 seconds.

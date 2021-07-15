@@ -144,8 +144,8 @@ class Profile extends Component {
     return (
       <>
 
-        <section className="events-container flex bg-opacity-20">
-          <form onSubmit={this.handleSubmit} className="form-container-3 sticky mt-12 " style={{top: 10 + "VH"}}>
+        <section className="events-container md:flex bg-opacity-20">
+          <form onSubmit={this.handleSubmit} className="form-container-3 md:sticky mt-12 " style={{top: 10 + "VH"}}>
 
             <div className="relative sticky">
               {image}
