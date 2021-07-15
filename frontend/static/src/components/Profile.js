@@ -154,16 +154,16 @@ class Profile extends Component {
 
 
         <section className="events-container flex bg-opacity-20">
-          <form className="form-container-3 sticky mt-12" style={{top: 10 + "VH"}}>
-            <label className="text-gray-500 block text-sm mr-2 ">First Name</label>
+          <form className="form-container-4 pl-24 sticky mt-12" style={{top: 10 + "VH"}}>
+            <label className="text-gray-500 block text-xs ml-16 ">First Name</label>
             <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInput} class="form-control input-1" rows="3" autoComplete="off"/>
-            <label className="text-gray-500 block text-sm mr-2">Last Name</label>
+            <label className="text-gray-500 block text-xs ml-16">Last Name</label>
             <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleInput} class="form-control input-1" rows="3" autoComplete="off"/>
-            <label className="text-gray-500 block text-sm mr-2">Email</label>
+            <label className="text-gray-500 block text-xs ml-20">Email</label>
             <input type="email" name="email" value={this.state.email} onChange={this.handleInput} placeholder="Insert email" class="form-control input-1" rows="3" autoComplete="off"/>
-            <label className="text-gray-500 block text-sm mr-2">Phone Number</label>
+            <label className="text-gray-500 block text-xs ml-16">Phone Number</label>
             <input type="tel" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} class="form-control input-1" rows="3"autoComplete="off"/>
-            <button className="btn-submit" type='button' onClick={this.saveUserInfo}>Save</button>
+            <button className="btn-submit-2" type='button' onClick={this.saveUserInfo}>Save</button>
 
           </form>
         </section>
