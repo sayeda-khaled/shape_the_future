@@ -60,7 +60,7 @@ class AdminPage extends Component {
         },
         body: JSON.stringify(event),
         }
-      fetch('/api/v1/events/', options)
+      fetch('/api/v1/events/staff/', options)
         .then(response => response.json())
         .then(data => {
           const events = [...this.state.events, data];
@@ -72,14 +72,14 @@ class AdminPage extends Component {
     editEvent(event) {
 
       const options = {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'X-CSRFToken': Cookies.get('csrftoken'),
         },
         body: JSON.stringify(event),
       }
-      fetch(`/api/v1/events/${event.id}/`, options)
+      fetch(`/api/v1/events/staff/${event.id}/`, options)
         .then(response => {
           if(!response.ok) {
             throw new Error('Network response was not ok');
@@ -105,7 +105,7 @@ class AdminPage extends Component {
           'X-CSRFToken': Cookies.get('csrftoken'),
           },
         }
-        fetch(`/api/v1/events/${id}/`, options)
+        fetch(`/api/v1/events/staff/${id}/`, options)
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not ok');

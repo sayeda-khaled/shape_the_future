@@ -85,7 +85,7 @@ class AdminPageDetail extends Component {
                 )
             }
             {
-            <button class="btn-edit bg-blue rounded-full py-3 px-6" onClick={() => this.props.deleteEvent(event.id)}>delete</button>
+            <button class="btn-edit bg-blue rounded-full py-3 px-6" onClick={(e) => this.props.deleteEvent(e,event.id)}>delete</button>
 
             }
             {
