@@ -20,3 +20,13 @@ app.autodiscover_tasks()
 @app.task(bind=True)
 def debug_task(self):
     print(f'Request: {self.request!r}')
+
+
+app.conf.beat_schedule = {
+    'add-every-10-seconds': {
+        'task': 'events.tasks.add',
+        'schedule': 10.0,
+    },
+}
+
+app.conf.timezone = 'UTC'
