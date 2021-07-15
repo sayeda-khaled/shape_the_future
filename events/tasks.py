@@ -3,6 +3,26 @@ from celery.schedules import crontab
 
 app = Celery()
 
+
+# Download the helper library from https://www.twilio.com/docs/python/install
+import os
+from twilio.rest import Client
+
+
+# Find your Account SID and Auth Token at twilio.com/console
+# and set the environment variables. See http://twil.io/secure
+account_sid = os.environ['TWILIO_ACCOUNT_SID']
+auth_token = os.environ['TWILIO_AUTH_TOKEN']
+client = Client(account_sid, auth_token)
+
+message = client.messages \
+                .create(
+                     from_='+16615284031',
+                     body="We look forward to seeing you on .",
+                     to='+18645185262'
+                 )
+
+print(message.sid)
 # @app.on_after_configure.connect
 # def setup_periodic_tasks(sender, **kwargs):
 #     # Calls test('hello') every 10 seconds.
@@ -23,4 +43,4 @@ def test(arg):
 
 @app.task
 def add():
-    print('Hey, Sayeda and Mady')
+    print(message.sid)
