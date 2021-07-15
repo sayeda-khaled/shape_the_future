@@ -56,18 +56,25 @@ class Profile extends Component {
 
   async saveProfileInfo(e) {
     e.preventDefault();
+
+    const hasProfile = !this.state.detail;
+
     let formData = new FormData();
     formData.append('avatar', this.state.avatar);
     formData.append('display_name', this.state.display_name);
+
     const options = {
-      method: 'POST',
+      method: hasProfile ? 'PATCH' : 'POST',
       headers: {
         'X-CSRFToken': Cookies.get('csrftoken')
       },
       body: formData
     }
-    const response = await fetch('/api/v1/users/profiles/current_user/', options);
-    this.setState({response})
+
+    const url = hasProfile ? `/api/v1/users/profiles/current_user/` :`/api/v1/users/profiles/`
+
+    const response = await fetch(url, options);
+    // this.setState({response})
     // console.log(response);
   }
 
