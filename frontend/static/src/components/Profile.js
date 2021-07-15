@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import Cookies from 'js-cookie';
 
-import defaultProfileImage from './../assets/images/user-profile.png';
+import defaultProfileImage from './../assets/images/user-profile2.png';
 
 class Profile extends Component {
 
