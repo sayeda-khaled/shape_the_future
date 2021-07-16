@@ -4,7 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.db import models
 
 class User(AbstractUser):
-    phone_number = PhoneNumberField(blank=True, null=True, unique=True)
+    phone_number = PhoneNumberField(blank=True, null=True)
 
 
 class Profile(models.Model):

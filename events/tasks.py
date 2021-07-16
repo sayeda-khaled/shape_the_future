@@ -1,5 +1,5 @@
 import os
-
+from datetime import datetime, timedelta, time, date
 from celery import Celery
 from celery.schedules import crontab
 from twilio.rest import Client
@@ -9,23 +9,28 @@ from .models import Event
 app = Celery()
 
 @app.task
-def sent_notifications():
-    models.Event.objects.filter(date_of_event=timezone.now())
-
-    # Download the helper library from https://www.twilio.com/docs/python/install
-    # Find your Account SID and Auth Token at twilio.com/console
-    # and set the environment variables. See http://twil.io/secure
+def send_notifications():
     account_sid = os.environ['TWILIO_ACCOUNT_SID']
     auth_token = os.environ['TWILIO_AUTH_TOKEN']
     client = Client(account_sid, auth_token)
 
+    tomorrow = datetime.today() + timedelta(days=1)
+    events = Event.objects.filter(
+                                date_of_event__year=tomorrow.year,
+                                date_of_event__month=tomorrow.month,
+                                date_of_event__day=tomorrow.day,)
+
+    print(events)
+    for event in events:
+        print(event.start_of_event)
+
     # loop over the events and send a message for each one
-    message = client.messages \
-                    .create(
-                         from_='+16615284031',
-                         body="We look forward to seeing you on .",
-                         to='+18645185262'
-                     )
+    # message = client.messages \
+    #                 .create(
+    #                      from_='+16615284031',
+    #                      body="We look forward to seeing you on .",
+    #                      to='+18645185262'
+    #                  )
 
     # print(message.sid)
 

@@ -1,5 +1,7 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, time, date
 from django.db.models import Q
+
+
 
 from rest_framework import generics
 from rest_framework.permissions import IsAdminUser
@@ -7,6 +9,8 @@ from rest_framework.permissions import IsAdminUser
 from .models import Event
 from .serializers import EventSerializer, StaffEventSerializer
 from .permissions import IsAuthOrReadOnly
+
+today = date.today()
 
 
 class EventListAPIView(generics.ListCreateAPIView):
@@ -47,23 +51,12 @@ class VolunteerEventDetailAPIView(generics.RetrieveUpdateAPIView):
         return Event.objects.filter(volunteer=volunteer)
 
 
-
 class StaffEventListAPIView(generics.ListCreateAPIView):
-    # queryset = Event.objects.all()
+    queryset = Event.objects.all()
     # Event.objects.filter(date_of_event=datetime.today())
     serializer_class = StaffEventSerializer
     permission_classes = (IsAdminUser,)
 
-    def get_queryset(self):
-        # datetime.date.today() + datetime.timedelta(days=1)
-        # presentday= datetime.today()
-        # tomorrow = datetime.timedelta(days=1)
-        # return Event.objects.filter(date_of_event__lt=datetime.today())
-        user = self.request.user.is_staff
-        # return Event.objects.filter(date_of_event__gte=datetime.today() + timedelta(days=1))
-
-        tomorrow = (datetime.today() + timedelta(days=1))
-        return Event.objects.filter(date_of_event__lt=tomorrow)
 
 class StaffEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
@@ -75,3 +68,10 @@ class StaffEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
     def Perform_update(self, serializer):
         instance = serializer.save(is_staff=self.request.user)
+
+
+# class ParentListAPIView(generics.ListApiView):
+#     serializer_class = EventSerializer
+#
+#     def get_queryset(self):
+#         return Event.objects.filter(student__primary_contact=self.request.user)

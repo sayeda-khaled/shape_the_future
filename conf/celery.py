@@ -24,8 +24,8 @@ def debug_task(self):
 
 app.conf.beat_schedule = {
     'add-every-10-seconds': {
-        'task': 'events.tasks.add',
-        'schedule': 60.0,
+        'task': 'events.tasks.send_notifications',
+        'schedule': 10.0,
     },
 }
 

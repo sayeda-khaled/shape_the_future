@@ -12,7 +12,8 @@ class VolunteerPage extends Component {
       memo: '',
       }
   this.cancelEvent = this.cancelEvent.bind(this);
-  this.handleMemoInput = this.handleMemoInput.bind(this);
+  this.handleInput = this.handleInput.bind(this);
+  this.saveMemo = this.saveMemo.bind(this);
 
     }
 
@@ -30,13 +31,73 @@ class VolunteerPage extends Component {
       });
     }
 
+      //
+      // handleMemoInput(e, memoEvent) {
+      //   const events = [...this.state.events]
+      //   const memoEventId = events.indexOf(memoEvent)
+      //   events[memoEventId].memo = e.target.value
+      //   this.setState(events)
+      // }
 
-      handleMemoInput(e, memoEvent) {
-        const events = [...this.state.events]
-        const memoEventId = events.indexOf(memoEvent)
-        events[memoEventId].memo = e.target.value
-        this.setState(events)
+
+      handleInput(event) {
+        this.setState({ [event.target.name]: event.target.value });
       }
+
+
+      saveMemo(event) {
+        const id = event.id
+        const memo = {
+          memo: this.state.memo,
+
+        }
+
+        const options = {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': Cookies.get('csrftoken')
+          },
+          body: JSON.stringify(event)
+        }
+        fetch(`/api/v1/events/volunteer/`, options)
+          .then(response => {
+            if(!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            const events = [...this.state.events]
+            const index = events.findindexOf(event => event.id === id);
+            events[index].memo = memo
+            this.setState(events)
+          });
+        }
+      //
+      // saveMemo(e, event){
+      //   e.preventDefault();
+      //   const id = event.id;
+      //
+      //   const options = {
+      //     method: 'PATCH',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //       'X-CSRFToken': Cookies.get('csrftoken'),
+      //     },
+      //     body: JSON.stringify({memo}),
+      // }
+      //
+      // fetch(`/api/v1/events/volunteer/${id}/`, options)
+      //   .then(response => {
+      //     if(!response.ok) {
+      //       throw new Error('Network response was not ok');
+      //     }
+      //     const events = [...this.state.events]
+      //     const index = events.findindexOf(event => event.id === id);
+      //     events[memoEventId].memo = e.target.value
+      //     this.setState(events)
+      //   });
+
+      // }
+
 
       cancelEvent(e, event) {
         e.preventDefault();
@@ -90,7 +151,7 @@ class VolunteerPage extends Component {
 
                 </div>
                 {event.student
-                  ?<input type="text" name="memo" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={event.memo} onChange={(e) => this.handleMemoInput(e, event)} rows="3"/>
+                  ?<input type="text" name="memo" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={event.memo} onChange={this.handleInput} rows="3"/>
                   :<p>Awaiting Student Assignment</p>
 
                 }
