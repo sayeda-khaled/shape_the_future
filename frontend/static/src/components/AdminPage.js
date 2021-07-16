@@ -96,7 +96,7 @@ class AdminPage extends Component {
         });
       }
 
-      deleteEvent(id, e) {
+      deleteEvent(e, id) {
         e.preventDefault();
         const options= {
           method: 'DELETE',

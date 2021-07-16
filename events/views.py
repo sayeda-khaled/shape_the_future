@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.db.models import Q
 
 from rest_framework import generics
@@ -49,10 +49,21 @@ class VolunteerEventDetailAPIView(generics.RetrieveUpdateAPIView):
 
 
 class StaffEventListAPIView(generics.ListCreateAPIView):
-    queryset = Event.objects.all()
+    # queryset = Event.objects.all()
+    # Event.objects.filter(date_of_event=datetime.today())
     serializer_class = StaffEventSerializer
     permission_classes = (IsAdminUser,)
 
+    def get_queryset(self):
+        # datetime.date.today() + datetime.timedelta(days=1)
+        # presentday= datetime.today()
+        # tomorrow = datetime.timedelta(days=1)
+        # return Event.objects.filter(date_of_event__lt=datetime.today())
+        user = self.request.user.is_staff
+        # return Event.objects.filter(date_of_event__gte=datetime.today() + timedelta(days=1))
+
+        tomorrow = (datetime.today() + timedelta(days=1))
+        return Event.objects.filter(date_of_event__lt=tomorrow)
 
 class StaffEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()

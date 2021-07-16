@@ -10,7 +10,7 @@ class EventSerializer(serializers.ModelSerializer):
     # volunteer_name = serializers.ReadOnlyField(source="volunteer.username")
     # https://docs.djangoproject.com/en/3.2/topics/auth/customizing/
     # https://www.django-rest-framework.org/api-guide/relations/#api-reference
-    
+
     volunteer = serializers.SlugRelatedField(
         many=False,
         queryset=User.objects.all(),
@@ -25,6 +25,7 @@ class EventSerializer(serializers.ModelSerializer):
         # depth = 1
 
 class StaffEventSerializer(serializers.ModelSerializer):
+    volunteer_name = serializers.ReadOnlyField(source="volunteer.username")
 
     class Meta:
         model = Event
