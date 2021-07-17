@@ -27,21 +27,6 @@ class StudentList extends Component {
 
   }
 
-    //
-    // componentDidMount(){
-    //   fetch('/api/v1/students/')
-    //   .then(response => {
-    //     if(!response.ok) {
-    //       throw new Error('Network response was not ok');
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(data => this.setState({ students: data  }))
-    //   .catch(error => {
-    //     console.error('There has been a problem with youor fetch operation:', error);
-    //   });
-    // }
-
     componentDidMount(){
       Promise.all([fetch('/api/v1/students/'), fetch('/api/v1/students/parents/')])
       .then(responses => {
@@ -52,11 +37,9 @@ class StudentList extends Component {
       .then(data => {
         const [students, parents] = data;
         this.setState({students, parents});
-        // console.log(parents);
+        console.log(parents);
       });
     }
-
-
 
 
   handleInput(event) {
@@ -73,7 +56,7 @@ class StudentList extends Component {
       grade: this.state.grade,
 
     };
-    console.log(student);
+    // console.log(student);
     const options = {
       method: 'POST',
       headers: {
@@ -179,7 +162,7 @@ class StudentList extends Component {
         }
 
 
-  assignParent(studentID, parentID) {
+  assignParent(studentID, parent_id) {
   // console.log(parentID);
     const options = {
       method: 'PATCH',
@@ -187,7 +170,7 @@ class StudentList extends Component {
         'Content-Type': 'application/json',
         'X-CSRFToken': Cookies.get('csrftoken'),
       },
-      body: JSON.stringify({parent: parentID}),
+      body: JSON.stringify({parent: parent_id}),
     }
     fetch(`/api/v1/students/${studentID}/`, options)
       .then(response => {
@@ -196,27 +179,23 @@ class StudentList extends Component {
         }
         const students = [...this.state.students];
         const index = students.findIndex(student => student.id === studentID);
-        students[index].parent = parentID;
+        students[index].parent = parent_id;
         this.setState({ students });
       });
 }
+                    //
+                    // <div class="mb-3">
+                    //   <label for="exampleFormControlTextarea1" class="form-label ">Primary Contact</label>
+                    //   <input type="text" name="primaryContact" required class="form-control input-1" autoComplete="off" id="exampleFormControlInput1"  value={this.state.primary_contact} onChange={this.handleInput} rows="3"/>
+                    // </div>
+                    // const options = this.props.parents.map(parent => <option value={parent.id} selected={parent.student === parent.id}>{`${parent.last_name}, ${parent.last_name}`}</option>)
+
 
     render() {
       const students = this.state.students.map(student => (
         <StudentListDetail key={student.id} student={student} deactivateStudent={this.deactivateStudent} deleteStudent={this.deleteStudent} editStudent={this.editStudent} />
       ));
-
-  //     const students = this.state.students.map(student => (
-  //       <div className="students" key={student.id} student={student}>
-  //     <label for="student-select" name="students">Choose a student:</label>
-  //
-  //       <select name="student" id="student-select">
-  //     <option value="{this.state.student.first_name}">--Please choose an option--</option>
-  //
-  // </select>
-  //
-  //       </div>
-  //     ));
+      const options = this.state.parents.map(parent => <option value={parent.id} selected={parent.student === parent.id}>{`${parent.last_name}, ${parent.first_name}`}</option>)
 
 
       return (
@@ -243,10 +222,16 @@ class StudentList extends Component {
                       </div>
 
 
-                    <div class="mb-3">
-                      <label for="exampleFormControlTextarea1" class="form-label ">Primary Contact</label>
-                      <input type="text" name="primaryContact" required class="form-control input-1" autoComplete="off" id="exampleFormControlInput1"  value={this.state.primary_contact} onChange={this.handleInput} rows="3"/>
-                    </div>
+
+                      <label for="student-select">Choose a parent:</label>
+
+                      <select name="parent" value={this.state.parent} onChange={this.handleInput}>
+                        <option value="">
+                          --Please choose a parent--
+                        </option>
+                        {options}
+                      </select>
+                      <button type="button" className="btn-submit-assign-student" onClick={this.assignStudent}>Assign</button>
 
 
                       <div class="mb-3">
