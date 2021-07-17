@@ -9,6 +9,7 @@ class StudentList extends Component {
     super(props);
     this.state= {
       students: [],
+      parents:[],
       firstName: '',
       lastName: '',
       studentId: null,
@@ -20,25 +21,42 @@ class StudentList extends Component {
     this.deleteStudent = this.deleteStudent.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.deactivateStudent = this.deactivateStudent.bind(this);
+    this.assignParent = this.assignParent.bind(this);
 
     // this.getEvents = this.getEvents.bind(this);
 
   }
 
+    //
+    // componentDidMount(){
+    //   fetch('/api/v1/students/')
+    //   .then(response => {
+    //     if(!response.ok) {
+    //       throw new Error('Network response was not ok');
+    //     }
+    //     return response.json();
+    //   })
+    //   .then(data => this.setState({ students: data  }))
+    //   .catch(error => {
+    //     console.error('There has been a problem with youor fetch operation:', error);
+    //   });
+    // }
 
     componentDidMount(){
-      fetch('/api/v1/students/')
-      .then(response => {
-        if(!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
+      Promise.all([fetch('/api/v1/students/'), fetch('/api/v1/students/parents/')])
+      .then(responses => {
+        return Promise.all(responses.map(function (response) {
+      		return response.json();
+      	}));
       })
-      .then(data => this.setState({ students: data  }))
-      .catch(error => {
-        console.error('There has been a problem with youor fetch operation:', error);
+      .then(data => {
+        const [students, parents] = data;
+        this.setState({students, parents});
+        // console.log(parents);
       });
     }
+
+
 
 
   handleInput(event) {
@@ -159,6 +177,29 @@ class StudentList extends Component {
             console.error('Error:', error);
           });
         }
+
+
+  assignParent(studentID, parentID) {
+  // console.log(parentID);
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+      body: JSON.stringify({parent: parentID}),
+    }
+    fetch(`/api/v1/students/${studentID}/`, options)
+      .then(response => {
+        if(!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const students = [...this.state.students];
+        const index = students.findIndex(student => student.id === studentID);
+        students[index].parent = parentID;
+        this.setState({ students });
+      });
+}
 
     render() {
       const students = this.state.students.map(student => (

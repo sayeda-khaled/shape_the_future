@@ -14,7 +14,6 @@ class StudentListDetail extends Component {
       primanryContact: this.props.primanryContact,
       grade: this.props.grade,
       isActive: false,
-
     }
     this.handleInput = this.handleInput.bind(this);
     this.saveStudent = this.saveStudent.bind(this);
@@ -46,12 +45,34 @@ class StudentListDetail extends Component {
     }));
   }
 
+  assignParent(student) {
+    const {id, parent} = this.props.state;
+    this.props.assignParent(id, (parent));
+    console.log(parent);
+  }
+
   // <input type="text" value={this.state.volunteer} onChange={this.handleInput} name="volunteer"/>
+
+
+//
+//   <>
+//   <label for="student-select">Choose a parent</label>
+//   <select name="parent" value={this.state.parent} onChange={this.handleInput}>
+//     <option value="">
+//       --Please choose a parent--
+//     </option>
+//     {options}
+//   </select>
+//   <button type="button" className="btn-submit" onClick={this.assignStudent}>Assign student</button>
+// </>
 
 
   render() {
     const students = this.props.student;
-    console.log(students.active);
+    const parents = this.props.parent;
+    // console.log(students.active);
+    // const options = this.props.parents.map(parent => <option value={parent.id} selected={parent.student === parent.id}>{`${parent.last_name}, ${parent.last_name}`}</option>)
+
     return(
         <li className="bg-purple-100 m-6 p-4 rounded-xl">
         <div>
@@ -86,8 +107,11 @@ class StudentListDetail extends Component {
 
                   </>
                 )
+
+
             }
             {
+
             (
             <>
               <button class="btn-edit bg-blue flex-col ml-.5 mt-2 rounded" onClick={() => this.props.deleteStudent(students.id)}>delete</button>
