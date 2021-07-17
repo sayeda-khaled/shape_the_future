@@ -71,17 +71,17 @@ class EventsList extends Component {
             <section >
                 <form onSubmit={(e) => this.signUp(e, event)} className="form-1 bg-purple-100 m-6 p-4 rounded-3xl m-auto block max-w-md mt-20">
                   <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label text-gray-500 block text-sm mr-2">Grade:</label>
+                      <label for="exampleFormControlInput1" class="form-label text-gray-500 block text-sm">Grade:</label>
                       <p class="form-control pb-3" id="exampleFormControlInput1" name="grade">{event.grade} </p>
 
 
-                      <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm mr-2">Event Date:</label>
+                      <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm">Event Date:</label>
                       <time class="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.date_of_event}</time>
 
-                      <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm mr-2">From:</label>
+                      <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm">From:</label>
                       <time class="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.start_of_event}</time>
 
-                      <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm mr-2">To::</label>
+                      <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm">To::</label>
                       <time class="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.end_of_event}</time>
 
 

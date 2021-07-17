@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-body {
+.frontPage {
   font-family: "Indie Flower", cursive;
   background-color: #eee;
   color: #555;
@@ -61,7 +61,7 @@ body {
   }
 }
 
-.container {
+.frontPageBook {
   position: relative;
   width: 420px;
   border: #fff solid 2px;

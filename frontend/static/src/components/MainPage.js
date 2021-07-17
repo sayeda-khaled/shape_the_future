@@ -22,53 +22,51 @@ class MainPage extends Component {
       return (
         <>
 
-         <section className="displayPage flex ">
+         <section className="displayPage flex frontPage">
 
         <div class="imgLoader"></div>
 
-<div class="container">
+            <div class="frontPageBook">
 
-  <h1 class="title">
-    Read<br></br>To Me
-  </h1>
+              <h1 class="title">
+                Read<br></br>To Me
+              </h1>
 
-  <div class="credit">
-    * codepen
-  </div>
+              <div class="credit">
+                * codepen
+              </div>
 
-  <div class="book">
-    <div class="gap"></div>
-    <div class="pages">
-      <div class="page"></div>
-      <div class="page"></div>
-      <div class="page"></div>
-      <div class="page"></div>
-      <div class="page"></div>
-      <div class="page"></div>
-    </div>
-    <div class="flips">
-      <div class="flip flip1">
-        <div class="flip flip2">
-          <div class="flip flip3">
-            <div class="flip flip4">
-              <div class="flip flip5">
-                <div class="flip flip6">
-                  <div class="flip flip7"></div>
+              <div class="book">
+                <div class="gap"></div>
+                <div class="pages">
+                  <div class="page"></div>
+                  <div class="page"></div>
+                  <div class="page"></div>
+                  <div class="page"></div>
+                  <div class="page"></div>
+                  <div class="page"></div>
+                </div>
+                <div class="flips">
+                  <div class="flip flip1">
+                    <div class="flip flip2">
+                      <div class="flip flip3">
+                        <div class="flip flip4">
+                          <div class="flip flip5">
+                            <div class="flip flip6">
+                              <div class="flip flip7"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<a href="https://twitter.com/amit_sheen" class="twitterLink" target="_top">
-   <img src="https://assets.codepen.io/1948355/twitterLogo2.png" />
-</a>
-
-
+  <a href="https://twitter.com/amit_sheen" class="twitterLink" target="_top">
+     <img src="https://assets.codepen.io/1948355/twitterLogo2.png" />
+  </a>
 
           <div className="sidedisplay-2 w-4/12">
             <h1 className="text-3xl font-bold">Shape The Future</h1>
