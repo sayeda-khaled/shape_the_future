@@ -10,7 +10,7 @@ class Navigation extends Component {
       <div bg="light" expand="lg" className="navbar">
         <div aria-controls="basic-navbar-nav" />
         <div id="basic-navbar-nav">
-          <nav className="flex ml-12 my-6 mr-auto align-items-baseline bg-gradient-to-r from-gray-800 to-gray-50 ">
+          <nav className="flex  mb-6 mr-auto align-items-baseline bg-gradient-to-r from-indigo-700 to-green-50">
             <NavLink to='/' className="hover:bg-purple-200 font-extrabold mr-4 px-4 py-2 rounded-md">Home</NavLink>
 
              {this.props.loggedIn && isStaff && (
