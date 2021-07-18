@@ -179,7 +179,7 @@ class Profile extends Component {
               {
               this.state.isEditing
                 ?   <button className="btn-edit-profile ml-20 mt-2 block rounded transform hover:scale-105" type='button' onClick={this.saveUserInfo}>Save</button>
-                : <button class="btn-edit-profile ml-20 mt-2 block rounded transform hover:scale-105 " type='button' onClick={(e) => this.setState({isEditing: true})}>Edit</button>
+                : <button class="btn-edit-profile ml-20 mt-2 block rounded transform hover:scale-105" type='button' onClick={(e) => this.setState({isEditing: true})}>Edit</button>
               }
 
           </form>
