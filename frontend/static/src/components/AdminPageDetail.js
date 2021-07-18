@@ -65,13 +65,13 @@ class AdminPageDetail extends Component {
         }
         <button class="btn-edit-event bg-blue rounded-full ml-2 py-3 px-6" onClick={(e) => this.props.deleteEvent(e, event.id)}>delete Event</button>
       </div>
-      <div className="flex">
-      <label className="text-gray-500 block text-sm">Volunteer:</label>
+      <div className="flex items-baseline mb-2">
+      <label className="text-gray-500 block text-sm mr-4">Volunteer:</label>
       <div>{event.volunteer_name}</div>
       </div>
-      <label for="student-select">Choose a student:</label>
+      <label for="student-select" className="pt-2">Choose a student:</label>
 
-      <select name="student" value={this.state.student} onChange={this.handleInput}>
+      <select name="student" className="mt-2 mb-2"value={this.state.student} onChange={this.handleInput}>
         <option value="">
           --Please choose a student--
         </option>

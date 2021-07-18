@@ -160,7 +160,7 @@ class AdminPage extends Component {
 
           <section className="events-container flex bg-opacity-20">
                 <ul>{events}</ul>
-                <section className="form-container-2 sticky mt-12" style={{top:10+"VH"}}>
+                <section className="form-container-1 sticky mt-12" style={{top:10+"VH"}}>
                     <form class="form-1" onSubmit={this.addEvent}>
                       <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label block">Grade</label>
