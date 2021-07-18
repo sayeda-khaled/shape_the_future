@@ -158,7 +158,7 @@ class AdminPage extends Component {
       return (
         <>
 
-          <section className="events-container flex bg-opacity-20">
+          <section className="events-container md:flex bg-opacity-20">
                 <ul>{events}</ul>
                 <section className="form-container-1 sticky mt-12" style={{top:10+"VH"}}>
                     <form className="form-1" onSubmit={this.addEvent}>

@@ -7,7 +7,7 @@ class Navigation extends Component {
   render() {
     const isStaff = this.props.isStaff;
     return(
-      <div bg="light" expand="lg" className="navbar">
+      <div bg="light" expand="lg" className="navbar md:block">
         <div aria-controls="basic-navbar-nav" />
         <div id="basic-navbar-nav">
           <nav className="flex  mb-6 mr-auto align-items-baseline bg-gradient-to-r from-indigo-700 to-green-50">

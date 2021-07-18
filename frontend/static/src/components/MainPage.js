@@ -16,7 +16,7 @@ class MainPage extends Component {
       return (
         <>
 
-         <section className="displayPage flex frontPage">
+         <section className="displayPage md:flex frontPage">
            <div className="front-page-container">
 
         <div class="imgLoader"></div>

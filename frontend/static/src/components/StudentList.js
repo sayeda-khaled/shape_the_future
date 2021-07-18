@@ -200,7 +200,7 @@ class StudentList extends Component {
 
       return (
         <>
-          <section className="events-container flex">
+          <section className="events-container md:flex">
 
               <ul>{students}</ul>
 
