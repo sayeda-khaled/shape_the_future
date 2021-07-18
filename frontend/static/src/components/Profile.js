@@ -155,7 +155,7 @@ class Profile extends Component {
             </div>
             <div className=" ml-20 pb-2 ">
             <label className="text-gray-500 block text-xs	ml-12">User Name</label>
-            <input type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} className="  font-bold input-1-admin" disabled={!this.state.isEditing} autoComplete="off"/>
+            <input type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} className="font-bold input-1-admin border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" disabled={!this.state.isEditingProfile} autoComplete="off"/>
             </div>
             {
             this.state.isEditingProfile
@@ -169,13 +169,13 @@ class Profile extends Component {
         <section className="events-container flex bg-opacity-20">
           <form className="form-container-4 pl-24 sticky mt-12" style={{top: 10 + "VH"}}>
             <label className="text-gray-500 block text-xs ml-16 ">First Name</label>
-            <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInput} className="form-control input-1-profile" disabled={!this.state.isEditing}  autoComplete="off"/>
+            <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInput} className="form-control input-1-profile border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" disabled={!this.state.isEditing}  autoComplete="off"/>
             <label className="text-gray-500 block text-xs ml-16">Last Name</label>
-            <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleInput} className="form-control input-1-profile" disabled={!this.state.isEditing}  autoComplete="off"/>
+            <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleInput} className="form-control input-1-profile border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" disabled={!this.state.isEditing}  autoComplete="off"/>
             <label className="text-gray-500 block text-xs ml-20">Email</label>
-            <input type="email" name="email" value={this.state.email} onChange={this.handleInput} placeholder="Insert email" className="form-control input-1-profile" disabled={!this.state.isEditing}  autoComplete="off"/>
+            <input type="email" name="email" value={this.state.email} onChange={this.handleInput} placeholder="Insert email" className="form-control input-1-profile border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" disabled={!this.state.isEditing}  autoComplete="off"/>
             <label className="text-gray-500 block text-xs ml-16">Phone Number</label>
-            <input type="tel" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} className="form-control input-1-profile" disabled={!this.state.isEditing} autoComplete="off"/>
+            <input type="tel" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} className="form-control input-1-profile border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" disabled={!this.state.isEditing} autoComplete="off"/>
               {
               this.state.isEditing
                 ?   <button className="btn-edit-profile ml-20 mt-2 block rounded" type='button' onClick={this.saveUserInfo}>Save</button>

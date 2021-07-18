@@ -186,7 +186,7 @@ class StudentList extends Component {
                     //
                     // <div class="mb-3">
                     //   <label for="exampleFormControlTextarea1" class="form-label ">Primary Contact</label>
-                    //   <input type="text" name="primaryContact" required class="form-control input-1" autoComplete="off" id="exampleFormControlInput1"  value={this.state.primary_contact} onChange={this.handleInput} rows="3"/>
+                    //   <input type="text" name="primaryContact" required class="form-control input-1" autoComplete="off" id="exampleFormControlInput1"  value={this.state.primary_contact} onChange={this.handleInput} />
                     // </div>
                     // const options = this.props.parents.map(parent => <option value={parent.id} selected={parent.student === parent.id}>{`${parent.last_name}, ${parent.last_name}`}</option>)
 
@@ -208,36 +208,36 @@ class StudentList extends Component {
                     <form class="form-1" onSubmit={this.addStudent}>
                     <div class="mb-3">
                       <label for="exampleFormControlTextarea1" class="form-label">First Name</label>
-                      <input type="text" name="firstName" required class="form-control input-1" autoComplete="off" id="exampleFormControlInput1"  value={this.state.first_name} onChange={this.handleInput} rows="3"/>
+                      <input type="text" name="firstName" required autoComplete="off" id="exampleFormControlInput1"  value={this.state.first_name} onChange={this.handleInput} className="form-control input-1 border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                     </div>
 
-                    <div class="mb-3">
-                      <label for="exampleFormControlTextarea1" class="form-label">Last Name</label>
-                      <input type="text" name="lastName" required class="form-control input-1" autoComplete="off" id="exampleFormControlInput1"  value={this.state.last_name} onChange={this.handleInput} rows="3"/>
+                    <div className="mb-3">
+                      <label for="exampleFormControlTextarea1" className="form-label">Last Name</label>
+                      <input type="text" name="lastName" required autoComplete="off" id="exampleFormControlInput1"  value={this.state.last_name} onChange={this.handleInput} className="form-control input-1 border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                     </div>
 
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">School Student ID</label>
-                      <input type="number" class="form-control input-1" required id="exampleFormControlInput1" autoComplete="off" name="studentId" value={this.state.student_id} onChange={this.handleInput} placeholder="Insert the student ID"/>
+                    <div className="mb-3">
+                      <label for="exampleFormControlInput1" className="form-label">School Student ID</label>
+                      <input type="number" required id="exampleFormControlInput1" autoComplete="off" name="studentId" value={this.state.student_id} onChange={this.handleInput} placeholder="Insert the student ID" className="form-control input-1 border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                       </div>
 
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Grade</label>
-                      <input type="number" min="1" max="5" required class="form-control input-1" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
+                    <div className="mb-3">
+                      <label for="exampleFormControlInput1" className="form-label">Grade</label>
+                      <input type="number" min="1" max="5" required id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade" className="form-control input-1 border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                       </div>
 
                       <label for="parent-select" className="ml-24">Select parent</label>
-                      <select name="parent" className="form-control input-1 ml-10"value={this.state.parent} onChange={this.assignStudent}>
+                      <select name="parent" value={this.state.parent} onChange={this.assignStudent} className="form-control input-1 border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent ml-10">
                         <option value="">
-                          --Please choose a student--
+                          --Please choose a parent--
                         </option>
-                        
+
                         {options}
                       </select>
 
 
 
-                  <button type="submit" onClick={this.addStudent} class="btn-submit bg-blue">Submit</button>
+                  <button type="submit" onClick={this.addStudent} className="btn-submit-events ">Submit</button>
                 </form>
               </section>
           </section>

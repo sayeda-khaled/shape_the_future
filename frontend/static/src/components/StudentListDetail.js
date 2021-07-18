@@ -84,32 +84,30 @@ class StudentListDetail extends Component {
 
                   <>
                   <label className="text-gray-500 block text-sm mr-2 ">First Name:</label>
-                    <input type="text" name="firstName" class="form-control" value={students.first_name} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+                    <input type="text" name="firstName" value={students.first_name} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                   <label className="text-gray-500 block text-sm mr-2">Last Name:</label>
-                    <input type="text" name="lastName" class="form-control" value={students.last_name} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+                    <input type="text" name="lastName"  value={students.last_name} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                   <label className="text-gray-500 block text-sm mr-2">School Student ID:</label>
-                    <input type="number" class="form-control" name="studentId" value={students.student_id} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+                    <input type="number" name="studentId" value={students.student_id} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                     <label className="text-gray-500 block text-sm mr-2">Primary Contact:</label>
-                    <input type="text" name="primaryContact" className="form-control" value={students.primary_contact} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+                    <input type="text" name="primaryContact" value={students.primary_contact} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                 <div className="flex items-center" >
                   <label className="text-gray-500 block text-sm mr-2">Grade:</label>
-                    <input type="number" min="1" max="5" name="grade" value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+                    <input type="number" min="1" max="5" name="grade" value={students.grade} onChange={this.handleInput} disabled={!this.state.isEditing} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                 </div>
                 </>
 
 
-
-
             <>
-              <button class="btn-edit bg-blue flex-col ml-.5 mt-2 rounded" onClick={() => this.props.deleteStudent(students.id)}>delete</button>
-              <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" onClick={() => this.deactivateStudent(students.id)}>{students.active && 'Deactivate'} {!students.active && 'Active'}</button>
+              <button className="btn-edit bg-blue flex-col ml-.5 mt-2 rounded" onClick={() => this.props.deleteStudent(students.id)}>delete</button>
+              <button className="btn-edit bg-blue flex-col ml-2 mt-2 rounded" onClick={() => this.deactivateStudent(students.id)}>{students.active && 'Deactivate'} {!students.active && 'Active'}</button>
             </>
 
 
             {
             this.state.isEditing
-              ? <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={this.saveStudent}>Save</button>
-              : <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={() => this.setState({isEditing: true})}>Edit</button>
+              ? <button className="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={this.saveStudent}>Save</button>
+              : <button className="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={() => this.setState({isEditing: true})}>Edit</button>
             }
 
           </div>
