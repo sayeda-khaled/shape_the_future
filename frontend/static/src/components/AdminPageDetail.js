@@ -60,10 +60,10 @@ class AdminPageDetail extends Component {
       <div className="ml-14 mb-3">
         {
           this.state.isEditing
-            ? <button class="btn-edit-event bg-blue flex-col ml-1 " type='button' onClick={this.saveEvent}>Save</button>
-            : <button class="btn-edit-event bg-blue flex-col ml-1 rounded-full py-3 px-6" onClick={() => this.setState({isEditing: true})}>Edit Event</button>
+            ? <button className="btn-edit-event bg-blue flex-col ml-1 transform hover:scale-105 " type='button' onClick={this.saveEvent}>Save</button>
+            : <button className="btn-edit-event bg-blue flex-col ml-1 rounded-full py-3 px-6 transform hover:scale-105" onClick={() => this.setState({isEditing: true})}>Edit Event</button>
         }
-        <button class="btn-edit-event bg-blue rounded-full ml-2 py-3 px-6" onClick={(e) => this.props.deleteEvent(e, event.id)}>delete Event</button>
+        <button className="btn-edit-event bg-blue rounded-full ml-2 py-3 px-6 transform hover:scale-105 " onClick={(e) => this.props.deleteEvent(e, event.id)}>delete Event</button>
       </div>
       <div className="flex items-baseline mb-2">
       <label className="text-gray-500 block text-sm mr-4">Volunteer:</label>
@@ -77,7 +77,7 @@ class AdminPageDetail extends Component {
         </option>
         {options}
       </select>
-      <button type="button" className="btn-submit-assign-student" onClick={this.assignStudent}>Assign</button>
+      <button type="button" className="btn-submit-assign-student transform hover:scale-105 " onClick={this.assignStudent}>Assign</button>
 
     </li>)
   }

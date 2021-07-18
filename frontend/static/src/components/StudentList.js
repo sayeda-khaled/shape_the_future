@@ -237,7 +237,7 @@ class StudentList extends Component {
 
 
 
-                  <button type="submit" onClick={this.addStudent} className="btn-submit-events ">Submit</button>
+                  <button type="submit" onClick={this.addStudent} className="btn-submit-events transform hover:scale-105 ">Submit</button>
                 </form>
               </section>
           </section>

@@ -70,22 +70,22 @@ class EventsList extends Component {
 
             <section >
                 <form onSubmit={(e) => this.signUp(e, event)} className="form-1 bg-purple-100 m-6 p-4 rounded-3xl m-auto block max-w-md mt-20">
-                  <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label text-gray-500 block text-sm">Grade:</label>
-                      <p class="form-control pb-3" id="exampleFormControlInput1" name="grade">{event.grade} </p>
+                  <div className="mb-3">
+                      <label for="exampleFormControlInput1" className="form-label text-gray-500 block text-sm">Grade:</label>
+                      <p className="form-control pb-3" id="exampleFormControlInput1" name="grade">{event.grade} </p>
 
 
-                      <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm">Event Date:</label>
-                      <time class="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.date_of_event}</time>
+                      <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">Event Date:</label>
+                      <time className="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.date_of_event}</time>
 
-                      <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm">From:</label>
-                      <time class="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.start_of_event}</time>
+                      <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">From:</label>
+                      <time className="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.start_of_event}</time>
 
-                      <label for="exampleFormControlTextarea1" class="form-label text-gray-500 block text-sm">To::</label>
-                      <time class="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.end_of_event}</time>
+                      <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">To::</label>
+                      <time className="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.end_of_event}</time>
 
 
-                  <div class="btn-signup bg-blue pb-2"type ='button' onClick={(e) => this.signUp(e, event)}>Sign Up</div>
+                  <div className="btn-signup pb-2 transform hover:scale-105"type ='button' onClick={(e) => this.signUp(e, event)}>Sign Up</div>
               </div>
           </form>
           </section>

@@ -159,8 +159,8 @@ class Profile extends Component {
             </div>
             {
             this.state.isEditingProfile
-              ?  <button type='button' className="btn-edit-profile rounded ml-36" onClick={this.saveProfileInfo}>Save</button>
-              : <button type='button' className="btn-edit-profile rounded ml-36"  onClick={(e) => this.setState({isEditingProfile: true})}>Edit</button>
+              ?  <button type='button' className="btn-edit-profile rounded ml-36 transform hover:scale-105" onClick={this.saveProfileInfo}>Save</button>
+              : <button type='button' className="btn-edit-profile rounded ml-36 transform hover:scale-105"  onClick={(e) => this.setState({isEditingProfile: true})}>Edit</button>
             }
 
           </form>
@@ -178,8 +178,8 @@ class Profile extends Component {
             <input type="tel" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} className="form-control input-1-profile border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" disabled={!this.state.isEditing} autoComplete="off"/>
               {
               this.state.isEditing
-                ?   <button className="btn-edit-profile ml-20 mt-2 block rounded" type='button' onClick={this.saveUserInfo}>Save</button>
-                : <button class="btn-edit-profile ml-20 mt-2 block rounded" type='button' onClick={(e) => this.setState({isEditing: true})}>Edit</button>
+                ?   <button className="btn-edit-profile ml-20 mt-2 block rounded transform hover:scale-105" type='button' onClick={this.saveUserInfo}>Save</button>
+                : <button class="btn-edit-profile ml-20 mt-2 block rounded transform hover:scale-105 " type='button' onClick={(e) => this.setState({isEditing: true})}>Edit</button>
               }
 
           </form>
