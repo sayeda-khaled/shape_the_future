@@ -1,14 +1,14 @@
 import { Component } from 'react';
 
-import background from './../assets/images/background.jpg';
-import imageNew from './../assets/images/image1-new.jpg';
+// import background from './../assets/images/background.jpg';
 
 class MainPage extends Component {
 
-  constructor(props) {
-    super(props);
 
-  }
+      //
+      // <div class="credit">
+      //   * codepen
+      // </div>
 
     render() {
 
@@ -27,9 +27,6 @@ class MainPage extends Component {
                 Read<br></br>To Me
               </h1>
 
-              <div class="credit">
-                * codepen
-              </div>
 
               <div class="book">
                 <div class="gap"></div>

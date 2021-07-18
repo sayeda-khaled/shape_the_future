@@ -161,30 +161,30 @@ class AdminPage extends Component {
           <section className="events-container flex bg-opacity-20">
                 <ul>{events}</ul>
                 <section className="form-container-1 sticky mt-12" style={{top:10+"VH"}}>
-                    <form class="form-1" onSubmit={this.addEvent}>
-                      <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label block">Grade</label>
-                        <input type="number" min="1" max="5" class="input-1" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
+                    <form className="form-1" onSubmit={this.addEvent}>
+                      <div className="mb-3">
+                        <label  className="form-label block">Grade</label>
+                        <input type="number" min="1" max="5" className="input-1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
                         </div>
 
-                      <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label block">Event Date</label>
-                        <input type="date"  min="2021-7-07" max="2021-12-31" class="input-1" name="date" id="start" autoComplete="off" id="exampleFormControlInput1"  value={this.state.date_of_event} onChange={this.handleInput} rows="3" required/>
+                      <div className="mb-3">
+                        <label className="form-label block">Event Date</label>
+                        <input type="date"  min="2021-7-07" max="2021-12-31" className="input-1" name="date" id="start" autoComplete="off"  value={this.state.date_of_event} onChange={this.handleInput} rows="3" required/>
                       </div>
 
-                      <div class="mb-3">
-                        <label for="exampleFormControlTextarea1"  class="form-label block">Start Time</label>
-                        <input type="time"  class="input-1" name="startTime"  min="08:00" max="15:00" required autoComplete="off" id="exampleFormControlInput1"  value={this.state.start_of_event} onChange={this.handleInput} rows="3"/>
-                      </div>
-
-
-                      <div class="mb-3">
-                        <label for="exampleFormControlTextarea1"  class="form-label block">End Time</label>
-                        <input type="time"  class="input-1" name="endTime"  min="08:00" max="15:00" required autoComplete="off" id="exampleFormControlInput1"  value={this.state.end_of_event} onChange={this.handleInput} rows="3"/>
+                      <div className="mb-3">
+                        <label  className="form-label block">Start Time</label>
+                        <input type="time"  className="input-1" name="startTime"  min="08:00" max="15:00" required autoComplete="off"  value={this.state.start_of_event} onChange={this.handleInput} rows="3"/>
                       </div>
 
 
-                  <button type="submit" onClick={this.addevent} class="btn-submit bg-blue">Submit</button>
+                      <div className="mb-3">
+                        <label  className="form-label block">End Time</label>
+                        <input type="time"  className="input-1" name="endTime"  min="08:00" max="15:00" required autoComplete="off"  value={this.state.end_of_event} onChange={this.handleInput} rows="3"/>
+                      </div>
+
+
+                  <button type="submit" onClick={this.addevent} className="btn-submit bg-blue">Submit</button>
                 </form>
               </section>
             </section>

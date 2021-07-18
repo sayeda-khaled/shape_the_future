@@ -90,7 +90,7 @@ class StudentListDetail extends Component {
                   <label className="text-gray-500 block text-sm mr-2">School Student ID:</label>
                     <input type="number" class="form-control" name="studentId" value={students.student_id} onChange={this.handleInput} disabled={!this.state.isEditing}/>
                     <label className="text-gray-500 block text-sm mr-2">Primary Contact:</label>
-                    <input type="text" name="primaryContact" class="form-control" value={students.primary_contact} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+                    <input type="text" name="primaryContact" className="form-control" value={students.primary_contact} onChange={this.handleInput} disabled={!this.state.isEditing}/>
                 <div className="flex items-center" >
                   <label className="text-gray-500 block text-sm mr-2">Grade:</label>
                     <input type="number" min="1" max="5" name="grade" value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing}/>
