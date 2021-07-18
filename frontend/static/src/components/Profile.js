@@ -36,7 +36,6 @@ class Profile extends Component {
     .then(data => {
       const [profile, user] = data;
       this.setState({...profile, ...user  });
-
     });
   }
 
@@ -56,11 +55,11 @@ class Profile extends Component {
     reader.readAsDataURL(file);
   }
 
+
   async saveProfileInfo(e) {
     e.preventDefault();
 
     const hasProfile = !this.state.preview;
-
     let formData = new FormData();
     formData.append('avatar', this.state.avatar);
     formData.append('display_name', this.state.display_name);
@@ -154,14 +153,14 @@ class Profile extends Component {
               {image}
               <input type="file" name="avatar" onChange={this.handleImage} className="absolute inset-0 opacity-0"/>
             </div>
-            <div className="pt-3.5 ml-36 pb-2 ">
-            <label className="text-gray-500 block text-xs	">User Name</label>
-            <input type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} className="text-lg font-bold" autoComplete="off"/>
+            <div className=" ml-20 pb-2 ">
+            <label className="text-gray-500 block text-xs	ml-12">User Name</label>
+            <input type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} className="  font-bold input-1-admin" disabled={!this.state.isEditing} autoComplete="off"/>
             </div>
             {
             this.state.isEditingProfile
-              ?  <button className="btn-submit-2" type='button' onClick={this.saveProfileInfo}>Save</button>
-              : <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={(e) => this.setState({isEditingProfile: true})}>Edit</button>
+              ?  <button type='button' className="btn-edit-profile rounded ml-36" onClick={this.saveProfileInfo}>Save</button>
+              : <button type='button' className="btn-edit-profile rounded ml-36"  onClick={(e) => this.setState({isEditingProfile: true})}>Edit</button>
             }
 
           </form>
@@ -170,19 +169,18 @@ class Profile extends Component {
         <section className="events-container flex bg-opacity-20">
           <form className="form-container-4 pl-24 sticky mt-12" style={{top: 10 + "VH"}}>
             <label className="text-gray-500 block text-xs ml-16 ">First Name</label>
-            <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInput} className="form-control input-1" disabled={!this.state.isEditing} rows="3" autoComplete="off"/>
+            <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInput} className="form-control input-1-profile" disabled={!this.state.isEditing}  autoComplete="off"/>
             <label className="text-gray-500 block text-xs ml-16">Last Name</label>
-            <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleInput} className="form-control input-1" disabled={!this.state.isEditing} rows="3" autoComplete="off"/>
+            <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleInput} className="form-control input-1-profile" disabled={!this.state.isEditing}  autoComplete="off"/>
             <label className="text-gray-500 block text-xs ml-20">Email</label>
-            <input type="email" name="email" value={this.state.email} onChange={this.handleInput} placeholder="Insert email" className="form-control input-1" disabled={!this.state.isEditing} rows="3" autoComplete="off"/>
+            <input type="email" name="email" value={this.state.email} onChange={this.handleInput} placeholder="Insert email" className="form-control input-1-profile" disabled={!this.state.isEditing}  autoComplete="off"/>
             <label className="text-gray-500 block text-xs ml-16">Phone Number</label>
-            <input type="tel" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} className="form-control input-1" disabled={!this.state.isEditing} rows="3"autoComplete="off"/>
+            <input type="tel" name="phone_number" value={this.state.phone_number} onChange={this.handleInput} className="form-control input-1-profile" disabled={!this.state.isEditing} autoComplete="off"/>
               {
               this.state.isEditing
-                ?   <button className="btn-submit-2" type='button' onClick={this.saveUserInfo}>Save</button>
-                : <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={(e) => this.setState({isEditing: true})}>Edit</button>
+                ?   <button className="btn-edit-profile ml-20 mt-2 block rounded" type='button' onClick={this.saveUserInfo}>Save</button>
+                : <button class="btn-edit-profile ml-20 mt-2 block rounded" type='button' onClick={(e) => this.setState({isEditing: true})}>Edit</button>
               }
-
 
           </form>
         </section>

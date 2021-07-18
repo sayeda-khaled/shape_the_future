@@ -184,7 +184,7 @@ class AdminPage extends Component {
                       </div>
 
 
-                  <button type="submit" onClick={this.addevent} className="btn-submit bg-blue">Submit</button>
+                  <button type="button" onClick={this.addevent} className="btn-submit-events">Submit</button>
                 </form>
               </section>
             </section>
