@@ -53,6 +53,26 @@ class StudentListDetail extends Component {
 
 
 
+
+
+//     <label className="text-gray-500 block text-sm mr-2 ">First Name:</label>
+//         <p className="font-semibold">{students.first_name}</p>
+//     <label className="text-gray-500 block text-sm mr-2">Last Name:</label>
+//         <p className="font-semibold">{students.last_name}</p>
+//     <label className="text-gray-500 block text-sm mr-2">School Student ID:</label>
+//         <p>{students.student_id}</p>
+//     <label className="text-gray-500 block text-sm mr-2">Primary Contact:</label>
+//         <p>{students.primary_contact}</p>
+//     <div className="flex items-center" >
+//       <label className="text-gray-500 block text-sm mr-2">Grade:</label>
+//       <h2 className="bg-white rounded-full py-2 px-4">{students.grade}</h2>
+//     </div>
+//
+//   </>
+// )
+
+
+
   render() {
     const students = this.props.student;
     const parents = this.props.parent;
@@ -61,49 +81,31 @@ class StudentListDetail extends Component {
     return(
         <li className="bg-purple-100 m-6 p-4 rounded-xl">
         <div>
-            {
-            this.state.isEditing
-              ? (
+
                   <>
-
-                    <input type="text" name="firstName" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.first_name} onChange={this.handleInput} rows="3"placeholder="Insert the student first name"/>
-                    <input type="text" name="lastName" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.last_name} onChange={this.handleInput} rows="3"placeholder="Insert the student last name"/>
-                    <input type="number" class="form-control" id="exampleFormControlInput1" autoComplete="off" name="studentId" value={this.state.student_id} onChange={this.handleInput} placeholder="Insert the student ID"/>
-                    <input type="text" name="primaryContact" class="form-control" autoComplete="off" id="exampleFormControlInput1"  value={this.state.primary_contact} onChange={this.handleInput} rows="3" placeholder="Insert the student primart contact"/>
-                    <input type="number" min="1" max="5" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the student grade"/>
-                  </>
-                )
-              : (
-                  <>
-
-
-                    <label className="text-gray-500 block text-sm mr-2 ">First Name:</label>
-                        <p className="font-semibold">{students.first_name}</p>
-                    <label className="text-gray-500 block text-sm mr-2">Last Name:</label>
-                        <p className="font-semibold">{students.last_name}</p>
-                    <label className="text-gray-500 block text-sm mr-2">School Student ID:</label>
-                        <p>{students.student_id}</p>
+                  <label className="text-gray-500 block text-sm mr-2 ">First Name:</label>
+                    <input type="text" name="firstName" class="form-control" value={students.first_name} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+                  <label className="text-gray-500 block text-sm mr-2">Last Name:</label>
+                    <input type="text" name="lastName" class="form-control" value={students.last_name} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+                  <label className="text-gray-500 block text-sm mr-2">School Student ID:</label>
+                    <input type="number" class="form-control" name="studentId" value={students.student_id} onChange={this.handleInput} disabled={!this.state.isEditing}/>
                     <label className="text-gray-500 block text-sm mr-2">Primary Contact:</label>
-                        <p>{students.primary_contact}</p>
-                    <div className="flex items-center" >
-                      <label className="text-gray-500 block text-sm mr-2">Grade:</label>
-                      <h2 className="bg-white rounded-full py-2 px-4">{students.grade}</h2>
-                    </div>
-
-                  </>
-                )
+                    <input type="text" name="primaryContact" class="form-control" value={students.primary_contact} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+                <div className="flex items-center" >
+                  <label className="text-gray-500 block text-sm mr-2">Grade:</label>
+                    <input type="number" min="1" max="5" name="grade" value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+                </div>
+                </>
 
 
-            }
-            {
 
-            (
+
             <>
               <button class="btn-edit bg-blue flex-col ml-.5 mt-2 rounded" onClick={() => this.props.deleteStudent(students.id)}>delete</button>
               <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" onClick={() => this.deactivateStudent(students.id)}>{students.active && 'Deactivate'} {!students.active && 'Active'}</button>
             </>
-            )
-            }
+
+
             {
             this.state.isEditing
               ? <button class="btn-edit bg-blue flex-col ml-2 mt-2 rounded" type='button' onClick={this.saveStudent}>Save</button>

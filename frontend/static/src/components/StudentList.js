@@ -221,23 +221,21 @@ class StudentList extends Component {
                       <input type="number" class="form-control input-1" required id="exampleFormControlInput1" autoComplete="off" name="studentId" value={this.state.student_id} onChange={this.handleInput} placeholder="Insert the student ID"/>
                       </div>
 
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Grade</label>
+                      <input type="number" min="1" max="5" required class="form-control input-1" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
+                      </div>
 
-
-                      <label for="student-select">Choose a parent:</label>
-
-                      <select name="parent" value={this.state.parent} onChange={this.handleInput}>
+                      <label for="parent-select" className="ml-24">Select parent</label>
+                      <select name="parent" className="form-control input-1 ml-10"value={this.state.parent} onChange={this.assignStudent}>
                         <option value="">
-                          --Please choose a parent--
+                          --Please choose a student--
                         </option>
+                        
                         {options}
                       </select>
-                      <button type="button" className="btn-submit-assign-student" onClick={this.assignStudent}>Assign</button>
 
 
-                      <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Grade</label>
-                        <input type="number" min="1" max="5" required class="form-control input-1" id="exampleFormControlInput1" autoComplete="off" name="grade" value={this.state.grade} onChange={this.handleInput} placeholder="Insert the grade"/>
-                        </div>
 
                   <button type="submit" onClick={this.addStudent} class="btn-submit bg-blue">Submit</button>
                 </form>

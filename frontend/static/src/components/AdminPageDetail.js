@@ -69,7 +69,7 @@ class AdminPageDetail extends Component {
       <label className="text-gray-500 block text-sm mr-4">Volunteer:</label>
       <div>{event.volunteer_name}</div>
       </div>
-      <label for="student-select" className="pt-2">Choose a student:</label>
+      <label for="student-select" className="pt-1 text-xs">Choose a student:</label>
 
       <select name="student" className="mt-2 mb-2"value={this.state.student} onChange={this.handleInput}>
         <option value="">
