@@ -45,11 +45,12 @@ class AdminPageDetail extends Component {
 
       <div className="flex items-center">
         <label className="text-gray-500 block text-sm mr-2">Grade:</label>
-        <input type="text" name="grade" value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+        <input type="text" name="grade" className="rounded"value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing}/>
       </div>
-      <label className="text-gray-500 block text-sm ml-20">Date:</label>
+      <div className="flex items-baseline">
+      <label className="text-gray-500 block text-sm mt-4">Date:</label>
       <input type="date" min="2021-7-07" max="2021-12-31" class="input-1-admin" name="date" value={this.state.date_of_event} onChange={this.handleInput} disabled={!this.state.isEditing}/>
-
+      </div>
       <div className="flex items-baseline">
         <label className="text-gray-500 block text-sm">From:</label>
         <input type="time" className="input-1-admin" name="startTime" value={this.state.start_of_event} onChange={this.handleInput} disabled={!this.state.isEditing}/>
@@ -64,9 +65,10 @@ class AdminPageDetail extends Component {
         }
         <button class="btn-edit-event bg-blue rounded-full ml-2 py-3 px-6" onClick={(e) => this.props.deleteEvent(e, event.id)}>delete Event</button>
       </div>
+      <div className="flex">
       <label className="text-gray-500 block text-sm">Volunteer:</label>
-      <p>{event.volunteer_name}</p>
-
+      <div>{event.volunteer_name}</div>
+      </div>
       <label for="student-select">Choose a student:</label>
 
       <select name="student" value={this.state.student} onChange={this.handleInput}>

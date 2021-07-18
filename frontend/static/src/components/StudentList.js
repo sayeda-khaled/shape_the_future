@@ -217,7 +217,7 @@ class StudentList extends Component {
                     </div>
 
                     <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Student ID</label>
+                      <label for="exampleFormControlInput1" class="form-label">School Student ID</label>
                       <input type="number" class="form-control input-1" required id="exampleFormControlInput1" autoComplete="off" name="studentId" value={this.state.student_id} onChange={this.handleInput} placeholder="Insert the student ID"/>
                       </div>
 

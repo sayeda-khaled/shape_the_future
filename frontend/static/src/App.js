@@ -12,7 +12,7 @@ import AdminPage from './components/AdminPage.js';
 import EventsList from './components/EventsList.js';
 import VolunteerPage from './components/VolunteerPage.js';
 import StudentList from './components/StudentList.js';
-// import UserInformation from './components/UserInformation.js';
+import ParentPage from './components/ParentPage.js';
 
 
 import "./index.css";
@@ -184,7 +184,15 @@ class App extends Component{
             )}
           />
 
+ParentPage
 
+        <Route
+          path='/parents'
+          render={(props) => (
+            <ParentPage {...props} isAuthed={true} />
+
+          )}
+        />
 
 
         <Route exact path="/">

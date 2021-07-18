@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
-* {
+.frontPage * {
   padding: 0;
   margin: 0 auto;
   box-sizing: border-box;
@@ -1036,16 +1036,26 @@
     transform: rotateY(180deg);
   }
 }
-.twitterLink {
+.linkedinLink {
   position: fixed;
   bottom: 0.5em;
   right: 0.5em;
 }
-.twitterLink img {
+.linkedinLink img {
   width: 2em;
   filter: grayscale(100%);
   transition: filter 0.25s;
 }
-.twitterLink img:hover {
+.linkedinLink img:hover {
   filter: grayscale(0%);
+}
+
+ #main-paragraph-1{
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+#main-paragraph-2{
+ margin-bottom: 1rem;
+ padding: 1rem;
 }

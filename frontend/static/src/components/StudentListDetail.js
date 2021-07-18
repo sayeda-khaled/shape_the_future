@@ -81,7 +81,7 @@ class StudentListDetail extends Component {
                         <p className="font-semibold">{students.first_name}</p>
                     <label className="text-gray-500 block text-sm mr-2">Last Name:</label>
                         <p className="font-semibold">{students.last_name}</p>
-                    <label className="text-gray-500 block text-sm mr-2">Student ID:</label>
+                    <label className="text-gray-500 block text-sm mr-2">School Student ID:</label>
                         <p>{students.student_id}</p>
                     <label className="text-gray-500 block text-sm mr-2">Primary Contact:</label>
                         <p>{students.primary_contact}</p>

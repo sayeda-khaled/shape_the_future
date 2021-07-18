@@ -9,12 +9,6 @@ class MainPage extends Component {
     super(props);
 
   }
-  //
-  // <section className="displayPage flex ">
-  //   <div className="sidedisplay-1 -mt-6 w-8/12 pr-4">
-  //       <img src={imageNew} alt=""/>
-  //   </div>
-
 
     render() {
 
@@ -23,6 +17,7 @@ class MainPage extends Component {
         <>
 
          <section className="displayPage flex frontPage">
+           <div className="front-page-container">
 
         <div class="imgLoader"></div>
 
@@ -64,14 +59,14 @@ class MainPage extends Component {
               </div>
             </div>
 
-  <a href="https://twitter.com/amit_sheen" class="twitterLink" target="_top">
-     <img src="https://assets.codepen.io/1948355/twitterLogo2.png" />
+  <a href="www.linkedin.com/in/sayeda-khaled-4aa69b198" className="linkedinLink" target="_top">
+     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUmOtGailQUMJcuv37p9s1JVhJw59ZC0Fb6A&usqp=CAU" />
   </a>
-
+</div>
           <div className="sidedisplay-2 w-4/12">
             <h1 className="text-3xl font-bold">Shape The Future</h1>
-            <p className="my-4 p-4 rounded bg-indigo-500 text-white shadow-2xl-dark transform hover:scale-105">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-            <p className="my-4 p-4 rounded bg-indigo-500 text-white shadow-2xl-dark transform hover:scale-105">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p className="my-4 p-4 rounded bg-indigo-500 text-white shadow-2xl-dark transform hover:scale-105 test" id="main-paragraph-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p className="my-4 p-4 rounded bg-indigo-500 text-white shadow-2xl-dark transform hover:scale-105" id="main-paragraph-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
           </div>
 
