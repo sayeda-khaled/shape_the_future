@@ -5,7 +5,7 @@ from django.db import models
 
 class User(AbstractUser):
     phone_number = PhoneNumberField(blank=True, null=True)
-    # is_parent = models.BooleanField(default=False)
+    is_volunteer = models.BooleanField(default=False)
 
 
 class Profile(models.Model):

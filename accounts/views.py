@@ -9,7 +9,6 @@ from .permissions import UserPermissions
 from django.shortcuts import render, get_object_or_404
 
 
-
 class ProfileListAPIView(generics.ListCreateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
