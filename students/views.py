@@ -28,7 +28,12 @@ class StudentDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
     def Perform_update(self, serializer):
         instance = serializer.save(user=self.request.user.is_staff)
-#
+
+
+
+
+
+
 # class ParentListAPIView(generics.ListCreateAPIView):
 #     queryset = Parent.objects.all()
 #     serializer_class = ParentSerializer

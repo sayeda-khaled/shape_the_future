@@ -139,12 +139,7 @@ class VolunteerPage extends Component {
             <button  type='button' onClick={(e) => this.cancelEvent(e, event)} className="btn-signup bg-blue pb-2 transform hover:scale-105">Cancel</button>
 
           </div>
-          {
-            event.student
-              ? <input type="text" name="memo" autoComplete="off" value={event.memo} onChange={this.handleInput} className="form-control"/>
-              : <p>Awaiting Student Assignment</p>
 
-          }
 
         </form>
       </section>
@@ -156,3 +151,10 @@ class VolunteerPage extends Component {
 }
 
 export default VolunteerPage;
+
+// {
+//   event.student
+//     ? <input type="text" name="memo" autoComplete="off" value={event.memo} onChange={this.handleInput} className="form-control"/>
+//     : <p>Awaiting Student Assignment</p>
+//
+// }

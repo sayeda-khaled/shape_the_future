@@ -64,7 +64,7 @@ class App extends Component{
       if(data.user.is_staff) {
         this.props.history.push('/events/admin/');
       } if(data.user.is_volunteer) {
-        this.props.history.push('/events/volunteer/');
+        this.props.history.push('/events/volunteer/parents');
       }  else {
          this.props.history.push('/');
 
@@ -133,9 +133,10 @@ class App extends Component{
 
   return(
     <>
-    <main className="max-w-screen-lg m-auto  main-page ">
+    <main className="flex-grow">
       <Navbar loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} isStaff={this.state.isStaff} isVolunteer={this.state.isVolunteer}/>
-
+    </main>
+  <main className="max-w-screen-lg m-auto  main-page ">
       <Switch>
           <Route
             path='/login'

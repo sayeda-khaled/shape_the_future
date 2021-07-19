@@ -70,8 +70,8 @@ class StaffEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
         instance = serializer.save(is_staff=self.request.user)
 
 
-# class ParentListAPIView(generics.ListApiView):
-#     serializer_class = EventSerializer
-#
-#     def get_queryset(self):
-#         return Event.objects.filter(student__primary_contact=self.request.user)
+class ParentListAPIView(generics.ListAPIView):
+    serializer_class = EventSerializer
+
+    def get_queryset(self):
+        return Event.objects.filter(student__primary_contact=self.request.user)

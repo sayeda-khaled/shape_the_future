@@ -15,7 +15,8 @@ class Navigation extends Component {
 
   getParentNavBar = () => {
     return (
-        <div>I am a parent!</div>
+      <NavLink to='/parents' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">My Kid Sessions</NavLink>
+
     )
   }
 
@@ -24,6 +25,8 @@ class Navigation extends Component {
       <>
         <NavLink to='/events/volunteer/' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">Available Events</NavLink>
         <NavLink to='/events/my-events/' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">My Events</NavLink>
+        <NavLink to='/parents' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">My Kid Sessions</NavLink>
+
       </>
     )
 
