@@ -26,6 +26,7 @@ class App extends Component{
     this.state={
       loggedIn: !!Cookies.get('Authorization') ? true : false,
       isStaff: !!JSON.parse(localStorage.getItem('user'))?.is_staff,
+      isVolunteer: !!JSON.parse(localStorage.getItem('user'))?.is_volunteer,
 
     }
     this.handleLogin = this.handleLogin.bind(this);
@@ -58,12 +59,15 @@ class App extends Component{
       localStorage.setItem('user', JSON.stringify(data.user));
 
 
-      this.setState({isStaff: data.user.is_staff, loggedIn: true});
+      this.setState({isStaff: data.user.is_staff, isVolunteer: data.user.is_volunteer, loggedIn: true});
 
       if(data.user.is_staff) {
         this.props.history.push('/events/admin/');
-      } else {
+      } if(data.user.is_volunteer) {
         this.props.history.push('/events/volunteer/');
+      }  else {
+         this.props.history.push('/');
+
       }
     }
   }
@@ -130,7 +134,7 @@ class App extends Component{
   return(
     <>
     <main className="max-w-screen-lg m-auto  main-page ">
-      <Navbar loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} isStaff={this.state.isStaff} />
+      <Navbar loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} isStaff={this.state.isStaff} isVolunteer={this.state.isVolunteer}/>
 
       <Switch>
           <Route
