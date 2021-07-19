@@ -148,7 +148,6 @@ class AdminPage extends Component {
       const events = this.state.events.map(event => (
         <AdminPageDetail key={event.id} event={event} deleteEvent={this.deleteEvent} editEvent={this.editEvent} students={this.state.students} assignStudent={this.assignStudent}/>
       ));
-
       // const students = this.state.students.map(student => (
       //   <AdminPageDetail className="students" key={student.id} assignStudent={this.assignStudent} student={student}/>
       //
