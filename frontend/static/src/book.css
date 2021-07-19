@@ -1041,7 +1041,7 @@
     transform: rotateY(180deg);
   }
 }
-.linkedinLink {
+/* .linkedinLink {
   position: fixed;
   bottom: 0.5em;
   right: 0.5em;
@@ -1053,7 +1053,7 @@
 }
 .linkedinLink img:hover {
   filter: grayscale(0%);
-}
+} */
 
  #main-paragraph-1{
   margin-bottom: 1rem;

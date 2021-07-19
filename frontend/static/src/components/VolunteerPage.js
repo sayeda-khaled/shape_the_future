@@ -8,7 +8,7 @@ class VolunteerPage extends Component {
     super(props);
     this.state = {
       events: [],
-      memo: ''
+      memo: "",
     }
     this.cancelEvent = this.cancelEvent.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -27,7 +27,7 @@ class VolunteerPage extends Component {
     });
   }
 
-  //
+
   // handleMemoInput(e, memoEvent) {
   //   const events = [...this.state.events]
   //   const memoEventId = events.indexOf(memoEvent)
@@ -63,35 +63,10 @@ class VolunteerPage extends Component {
       const events = [...this.state.events]
       const index = events.findindexOf(event => event.id === id);
       events[index].memo = memo
-      this.setState(events)
+
+      this.setState({events})
     });
   }
-  //
-  // saveMemo(e, event){
-  //   e.preventDefault();
-  //   const id = event.id;
-  //
-  //   const options = {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'X-CSRFToken': Cookies.get('csrftoken'),
-  //     },
-  //     body: JSON.stringify({memo}),
-  // }
-  //
-  // fetch(`/api/v1/events/volunteer/${id}/`, options)
-  //   .then(response => {
-  //     if(!response.ok) {
-  //       throw new Error('Network response was not ok');
-  //     }
-  //     const events = [...this.state.events]
-  //     const index = events.findindexOf(event => event.id === id);
-  //     events[memoEventId].memo = e.target.value
-  //     this.setState(events)
-  //   });
-
-  // }
 
   cancelEvent(e, event) {
     e.preventDefault();
@@ -136,11 +111,23 @@ class VolunteerPage extends Component {
 
             <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">To:</label>
             <time className="form-control pb-3" rows="3">{event.end_of_event}</time>
-            <button  type='button' onClick={(e) => this.cancelEvent(e, event)} className="btn-signup bg-blue pb-2 transform hover:scale-105">Cancel</button>
 
+
+            {
+              event.student
+              ?
+                <>
+                  <input type="text" name="memo" autoComplete="off" value={event.memo} onChange={this.handleInput} className="form-control"/>
+                  <button  type='button' onClick={(e) => this.saveMemo(e, event)} className="btn-signup bg-blue pb-2 transform hover:scale-105">Save</button>
+                </>
+
+              :
+                <>
+                <button  type='button' onClick={(e) => this.cancelEvent(e, event)} className="btn-signup bg-blue pb-2 transform hover:scale-105">Cancel</button>
+                 <p>Awaiting Student Assignment</p>
+                </>
+            }
           </div>
-
-
         </form>
       </section>
 
@@ -151,10 +138,3 @@ class VolunteerPage extends Component {
 }
 
 export default VolunteerPage;
-
-// {
-//   event.student
-//     ? <input type="text" name="memo" autoComplete="off" value={event.memo} onChange={this.handleInput} className="form-control"/>
-//     : <p>Awaiting Student Assignment</p>
-//
-// }

@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAdminUser
 
 from .models import Event
 from .serializers import EventSerializer, StaffEventSerializer
-from .permissions import IsAuthOrReadOnly
+from .permissions import UserPermissions
 
 today = date.today()
 
@@ -44,7 +44,7 @@ class VolunteerEventListAPIView(generics.ListAPIView):
 
 class VolunteerEventDetailAPIView(generics.RetrieveUpdateAPIView):
     serializer_class = EventSerializer
-    # permission_classes = (IsAuthOrReadOnly,)
+    # permission_classes = (UserPermissions,)
 
     def get_queryset(self):
         volunteer = self.request.user
