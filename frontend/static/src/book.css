@@ -7,11 +7,16 @@
 
 
 .frontPage {
-  font-family: "Indie Flower", cursive;
+  /* font-family: "Indie Flower", cursive; */
   background-color: #eee;
   color: #555;
   text-align: center;
   padding: 4em 0;
+}
+
+.title{
+  font-family: "Indie Flower", cursive;
+  font-weight: bold;
 }
 
 .imgLoader {
@@ -1062,4 +1067,6 @@
 
 #main-title {
   margin-bottom: 1rem;
+  font-family: "Indie Flower", cursive;
+  font-size: 40px;
 }
