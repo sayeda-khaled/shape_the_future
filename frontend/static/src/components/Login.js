@@ -28,7 +28,7 @@ render(){
         <input class="input-1 ml-10" type="text"  name="username" autoComplete="off" required onChange={this.handleInput} value={this.state.username} align="center" placeholder="Username"/>
         <input class="input-1 ml-10" type="email" name="email" align="center" placeholder="e-mail" onChange={this.handleInput} value={this.state.email} />
         <input class="input-1 ml-10" type="password" name="password" align="center" autoComplete="off" required onChange={this.handleInput} value={this.state.password1} placeholder="Password"/>
-        <button class="btn-submit" align="center" onClick={() => this.props.handleLogin(this.state)}>Log in</button>
+        <button class="btn-submit transform hover:scale-105" align="center" onClick={() => this.props.handleLogin(this.state)}>Login</button>
       </form>
     </div>
   );

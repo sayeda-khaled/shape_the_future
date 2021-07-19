@@ -63,7 +63,7 @@ class AdminPageDetail extends Component {
             ? <button className="btn-edit-event bg-blue flex-col ml-1 transform hover:scale-105 " type='button' onClick={this.saveEvent}>Save</button>
             : <button className="btn-edit-event bg-blue flex-col ml-1 rounded-full py-3 px-6 transform hover:scale-105" onClick={() => this.setState({isEditing: true})}>Edit Event</button>
         }
-        <button className="btn-edit-event bg-blue rounded-full ml-2 py-3 px-6 transform hover:scale-105 " onClick={(e) => this.props.deleteEvent(e, event.id)}>delete Event</button>
+        <button className="btn-edit-event bg-blue rounded-full ml-2 py-3 px-6 transform hover:scale-105 " onClick={(e) => this.props.deleteEvent(e, event.id)}>Delete Event</button>
       </div>
       <div className="flex items-baseline mb-2">
       <label className="text-gray-500 block text-sm mr-4">Volunteer:</label>

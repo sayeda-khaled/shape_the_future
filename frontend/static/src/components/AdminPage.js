@@ -160,7 +160,7 @@ class AdminPage extends Component {
 
           <section className="events-container md:flex bg-opacity-20">
                 <ul>{events}</ul>
-                <section className="form-container-1 mt-12" style={{top:10+"VH"}}>
+                <section className="form-container-1 sticky mt-12" style={{top:3+"VH"}}>
                     <form className="form-1" onSubmit={this.addEvent}>
                       <div className="mb-3">
                         <label  className="form-label block">Grade</label>
@@ -184,7 +184,7 @@ class AdminPage extends Component {
                       </div>
 
 
-                  <button type="button" onClick={(e) => this.addEvent(e)} className="btn-submit-events transform hover:scale-105">Submit</button>
+                  <button type="button" onClick={(e) => this.addEvent(e)} className="btn-submit-events transform hover:scale-105 font-extrabold">Submit</button>
 
                 </form>
               </section>

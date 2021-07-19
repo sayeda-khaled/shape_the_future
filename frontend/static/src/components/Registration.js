@@ -31,7 +31,7 @@ class Registration extends Component{
           <input class="input-1 ml-10 pb-10" type="tel" name="phone_number" align="center" placeholder="phone +15555555555" onChange={this.handleInput} value={this.state.phone_number} />
           <input class="input-1 ml-10 pb-10" type="password" name="password1" align="center" autoComplete="off" required onChange={this.handleInput} value={this.state.password1} placeholder="Password"/>
           <input class="input-1 ml-10 pb-10" type="password" name="password2" align="center" autoComplete="off" required onChange={this.handleInput} value={this.state.password2} placeholder="Confirm Password"/>
-          <button class="btn-submit" align="center" onClick={() => this.props.handleRegistration(this.state)}>Register</button>
+          <button class="btn-submit transform hover:scale-105" align="center" onClick={() => this.props.handleRegistration(this.state)}>Register</button>
         </form>
       </div>
     );

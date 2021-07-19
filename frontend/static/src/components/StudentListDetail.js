@@ -99,8 +99,8 @@ class StudentListDetail extends Component {
 
 
             <>
-              <button className="btn-edit bg-blue flex-col ml-.5 mt-2 rounded transform hover:scale-105 " onClick={() => this.props.deleteStudent(students.id)}>delete</button>
-              <button className="btn-edit bg-blue flex-col ml-2 mt-2 rounded transform hover:scale-105 " onClick={() => this.deactivateStudent(students.id)}>{students.active && 'Deactivate'} {!students.active && 'Active'}</button>
+              <button className="btn-edit bg-blue flex-col ml-.5 mt-2 rounded transform hover:scale-105 " onClick={() => this.props.deleteStudent(students.id)}>Delete</button>
+              <button className="btn-edit bg-blue flex-col ml-2 mt-2 rounded transform hover:scale-105 " onClick={() => this.deactivateStudent(students.id)}>{students.active && 'Deactivate'} {!students.active && 'Activate'}</button>
             </>
 
 
