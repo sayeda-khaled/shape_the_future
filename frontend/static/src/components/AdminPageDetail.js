@@ -45,17 +45,17 @@ class AdminPageDetail extends Component {
 
       <div className="flex items-center">
         <label className="text-gray-500 block text-sm mr-2">Grade:</label>
-        <input type="text" name="grade" className="rounded border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+        <input type="text" name="grade" value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing} className="rounded border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
       </div>
       <div className="flex items-baseline">
       <label className="text-gray-500 block text-sm mt-4">Date:</label>
-      <input type="date" min="2021-7-07" max="2021-12-31" className="input-1-admin border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="date" value={this.state.date_of_event} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+      <input type="date" min="2021-7-07" max="2021-12-31" name="date" value={this.state.date_of_event} onChange={this.handleInput} disabled={!this.state.isEditing} className="input-1-admin border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
       </div>
       <div className="flex items-baseline">
         <label className="text-gray-500 block text-sm">From:</label>
-        <input type="time" className="input-1-admin border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="startTime" value={this.state.start_of_event} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+        <input type="time" name="startTime" value={this.state.start_of_event} onChange={this.handleInput} disabled={!this.state.isEditing} className="input-1-admin border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
         <label className="text-gray-500 block text-sm ">To:</label>
-        <input type="time" className="input-1-admin border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="endTime" value={this.state.end_of_event} onChange={this.handleInput} disabled={!this.state.isEditing}/>
+        <input type="time" name="endTime" value={this.state.end_of_event} onChange={this.handleInput} disabled={!this.state.isEditing} className="input-1-admin border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
       </div>
       <div className="ml-14 mb-3">
         {
@@ -71,13 +71,13 @@ class AdminPageDetail extends Component {
       </div>
       <label for="student-select" className="pt-1 text-xs">Choose a student:</label>
 
-      <select name="student" className="mt-2 mb-2"value={this.state.student} onChange={this.handleInput}>
+      <select name="student" value={this.state.student} onChange={this.handleInput} className="mt-2 mb-2">
         <option value="">
           --Please choose a student--
         </option>
         {options}
       </select>
-      <button type="button" className="btn-submit-assign-student transform hover:scale-105 " onClick={this.assignStudent}>Assign</button>
+      <button type="button" onClick={this.assignStudent} className="btn-submit-assign-student transform hover:scale-105">Assign</button>
 
     </li>)
   }

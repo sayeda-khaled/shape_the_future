@@ -57,7 +57,7 @@ class MainPage extends Component {
             </div>
 
   <a href="www.linkedin.com/in/sayeda-khaled-4aa69b198" className="linkedinLink" target="_top">
-     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUmOtGailQUMJcuv37p9s1JVhJw59ZC0Fb6A&usqp=CAU" />
+     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUmOtGailQUMJcuv37p9s1JVhJw59ZC0Fb6A&usqp=CAU" alt="#" />
   </a>
 </div>
           <div className="sidedisplay-2 w-4/12">
