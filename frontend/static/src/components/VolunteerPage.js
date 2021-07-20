@@ -35,10 +35,14 @@ class VolunteerPage extends Component {
   //   this.setState(events)
   // }
 
-  handleInput(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+  handleInput(e, event) {
+    const events = [...this.state.events];
+    const index = events.indexOf(event);
+    events[index].memo = e.target.value;
+    this.setState({events});
+    // this.setState({
+    //   [event.target.name]: event.target.value
+    // });
   }
 
   saveMemo(e, event) {
@@ -56,15 +60,11 @@ class VolunteerPage extends Component {
       },
       body: JSON.stringify(event)
     }
-    fetch(`/api/v1/events/volunteer/`, options).then(response => {
+    fetch(`/api/v1/events/volunteer/${id}/`, options).then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      const events = [...this.state.events]
-      const index = events.findindexOf(event => event.id === id);
-      events[index].memo = memo
-
-      this.setState({events})
+      console.log('Memo added successfully!');
     });
   }
 
@@ -117,7 +117,7 @@ class VolunteerPage extends Component {
               event.student
               ?
                 <>
-                  <input type="text" name="memo" autoComplete="off" value={event.memo} onChange={this.handleInput} className="form-control"/>
+                  <input type="text" name="memo" autoComplete="off" value={event.memo} onChange={(e) => this.handleInput(e, event)} className="form-control"/>
                   <button  type='button' onClick={(e) => this.saveMemo(e, event)} className="btn-signup bg-blue pb-2 transform hover:scale-105">Save</button>
                 </>
 

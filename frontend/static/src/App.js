@@ -66,7 +66,7 @@ class App extends Component{
       } if(data.user.is_volunteer) {
         this.props.history.push('/events/volunteer/parents');
       }  else {
-         this.props.history.push('/');
+         this.props.history.push('/parents');
 
       }
     }
