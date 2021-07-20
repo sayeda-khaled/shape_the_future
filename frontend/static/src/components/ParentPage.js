@@ -7,16 +7,17 @@ class ParentPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [],
     }
 
   }
-  //
+
   // componentDidMount(){
   //   fetch('/api/v1/events/parent/')
   //   .then(response => response.json())
   //
   //   .then(data => console.log(data));
+  //
   //
   // }
 
@@ -41,7 +42,7 @@ class ParentPage extends Component {
 
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Student Name</label>
-              <p className="">{event.student.last_name}</p>
+              <p className="">{`${event.student_last_name}, ${event.student_first_name}`}</p>
             </div>
 
 
