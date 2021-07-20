@@ -22,20 +22,23 @@ def send_notifications():
                                 date_of_event__day=tomorrow.day,)
 
 
-    print(events)
+    # print(events)
+
     for event in events:
-        # if volunteer.phone_number== True:
-            print(event.start_of_event)
+         if event.volunteer.phone_number== True:
+            # print(event.start_of_event)
 
-    # loop over the events and send a message for each one
-    message = client.messages \
-                    .create(
-                         from_='+16615284031',
-                         body="We look forward to seeing you on {event.date_of_event} at {event.start_of_event}.",
-                         to='+18645185262'
-                     )
+            message = client.messages \
+                            .create(
+                                 from_='+16615284031',
+                                 body=f"Thank you for volunteering. Your session is scheduled tomorrow at {event.start_of_event}",
+                                 to=(f'{event.volunteer.phone_number}'),
+                                 # to='+18645185262'
+                             )
 
-    print(message.sid)
+            # print(message.sid)
+
+
 
 # @app.on_after_configure.connect
 # def setup_periodic_tasks(sender, **kwargs):

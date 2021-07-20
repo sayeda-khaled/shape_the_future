@@ -187,7 +187,8 @@ class AdminPage extends Component {
 
                 </form>
               </section>
-            </section>
+              </section>
+  
 
         </>
         )
