@@ -49,7 +49,7 @@ class AdminPageDetail extends Component {
       </div>
       <div className="flex items-baseline">
         <label className="text-gray-500 block text-sm mt-4">Date:</label>
-        <input type="date" min="2021-7-07" max="2021-12-31" name="date_of_event" value={format(new Date(this.state.date_of_event), 'MM/dd/yyy')} onChange={this.handleInput} disabled={!this.state.isEditing} className="input-1-admin border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+        <input type="date" min="2021-7-07" max="2021-12-31" name="date_of_event" value={this.state.date_of_event} onChange={this.handleInput} disabled={!this.state.isEditing} className="input-1-admin border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
       </div>
       <div className="flex items-baseline">
         <label className="text-gray-500 block text-sm">From:</label>

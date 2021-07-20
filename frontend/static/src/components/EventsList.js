@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import Cookies from 'js-cookie';
+import { format } from 'date-fns';
 
 
 class EventsList extends Component {
@@ -76,13 +77,13 @@ class EventsList extends Component {
 
 
                       <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">Event Date:</label>
-                      <time className="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.date_of_event}</time>
+                      <time className="form-control pb-3" id="exampleFormControlInput1" name="date_of_event">{event.date_of_event}</time>
 
                       <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">From:</label>
-                      <time className="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.start_of_event}</time>
+                      <time className="form-control pb-3" id="exampleFormControlInput1">{event.start_of_event}</time>
 
                       <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">To::</label>
-                      <time className="form-control pb-3" id="exampleFormControlInput1" rows="3">{event.end_of_event}</time>
+                      <time className="form-control pb-3" id="exampleFormControlInput1">{event.end_of_event}</time>
 
 
                   <div className="btn-signup pb-2 transform hover:scale-105"type ='button' onClick={(e) => this.signUp(e, event)}>Sign Up</div>

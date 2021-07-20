@@ -1,6 +1,8 @@
 import {Component} from 'react';
 
 import Cookies from 'js-cookie';
+// import { format } from 'date-fns';
+
 
 class VolunteerPage extends Component {
 
@@ -39,7 +41,9 @@ class VolunteerPage extends Component {
     const events = [...this.state.events];
     const index = events.indexOf(event);
     events[index].memo = e.target.value;
+    // memo.push(event);
     this.setState({events});
+    this.setState({ memo: '' });
     // this.setState({
     //   [event.target.name]: event.target.value
     // });
@@ -65,6 +69,7 @@ class VolunteerPage extends Component {
         throw new Error('Network response was not ok');
       }
       console.log('Memo added successfully!');
+
     });
   }
 

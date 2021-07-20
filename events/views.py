@@ -22,7 +22,7 @@ class EventListAPIView(generics.ListCreateAPIView):
         # import pdb; pdb.set_trace()
         # Complex lookups with Q objects
         # https://docs.djangoproject.com/en/3.2/topics/db/queries/#complex-lookups-with-q-objects
-        return Event.objects.exclude(Q(volunteer=volunteer) | Q(date_of_event__lt=datetime.today()))
+        return Event.objects.exclude(Q(volunteer=volunteer) | Q(date_of_event__lt=datetime.today())).order_by('date_of_event')
 
 class EventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
@@ -39,7 +39,7 @@ class VolunteerEventListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         volunteer = self.request.user
-        return Event.objects.filter(volunteer=volunteer)
+        return Event.objects.filter(volunteer=volunteer).order_by('date_of_event')
 
 
 class VolunteerEventDetailAPIView(generics.RetrieveUpdateAPIView):
@@ -48,11 +48,11 @@ class VolunteerEventDetailAPIView(generics.RetrieveUpdateAPIView):
 
     def get_queryset(self):
         volunteer = self.request.user
-        return Event.objects.filter(volunteer=volunteer)
+        return Event.objects.filter(volunteer=volunteer).order_by('date_of_event')
 
 
 class StaffEventListAPIView(generics.ListCreateAPIView):
-    queryset = Event.objects.all()
+    queryset = Event.objects.all().order_by('date_of_event')
     # Event.objects.filter(date_of_event=datetime.today())
     serializer_class = StaffEventSerializer
     permission_classes = (IsAdminUser,)
@@ -74,4 +74,4 @@ class ParentListAPIView(generics.ListAPIView):
     serializer_class = EventSerializer
 
     def get_queryset(self):
-        return Event.objects.filter(student__primary_contact=self.request.user)
+        return Event.objects.filter(student__primary_contact=self.request.user).order_by('date_of_event')

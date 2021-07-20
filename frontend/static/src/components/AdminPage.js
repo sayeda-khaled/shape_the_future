@@ -2,7 +2,7 @@ import { Component } from 'react';
 import AdminPageDetail from './AdminPageDetail.js';
 
 import Cookies from 'js-cookie';
-// import Moment from 'react-moment';
+import { format } from 'date-fns';
 
 
 
@@ -188,7 +188,7 @@ class AdminPage extends Component {
                 </form>
               </section>
               </section>
-  
+
 
         </>
         )
