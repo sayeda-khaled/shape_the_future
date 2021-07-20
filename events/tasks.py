@@ -31,7 +31,7 @@ def send_notifications():
     message = client.messages \
                     .create(
                          from_='+16615284031',
-                         body="We look forward to seeing you on .",
+                         body="We look forward to seeing you on {event.date_of_event} at {event.start_of_event}.",
                          to='+18645185262'
                      )
 
