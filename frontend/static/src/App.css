@@ -89,23 +89,24 @@ font-family: 'Ubuntu', sans-serif;
 }
 
 .input-1-admin {
-width: 76%;
+/* width: 76%; */
 color: rgb(38, 50, 56);
 font-weight: 5500;
 font-size: 14px;
 letter-spacing: 1px;
-/* background: rgba(136, 126, 126, 0.04); */
+background: #ECE9FC;
 padding: 2px;
 border: none;
 border-radius: 20px;
 outline: none;
 box-sizing: border-box;
-border: 2px solid rgba(0, 0, 0, 0.02);
+/* border: 2px solid rgba(0, 0, 0, 0.02); */
 margin-bottom: 50px;
 /* margin-left: 46px; */
 text-align: center;
 margin-bottom: 17px;
-font-family: 'Ubuntu', sans-serif;
+font-family: sans-serif, 'Ubuntu';
+margin-left: 2px;
 }
 
 
@@ -221,7 +222,7 @@ box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 cursor: pointer;
 border-radius: 5em;
 color: #fff;
-background: linear-gradient(to right, #4D46C6, #B8F1D2);
+background: linear-gradient(to right,  #5A5BC2, #336fa3);
 border: 0;
 padding-left: 40px;
 padding-right: 40px;
@@ -238,11 +239,11 @@ box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   cursor: pointer;
   border-radius: 5em;
   color: #fff;
-  background: linear-gradient(to right, #4D46C6, #B8F1D2);
+  background: linear-gradient(to right,  #5A5BC2, #336fa3);
   border: 0;
   padding: 4px;
   font-family: 'Ubuntu', sans-serif;
-  margin-left: 5px;
+  margin-left: 12px;
   font-size: 11px;
   font-weight: bold;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
@@ -307,12 +308,12 @@ box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 cursor: pointer;
 border-radius: 5em;
 color: #fff;
-background: linear-gradient(to right, #4D46C6, #B8F1D2);
+background: linear-gradient(to right, #5A5BC2, #336fa3);
 border: 0;
 padding: 5px;
 font-family: 'Ubuntu', sans-serif;
 /* margin-left: 35%; */
-font-size: 14px;
+font-size: 12px;
 font-weight: bold;
 box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
@@ -321,7 +322,7 @@ box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 cursor: pointer;
 border-radius: 5em;
 color: #fff;
-background: linear-gradient(to right, #4D46C6, #B8F1D2);
+background: linear-gradient(to right, #5A5BC2, #336fa3);
 border: 0;
 padding-left: 15px;
 padding-right: 15px;
@@ -395,4 +396,8 @@ box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 
 body{
     background-color: #eee;
+}
+
+option {
+    text-decoration: none;
 }
