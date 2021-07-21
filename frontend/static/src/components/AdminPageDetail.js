@@ -41,7 +41,7 @@ class AdminPageDetail extends Component {
     const event = this.state;
     const students = this.props.student;
     const options = this.props.students.map(student => <option value={student.id} selected={event.student === student.id}>{`${student.last_name}, ${student.first_name}`}</option>)
-    return (<li className="bg-purple-100 m-6 p-4 w-9/12 rounded transform hover:scale-105 shadow-2xl-dark">
+    return (<li className="bg-purple-100 m-6 p-4 rounded transform hover:scale-105 shadow-2xl-dark">
 
       <div className="flex items-center">
         <label className="text-gray-500 block text-sm mr-2">Grade:</label>
@@ -70,7 +70,7 @@ class AdminPageDetail extends Component {
         <div className="font-sans text-m">{event.volunteer_name}</div>
       </div>
 
-      <select name="student" value={this.state.student} onChange={this.handleInput} className="mt-2 mb-3 text-sm font-sans">
+      <select name="student" onChange={this.handleInput} className="mt-2 mb-3 text-sm font-sans">
         <option value="">
           --Please choose a student--
         </option>

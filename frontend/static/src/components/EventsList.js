@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
 import Cookies from 'js-cookie';
-import { format } from 'date-fns';
+import { format, parseISO, formatISO } from 'date-fns';
 
 
 class EventsList extends Component {
@@ -65,37 +65,48 @@ class EventsList extends Component {
       }
 
       render() {
-
-        const events = this.state.events.map((event, index)=> (
-          <div key = {index}>
-
-            <section >
-                <form onSubmit={(e) => this.signUp(e, event)} className="form-1 bg-purple-100 m-6 p-4 rounded-3xl m-auto block max-w-md mt-20 transform hover:scale-105 shadow-2xl-dark">
-                  <div className="mb-3">
-                      <label for="exampleFormControlInput1" className="form-label text-gray-500 block text-sm">Grade:</label>
-                      <p className="form-control pb-3" id="exampleFormControlInput1" name="grade">{event.grade} </p>
+        //
+        // const date = new Date("2021-07-21").toISOString()
+        // let formattedDate = format(parseISO(date), 'MMMM dd, yyyy');
 
 
-                      <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">Event Date:</label>
-                      <time className="form-control pb-3" id="exampleFormControlInput1" name="date_of_event">{event.date_of_event}</time>
 
-                      <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">From:</label>
-                      <time className="form-control pb-3" id="exampleFormControlInput1">{event.start_of_event}</time>
-
-                      <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">To::</label>
-                      <time className="form-control pb-3" id="exampleFormControlInput1">{event.end_of_event}</time>
+        const events = this.state.events.map((event, index)=> {
+          const date = new Date(event.date_of_event).toISOString()
+          let formattedDate = format(parseISO(date), 'MMMM dd, yyyy');
 
 
-                  <div className="btn-signup pb-2 transform hover:scale-105"type ='button' onClick={(e) => this.signUp(e, event)}>Sign Up</div>
-              </div>
-          </form>
-          </section>
+          // let startTime = event.start_of_event;
+          // if(parseInt(startTime.slice(0,2)) > 12)
+          return (
+            <div key = {index}>
+
+              <section >
+                  <form onSubmit={(e) => this.signUp(e, event)} className="form-1 bg-purple-100 m-6 p-4 rounded-3xl m-auto block max-w-md mt-20 transform hover:scale-105 shadow-2xl-dark">
+                    <div className="mb-3">
+                        <label for="exampleFormControlInput1" className="form-label text-gray-500 block text-sm">Grade:</label>
+                        <p className="form-control pb-3" id="exampleFormControlInput1" name="grade">{event.grade} </p>
 
 
-          </div>
+                        <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">Event Date:</label>
+                        <time className="form-control pb-3" id="exampleFormControlInput1" name="date_of_event">{formattedDate}</time>
+
+                        <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">From:</label>
+                        <time className="form-control pb-3" id="exampleFormControlInput1">{event.start_of_event}</time>
+
+                        <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">To::</label>
+                        <time className="form-control pb-3" id="exampleFormControlInput1">{event.end_of_event}</time>
 
 
-        ));
+                    <div className="btn-signup pb-2 transform hover:scale-105"type ='button' onClick={(e) => this.signUp(e, event)}>Sign Up</div>
+                </div>
+            </form>
+            </section>
+
+
+            </div>
+          )
+        });
 
       return (
 

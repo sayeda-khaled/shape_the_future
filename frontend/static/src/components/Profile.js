@@ -146,15 +146,15 @@ class Profile extends Component {
     return (
       <>
 
-        <section className="events-container md:flex bg-opacity-20 max-w-4xl">
+        <section className="events-container md:flex bg-opacity-20">
           <form onSubmit={this.handleSubmit} className="form-container-3 md:sticky mt-12 " style={{top: 10 + "VH"}}>
 
-            <div className="relative sticky">
+            <div className="relative sticky profile-image ">
               {image}
-              <input type="file" name="avatar" onChange={this.handleImage} className="absolute inset-0 opacity-0"/>
+              <input type="file" name="avatar" onChange={this.handleImage} className="absolute inset-0 opacity-0 max-w-xs"/>
             </div>
             <div className=" ml-20 pb-2 ">
-            <label className="text-gray-500 block text-xs	ml-12">User Name</label>
+            <label className="text-gray-500 block text-xs	ml-14">User Name</label>
             <input type="text" name="display_name" value={this.state.display_name} onChange={this.handleInput} className="font-bold input-1-admin border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" disabled={!this.state.isEditingProfile} autoComplete="off"/>
             </div>
             {

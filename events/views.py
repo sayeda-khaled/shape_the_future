@@ -10,7 +10,11 @@ from .models import Event
 from .serializers import EventSerializer, StaffEventSerializer
 from .permissions import UserPermissions
 
+from .tasks import send_notifications
+
 today = date.today()
+
+send_notifications()
 
 
 class EventListAPIView(generics.ListCreateAPIView):
@@ -63,11 +67,11 @@ class StaffEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StaffEventSerializer
     permission_classes = (IsAdminUser,)
 
-    def perform_create(self, serializer):
-        serializer.save(is_staff=self.request.user)
-
-    def Perform_update(self, serializer):
-        instance = serializer.save(is_staff=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(is_staff=self.request.user)
+    #
+    # def perform_update(self, serializer):
+    #     instance = serializer.save(is_staff=self.request.user)
 
 
 class ParentListAPIView(generics.ListAPIView):

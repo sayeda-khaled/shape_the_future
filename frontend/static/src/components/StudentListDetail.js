@@ -7,13 +7,8 @@ class StudentListDetail extends Component {
     super(props);
 
     this.state = {
+      ...this.props.student,
       isEditing: false,
-      firstName: this.props.firstName,
-      lastName: this.props.lastName,
-      studentId: this.props.studentId,
-      primanryContact: this.props.primanryContact,
-      grade: this.props.grade,
-      isActive: false,
     }
     this.handleInput = this.handleInput.bind(this);
     this.saveStudent = this.saveStudent.bind(this);
@@ -25,12 +20,8 @@ class StudentListDetail extends Component {
   }
 
   saveStudent() {
-    const student = this.props.student;
-    student.first_name = this.state.firstName;
-    student.last_name = this.state.lastName;
-    student.student_id = this.state.studentId;
-    student.primary_contact = this.state.primaryContact;
-    student.grade = this.state.grade;
+    const student = this.state;
+    delete student.isEditing;
 
     this.props.editStudent(student);
     this.setState({ isEditing: false });
@@ -84,16 +75,16 @@ class StudentListDetail extends Component {
 
                   <>
                   <label className="text-gray-500 block text-sm mr-2 ">First Name:</label>
-                    <input type="text" name="first_name" value={students.first_name} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                    <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                   <label className="text-gray-500 block text-sm mr-2">Last Name:</label>
-                    <input type="text" name="last_name"  value={students.last_name} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                    <input type="text" name="last_name"  value={this.state.last_name} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                   <label className="text-gray-500 block text-sm mr-2">School Student ID:</label>
-                    <input type="number" name="student_id" value={students.student_id} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                    <input type="number" name="student_id" value={this.state.student_id} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                     <label className="text-gray-500 block text-sm mr-2">Primary Contact:</label>
-                    <input type="text" name="primary_contact" value={students.primary_contact} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                    <input type="text" name="primary_contact" value={this.state.primary_contact} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                 <div className="flex items-center" >
                   <label className="text-gray-500 block text-sm mr-2">Grade:</label>
-                    <input type="number" min="1" max="5" name="grade" value={students.grade} onChange={this.handleInput} disabled={!this.state.isEditing} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                    <input type="number" min="1" max="5" name="grade" value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                 </div>
                 </>
 

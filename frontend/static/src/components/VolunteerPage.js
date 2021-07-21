@@ -1,7 +1,7 @@
 import {Component} from 'react';
 
 import Cookies from 'js-cookie';
-// import { format } from 'date-fns';
+import { format } from 'date-fns';
 
 
 class VolunteerPage extends Component {

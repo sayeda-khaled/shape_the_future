@@ -25,18 +25,16 @@ def send_notifications():
     # print(events)
 
     for event in events:
-         if event.volunteer.phone_number== True:
-            # print(event.start_of_event)
-
+        if event.volunteer:
+            phone = str(event.volunteer.phone_number.country_code) + str(event.volunteer.phone_number.national_number)
             message = client.messages \
                             .create(
                                  from_='+16615284031',
                                  body=f"Thank you for volunteering. Your session is scheduled tomorrow at {event.start_of_event}",
-                                 to=(f'{event.volunteer.phone_number}'),
-                                 # to='+18645185262'
+                                 to='+' + str(phone),
                              )
 
-            # print(message.sid)
+            print(message.sid)
 
 
 
