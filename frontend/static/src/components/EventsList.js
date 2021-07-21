@@ -64,20 +64,67 @@ class EventsList extends Component {
 
       }
 
+      //
+      // const date = new Date("2021-07-21").toISOString()
+      // let formattedDate = format(parseISO(date), 'MMMM dd, yyyy');
+
+      //
+      // function formattedTime(seconds) {
+      //   var helperDate = dateFns.addSeconds(new Date(0), seconds);
+      //   return dateFns.format(helperDate, 'mm:ss');
+      // }
+
+      // let formattedTime = getTimeFormat(event.start_of_event);
+
+    // let startTime = event.start_of_event;
+    // if(parseInt(startTime.slice(0,2)) > 12)
+
       render() {
-        //
-        // const date = new Date("2021-07-21").toISOString()
-        // let formattedDate = format(parseISO(date), 'MMMM dd, yyyy');
-
-
 
         const events = this.state.events.map((event, index)=> {
           const date = new Date(event.date_of_event).toISOString()
           let formattedDate = format(parseISO(date), 'MMMM dd, yyyy');
 
+          let startTime = event.start_of_event;
+          let startHour = parseInt(startTime.slice(0,2));
 
-          // let startTime = event.start_of_event;
-          // if(parseInt(startTime.slice(0,2)) > 12)
+          let startMeridiem = 'a.m.';
+          let endMeridiem = 'a.m.';
+
+          if(startHour >= 12) {
+            startMeridiem = 'p.m.';
+            startHour = startHour - 12;
+            startHour = ('0' + startHour.toString()).slice(-2);
+            startTime = startHour + startTime.slice(2);
+          }
+
+          let endTime = event.end_of_event;
+          let endHour = parseInt(endTime.slice(0,2));
+
+          if(endHour > 12) {
+            endMeridiem = 'p.m.';
+            endHour = endHour - 12;
+            endHour = ('0' + endHour.toString()).slice(-2);
+            endTime = endHour + endTime.slice(2);
+          }
+
+          // startTime.splice(0, 2, hours);
+          // console.log('hours', hours)
+
+
+
+
+
+          // function getTimeFormat(time) {
+          //   let ta = time.trim().split(" ");
+          //   let slots = ta[0].split(":");
+          //   while(slots.length<2) slots.push(""); // make sure we have h:m:s slots
+          //   return slots.map( n => n.padStart(2, '0')).join(":") + " " + (ta.length>1 ? ta[1].trim().toUpperCase() : "");
+          //   }
+          //
+          //   let test = getTimeFormat(event.start_of_event);
+          //   console.log('test', test)
+
           return (
             <div key = {index}>
 
@@ -92,10 +139,10 @@ class EventsList extends Component {
                         <time className="form-control pb-3" id="exampleFormControlInput1" name="date_of_event">{formattedDate}</time>
 
                         <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">From:</label>
-                        <time className="form-control pb-3" id="exampleFormControlInput1">{event.start_of_event}</time>
+                        <time className="form-control pb-3" id="exampleFormControlInput1">{startTime}  {startMeridiem}</time>
 
                         <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">To::</label>
-                        <time className="form-control pb-3" id="exampleFormControlInput1">{event.end_of_event}</time>
+                        <time className="form-control pb-3" id="exampleFormControlInput1">{endTime} {endMeridiem}</time>
 
 
                     <div className="btn-signup pb-2 transform hover:scale-105"type ='button' onClick={(e) => this.signUp(e, event)}>Sign Up</div>
