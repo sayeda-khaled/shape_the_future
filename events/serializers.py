@@ -13,7 +13,6 @@ class EventSerializer(serializers.ModelSerializer):
     student_first_name = serializers.ReadOnlyField(source="student.first_name")
     student_last_name = serializers.ReadOnlyField(source="student.last_name")
 
-
     volunteer = serializers.SlugRelatedField(
         many=False,
         queryset=User.objects.all(),
@@ -29,6 +28,15 @@ class EventSerializer(serializers.ModelSerializer):
 
 class StaffEventSerializer(serializers.ModelSerializer):
     volunteer_name = serializers.ReadOnlyField(source="volunteer.username")
+    primary_contact = serializers.ReadOnlyField(source="primary_contact.username")
+        #
+        # primary_contact = serializers.SlugRelatedField(
+        #     many=True,
+        #     queryset=User.objects.all(),
+        #     read_only=False,
+        #     slug_field='username',
+        #     allow_null=True
+        #  )
 
     class Meta:
         model = Event
