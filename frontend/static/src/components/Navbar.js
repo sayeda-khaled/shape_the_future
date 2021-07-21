@@ -25,13 +25,12 @@ class Navigation extends Component {
       <>
         <NavLink to='/events/volunteer/' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">Available Events</NavLink>
         <NavLink to='/events/my-events/' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">My Events</NavLink>
-        <NavLink to='/parents' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">My Kid Sessions</NavLink>
-
       </>
     )
 
   }
-
+  // bg-gradient-to-r from-indigo-700 to-green-50
+  // bg-indigo-700
   render() {
     const { isStaff, isVolunteer } = this.props;
     let userNavBar;
@@ -44,12 +43,11 @@ class Navigation extends Component {
       userNavBar = this.getParentNavBar();
     }
 
-
     return(
       <div bg="light" expand="lg" className="">
         <div aria-controls="basic-navbar-nav" />
         <div id="basic-navbar-nav" className="sm:flex-grow">
-          <nav className="sm:flex mb-6 mr-auto align-items-baseline bg-gradient-to-r from-indigo-700 to-green-50">
+          <nav className="sm:flex mb-6 mr-auto align-items-baseline bg-gradient-to-r from-indigo-700 to-green-50 ">
             <NavLink to='/' className="hover:bg-purple-200 rounded-md mr-4 px-4 py-2 font-extrabold">HOME</NavLink>
              {
                this.props.loggedIn

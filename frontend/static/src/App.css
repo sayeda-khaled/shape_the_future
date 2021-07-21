@@ -17,7 +17,7 @@ box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 background-color: #FFFFFF;
 width: 400px;
 height: 700px;
-margin: 7em auto;
+margin-top: 1.5rem;
 padding: 2em;
 border-radius: 1.5em;
 box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
@@ -47,10 +47,12 @@ box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 background-color: #FFFFFF;
 width: 400px;
 height: 600px;
-margin: 7em auto;
+/* margin: 7em auto; */
 padding: 2em;
 border-radius: 1.5em;
 box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+margin-top: 25px;
+margin-right: 40px;
 }
 
 
@@ -229,7 +231,7 @@ padding-right: 40px;
 padding-bottom: 10px;
 padding-top: 10px;
 font-family: 'Ubuntu', sans-serif;
-margin-left: 35%;
+margin-left: 25%;
 font-size: 14px;
 /* font-weight: bold; */
 box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
@@ -291,15 +293,15 @@ box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 cursor: pointer;
 border-radius: 5em;
 color: #fff;
-background: linear-gradient(to right, #4D46C6, #B8F1D2);
+background: linear-gradient(to right, #5A5BC2, #336fa3);
 border: 0;
 padding-left: 15px;
 padding-right: 15px;
 padding-bottom: 10px;
 padding-top: 10px;
-font-family: 'Ubuntu', sans-serif;
+font-family: sans-serif, 'Ubuntu';
 /* margin-left: 35%; */
-font-size: 13px;
+font-size: 10px;
 font-weight: bold;
 box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
@@ -395,7 +397,13 @@ box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 
 
 body{
+/* bg-gradient-to-r from-indigo-700 to-green-50 */
+      /* background-color: #EBF8F4 */
     background-color: #eee;
+    /* rgba(67, 56, 202, 0) */
+/*
+  background-color: #9C27B0; /* For browsers that do not support gradients */
+  /* background: linear-gradient(to right, #433BC2, #EEFBF5); */
 }
 
 option {

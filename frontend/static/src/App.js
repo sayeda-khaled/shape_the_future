@@ -133,10 +133,10 @@ class App extends Component{
 
   return(
     <>
-    <main className="flex-grow">
+    <div className="flex-grow">
       <Navbar loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} isStaff={this.state.isStaff} isVolunteer={this.state.isVolunteer}/>
-    </main>
-  <main className="max-w-screen-lg m-auto  main-page ">
+    </div>
+  <main className="max-w-screen-lg m-auto main-page">
       <Switch>
           <Route
             path='/login'

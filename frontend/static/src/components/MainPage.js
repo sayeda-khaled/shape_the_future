@@ -61,8 +61,8 @@ class MainPage extends Component {
 </div>
           <div className="sidedisplay-2 w-4/12">
             <h1 className="text-3xl font-bold" id="main-title" >Shape A Future</h1>
-            <p className="my-4 p-4 rounded bg-indigo-500 text-white shadow-2xl-dark transform hover:scale-105 test" id="main-paragraph-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-            <p className="my-4 p-4 rounded bg-indigo-500 text-white shadow-2xl-dark transform hover:scale-105" id="main-paragraph-2">Greenville County Schools (GCS), in an effort to ensure the safety of all of our students, has implemented additional security checks for school volunteers. All volunteers must submit an online application to the district and receive clearance from the district before volunteering at any school/center or chaperoning any school field trip. </p>
+            <p className="my-4 p-4 rounded bg-indigo-500 text-white shadow-2xl-dark transform hover:scale-105 test" id="main-paragraph-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+           Greenville County Schools (GCS), in an effort to ensure the safety of all of our students, has implemented additional security checks for school volunteers. All volunteers must submit an online application to the district and receive clearance from the district before volunteering at any school/center or chaperoning any school field trip. </p>
 
           </div>
 

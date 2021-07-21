@@ -79,12 +79,12 @@ class StudentListDetail extends Component {
     // console.log(students.active);
 
     return(
-        <li className="bg-purple-100 m-6 p-4 rounded-xl">
+        <li className="bg-purple-100 m-6 p-4 rounded-xl transform hover:scale-105 shadow-2xl-dark">
         <div>
 
                   <>
                   <label className="text-gray-500 block text-sm mr-2 ">First Name:</label>
-                    <input type="text" name="first_name" value={students.first_name} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                    <input type="text" name="first_name" value={students.first_name} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                   <label className="text-gray-500 block text-sm mr-2">Last Name:</label>
                     <input type="text" name="last_name"  value={students.last_name} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                   <label className="text-gray-500 block text-sm mr-2">School Student ID:</label>
@@ -99,8 +99,8 @@ class StudentListDetail extends Component {
 
 
             <>
-              <button className="btn-edit bg-blue flex-col ml-.5 mt-2 rounded transform hover:scale-105 " onClick={() => this.props.deleteStudent(students.id)}>Delete</button>
-              <button className="btn-edit bg-blue flex-col ml-2 mt-2 rounded transform hover:scale-105 " onClick={() => this.deactivateStudent(students.id)}>{students.active && 'Deactivate'} {!students.active && 'Activate'}</button>
+              <button className="btn-edit flex-col ml-.5 mt-2 rounded transform hover:scale-105 " onClick={() => this.props.deleteStudent(students.id)}>Delete</button>
+              <button className="btn-edit flex-col ml-2 mt-2 rounded transform hover:scale-105 " onClick={() => this.deactivateStudent(students.id)}>{students.active && 'Deactivate'} {!students.active && 'Activate'}</button>
             </>
 
 

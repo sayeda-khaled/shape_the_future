@@ -210,7 +210,7 @@ class StudentList extends Component {
 
               <ul>{students}</ul>
 
-                <section className="form-container-2 sticky mt-12" style={{top:10+"VH"}}>
+                <section className="form-container-2 sticky w-7-12" style={{top:10+"VH"}}>
                     <form class="form-1" onSubmit={this.addStudent}>
                     <div class="mb-3">
                       <label for="exampleFormControlTextarea1" class="form-label">First Name</label>
