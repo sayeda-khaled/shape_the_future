@@ -23,20 +23,20 @@ def debug_task(self):
     print(f'Request: {self.request!r}')
 
 
-app.conf.beat_schedule = {
-    'add-every-10-seconds': {
-        'task': 'events.tasks.send_notifications',
-        'schedule': 10.0,
-    },
-}
-
-app.conf.timezone = 'UTC'
-
-
 # app.conf.beat_schedule = {
-#     'add-every-day_of_week-at 9:00 a.m': {
+#     'add-every-10-seconds': {
 #         'task': 'events.tasks.send_notifications',
-#         'schedule': crontab(hour=9, minute=0, day_of_week='Mon-fri'),
+#         'schedule': 10.0,
 #     },
 # }
+#
 # app.conf.timezone = 'UTC'
+
+
+app.conf.beat_schedule = {
+    'add-every-day_of_week-at 9:00 a.m': {
+        'task': 'events.tasks.send_notifications',
+        'schedule': crontab(hour=9, minute=0, day_of_week='Mon-fri'),
+    },
+}
+app.conf.timezone = 'UTC'

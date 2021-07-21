@@ -61,11 +61,14 @@ class App extends Component{
 
       this.setState({isStaff: data.user.is_staff, isVolunteer: data.user.is_volunteer, loggedIn: true});
 
+
       if(data.user.is_staff) {
+        console.log('what')
         this.props.history.push('/events/admin/');
-      } if(data.user.is_volunteer) {
-        this.props.history.push('/events/volunteer/parents');
-      }  else {
+      } else if(data.user.is_volunteer) {
+        this.props.history.push('/events/volunteer/');
+      }
+      else {
          this.props.history.push('/parents');
 
       }
@@ -189,8 +192,6 @@ class App extends Component{
 
             )}
           />
-
-ParentPage
 
         <Route
           path='/parents'
