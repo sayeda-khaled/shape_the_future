@@ -124,7 +124,7 @@ class VolunteerPage extends Component {
               event.student
               ?
                 <>
-                  <Modal />
+                  <Modal saveMemo={this.saveMemo}/>
                 </>
 
               :

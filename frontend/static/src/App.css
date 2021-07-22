@@ -184,7 +184,7 @@ font-family: 'Ubuntu', sans-serif;
 width: 76%;
 color: rgb(38, 50, 56);
 font-weight: 560;
-font-size: 14px;
+font-size: 13px;
 letter-spacing: 1px;
 background: rgba(136, 126, 126, 0.04);
 padding: 10px;
@@ -376,7 +376,7 @@ text-decoration: none
   max-width: 65%;
   /* border-radius: 50px; */
   margin: auto;
-  padding-bottom: 16px;
+  padding-bottom: 12px;
 }
 
 .profile h2{
