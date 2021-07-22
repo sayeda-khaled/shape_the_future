@@ -156,7 +156,7 @@ class Profile extends Component {
       <>
 
         <section className="events-container m-auto md:flex bg-opacity-20">
-          <form onSubmit={this.handleSubmit} className="form-container-3 md:sticky" style={{top: 10 + "VH"}}>
+          <form onSubmit={this.handleSubmit} className="form-container-3" style={{top: 10 + "VH"}}>
 
             <div className="relative sticky profile-image">
               {image}
@@ -176,7 +176,7 @@ class Profile extends Component {
 
 
         <section className="events-container flex bg-opacity-20">
-          <form className="form-container-4 pl-24 sticky mt-12" style={{top: 10 + "VH"}}>
+          <form className="form-container-4 pl-24" style={{top: 10 + "VH"}}>
             <label className="text-gray-500 block text-xs ml-20 pb-1">First Name</label>
             <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleInput} className="form-control input-1-profile border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" disabled={!this.state.isEditing}  autoComplete="off"/>
             <label className="text-gray-500 block text-xs ml-20 pb-1">Last Name</label>

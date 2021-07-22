@@ -71,13 +71,13 @@ class ParentPage extends Component {
             </div>
             <div className="flex items-baselin">
               <label className="text-gray-500 block text-sm">Event Date:</label>
-              <time className="pb-3" rows="3">{event.date_of_event}</time>
+              <time className="pb-3" rows="3">{formattedDate}</time>
             </div>
             <div className="flex items-baselin">
               <label className="text-gray-500 block text-sm">From:</label>
-              <time className="pb-3" rows="3">{event.start_of_event}</time>
+              <time className="pb-3" rows="3">{startTime}  {startMeridiem}</time>
               <label className="text-gray-500 block text-sm">To:</label>
-              <time className="pb-3" rows="3">{event.end_of_event}</time>
+              <time className="pb-3" rows="3">{endTime} {endMeridiem}</time>
             </div>
             <div className="flex items-baselin">
               <label className="text-gray-500 block text-sm">Memo:</label>
