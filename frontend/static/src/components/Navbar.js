@@ -46,8 +46,8 @@ class Navigation extends Component {
     return(
       <div bg="light" expand="lg" className="">
         <div id="basic-navbar-nav" className="sm:flex-grow">
-          <nav className="sm:flex mb-6 mr-auto align-items-baseline bg-gradient-to-r from-indigo-900 to-indigo-50 ">
-            <NavLink to='/' className="rounded-md mr-4 px-4 py-2 font-extrabold hover:underline">HOME</NavLink>
+          <nav className="sm:flex mb-6 mr-auto align-items-baseline bg-gradient-to-r from-indigo-800 to-indigo-200 ">
+            <NavLink to='/' className="rounded-md mr-4 px-4 py-2 font-extrabold hover:underline">Shape A Future</NavLink>
              {
                this.props.loggedIn
                ?

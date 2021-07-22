@@ -12,10 +12,10 @@ class AdminPage extends Component {
     this.state={
       events: [],
       students: [],
-      grade: null,
-      date: null,
-      startTime: null,
-      endTime: null,
+      grade: '',
+      date: '',
+      startTime: '',
+      endTime: '',
     }
     this.addEvent = this.addEvent.bind(this);
     this.editEvent = this.editEvent.bind(this);
@@ -65,7 +65,13 @@ class AdminPage extends Component {
         .then(data => {
           const events = [...this.state.events, data];
           // events.push(data);
-          this.setState({events, grade: '', date: null, startTime: null, endTime: null});
+          this.setState({
+            events,
+            grade: '',
+            date: '',
+            startTime: '',
+            endTime: '',
+          });
         });
     }
 
@@ -169,22 +175,22 @@ class AdminPage extends Component {
 
                       <div className="mb-3">
                         <label className="form-label block">Event Date</label>
-                        <input type="date"  min="2021-7-07" max="2021-12-31" name="date" id="start" autoComplete="off"  value={this.state.date_of_event} onChange={this.handleInput} rows="3" required className="input-1 border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                        <input type="date"  min="2021-7-07" max="2021-12-31" name="date" id="start" autoComplete="off"  value={this.state.date} onChange={this.handleInput} rows="3" required className="input-1 border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                       </div>
 
                       <div className="mb-3">
                         <label  className="form-label block">Start Time</label>
-                        <input type="time" name="startTime"  min="08:00" max="15:00" required autoComplete="off"  value={this.state.start_of_event} onChange={this.handleInput} rows="3" className="input-1 border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" />
+                        <input type="time" name="startTime"  min="08:00" max="15:00" required autoComplete="off"  value={this.state.startTime} onChange={this.handleInput} rows="3" className="input-1 border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" />
                       </div>
 
 
                       <div className="mb-3">
                         <label  className="form-label block">End Time</label>
-                        <input type="time" name="endTime"  min="08:00" max="15:00" required autoComplete="off"  value={this.state.end_of_event} onChange={this.handleInput} rows="3"  className="input-1 border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                        <input type="time" name="endTime"  min="08:00" max="15:00" required autoComplete="off"  value={this.state.endTime} onChange={this.handleInput} rows="3"  className="input-1 border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                       </div>
 
 
-                  <button type="button" onClick={(e) => this.addEvent(e)} className="btn-submit-events transform hover:scale-105 font-extrabold">Submit</button>
+                  <button type="button" onClick={this.addEvent} className="btn-submit-events transform hover:scale-105 font-extrabold">Submit</button>
 
                 </form>
               </section>

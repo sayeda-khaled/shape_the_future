@@ -17,6 +17,7 @@ class Profile extends Component {
       last_name: '',
       email: '',
       phone_number: null,
+      hasProfile: false,
     }
 
     this.handleInput = this.handleInput.bind(this);
@@ -35,7 +36,12 @@ class Profile extends Component {
     })
     .then(data => {
       const [profile, user] = data;
-      this.setState({...profile, ...user  });
+
+      if(!profile.detail) {
+        this.setState({...profile, ...user, hasProfile: true  });
+      } else {
+        this.setState({...user});
+      }
     });
   }
 
@@ -61,21 +67,23 @@ class Profile extends Component {
 
     const hasProfile = !this.state.preview;
     let formData = new FormData();
-    formData.append('avatar', this.state.avatar);
+    if (this.state.avatar instanceof File) {
+      formData.append('avatar', this.state.avatar);
+    }
     formData.append('display_name', this.state.display_name);
 
     const options = {
-      method: hasProfile ? 'PATCH' : 'POST',
+      method: this.state.hasProfile ? 'PATCH' : 'POST',
       headers: {
         'X-CSRFToken': Cookies.get('csrftoken')
       },
       body: formData
     }
 
-    const url = hasProfile ? `/api/v1/users/profiles/current_user/` :`/api/v1/users/profiles/`
+    const url = this.state.hasProfile ? `/api/v1/users/profiles/current_user/` :`/api/v1/users/profiles/`
 
     const response = await fetch(url, options);
-    // this.setState({response})
+    this.setState({isEditingProfile: false, hasProfile: true});
     // console.log(response);
   }
 
@@ -101,7 +109,7 @@ class Profile extends Component {
         throw new Error('Error');
       }
       return response.json()
-      this.setState({isEditing: false});
+      // this.setState({isEditing: false});
     })
   }
 
@@ -130,6 +138,7 @@ class Profile extends Component {
       return response.json();
     })
     .then(data => {
+      this.setState({isEditing: false})
       console.log('User was updated!', data);
     });
   }

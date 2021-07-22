@@ -3,6 +3,8 @@ import {Component} from 'react';
 import Cookies from 'js-cookie';
 import { format } from 'date-fns';
 
+import Modal from './Modal';
+
 
 class VolunteerPage extends Component {
 
@@ -122,8 +124,7 @@ class VolunteerPage extends Component {
               event.student
               ?
                 <>
-                  <input type="text" name="memo" autoComplete="off" value={event.memo} onChange={(e) => this.handleInput(e, event)} className="form-control"/>
-                  <button  type='button' onClick={(e) => this.saveMemo(e, event)} className="btn-signup bg-blue pb-2 transform hover:scale-105">Save</button>
+                  <Modal />
                 </>
 
               :
@@ -143,3 +144,6 @@ class VolunteerPage extends Component {
 }
 
 export default VolunteerPage;
+
+// <input type="text" name="memo" autoComplete="off" value={event.memo} onChange={(e) => this.handleInput(e, event)} className="form-control"/>
+// <button  type='button' onClick={(e) => this.saveMemo(e, event)} className="btn-signup bg-blue pb-2 transform hover:scale-105">Save</button>

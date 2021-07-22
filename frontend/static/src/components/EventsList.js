@@ -3,6 +3,8 @@ import { Component } from 'react';
 import Cookies from 'js-cookie';
 import { format, parseISO, formatISO } from 'date-fns';
 
+import Modal from './Modal';
+
 
 class EventsList extends Component {
 
@@ -82,10 +84,11 @@ class EventsList extends Component {
       render() {
 
         const events = this.state.events.map((event, index)=> {
-          const date = new Date(event.date_of_event).toISOString()
-          let formattedDate = format(parseISO(date), 'MMMM dd, yyyy');
+          const dt = new Date(event.date_of_event);
+          const dtDateOnly = new Date(dt.valueOf() + dt.getTimezoneOffset() * 60 * 1000);
+          let formattedDate = format(dtDateOnly, 'MMMM dd, yyyy')
 
-          let startTime = event.start_of_event;
+          let startTime = event.start_of_event.slice(0,-3);
           let startHour = parseInt(startTime.slice(0,2));
 
           let startMeridiem = 'a.m.';
@@ -98,7 +101,7 @@ class EventsList extends Component {
             startTime = startHour + startTime.slice(2);
           }
 
-          let endTime = event.end_of_event;
+          let endTime = event.end_of_event.slice(0, -3);
           let endHour = parseInt(endTime.slice(0,2));
 
           if(endHour > 12) {
@@ -115,15 +118,15 @@ class EventsList extends Component {
 
 
 
-          // function getTimeFormat(time) {
-          //   let ta = time.trim().split(" ");
-          //   let slots = ta[0].split(":");
-          //   while(slots.length<2) slots.push(""); // make sure we have h:m:s slots
-          //   return slots.map( n => n.padStart(2, '0')).join(":") + " " + (ta.length>1 ? ta[1].trim().toUpperCase() : "");
-          //   }
-          //
-          //   let test = getTimeFormat(event.start_of_event);
-          //   console.log('test', test)
+          function getTimeFormat(time) {
+            let ta = time.trim().split(" ");
+            let slots = ta[0].split(":");
+            while(slots.length<2) slots.push(""); // make sure we have h:m:s slots
+            return slots.map( n => n.padStart(2, '0')).join(":") + " " + (ta.length>1 ? ta[1].trim().toUpperCase() : "");
+            }
+
+            let test = getTimeFormat(event.start_of_event);
+            console.log('test', test)
 
           return (
             <div key = {index}>
