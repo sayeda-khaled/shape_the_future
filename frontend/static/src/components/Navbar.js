@@ -7,15 +7,15 @@ class Navigation extends Component {
   getAdminNavBar = () => {
     return (
       <>
-        <NavLink to='/events/admin/' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2 ">Events</NavLink>
-        <NavLink to='/students' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">Students</NavLink>
+        <NavLink to='/events/admin/' className="font-extrabold rounded-md sm:mr-4 px-4 py-2 hover:underline">Events</NavLink>
+        <NavLink to='/students' className="font-extrabold rounded-md sm:mr-4 px-4 py-2 hover:underline">Students</NavLink>
       </>
     )
   }
 
   getParentNavBar = () => {
     return (
-      <NavLink to='/parents' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">My Kid Sessions</NavLink>
+      <NavLink to='/parents' className="font-extrabold rounded-md sm:mr-4 px-4 py-2 hover:underline">My Kid Sessions</NavLink>
 
     )
   }
@@ -23,8 +23,8 @@ class Navigation extends Component {
   getVolunteerNavBar = () => {
     return (
       <>
-        <NavLink to='/events/volunteer/' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">Available Events</NavLink>
-        <NavLink to='/events/my-events/' className="hover:bg-purple-200 font-extrabold rounded-md sm:mr-4 px-4 py-2">My Events</NavLink>
+        <NavLink to='/events/volunteer/' className="font-extrabold rounded-md sm:mr-4 px-4 py-2 hover:underline">Available Events</NavLink>
+        <NavLink to='/events/my-events/' className="font-extrabold rounded-md sm:mr-4 px-4 py-2 hover:underline">My Events</NavLink>
       </>
     )
 
@@ -46,21 +46,21 @@ class Navigation extends Component {
     return(
       <div bg="light" expand="lg" className="">
         <div id="basic-navbar-nav" className="sm:flex-grow">
-          <nav className="sm:flex mb-6 mr-auto align-items-baseline bg-gradient-to-r from-indigo-700 to-green-50 ">
-            <NavLink to='/' className="hover:bg-purple-200 rounded-md mr-4 px-4 py-2 font-extrabold">HOME</NavLink>
+          <nav className="sm:flex mb-6 mr-auto align-items-baseline bg-gradient-to-r from-indigo-900 to-indigo-50 ">
+            <NavLink to='/' className="rounded-md mr-4 px-4 py-2 font-extrabold hover:underline">HOME</NavLink>
              {
                this.props.loggedIn
                ?
                  <>
                    { userNavBar }
-                   <NavLink to='/profile' className="hover:bg-purple-200 font-extrabold rounded-md sm:px-4 py-2">Profile</NavLink>
-                   <button id="btn-logout" className="hover:bg-purple-200 font-extrabold mr-4 px-4 py-2 rounded-md" onClick={() => this.props.handleLogout()}>Logout</button>
+                   <NavLink to='/profile' className="font-extrabold rounded-md sm:px-4 py-2 hover:underline">Profile</NavLink>
+                   <button id="btn-logout" className="font-extrabold mr-4 px-4 py-2 rounded-md hover:underline" onClick={() => this.props.handleLogout()}>Logout</button>
                  </>
 
                :
                  <>
-                   <NavLink to='/login' className="hover:bg-purple-200 font-extrabold sm:mr-4 px-4 py-2 rounded-md">Login</NavLink>
-                   <NavLink to='/register' className="hover:bg-purple-200 font-extrabold sm:mr-4 px-4 py-2 rounded-md">Register</NavLink>
+                   <NavLink to='/login' className="font-extrabold sm:mr-4 px-4 py-2 rounded-md hover:underline">Login</NavLink>
+                   <NavLink to='/register' className="font-extrabold sm:mr-4 px-4 py-2 rounded-md hover:underline">Register</NavLink>
                  </>
              }
            </nav>
