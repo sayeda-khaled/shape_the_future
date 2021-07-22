@@ -155,10 +155,10 @@ class Profile extends Component {
     return (
       <>
 
-        <section className="events-container md:flex bg-opacity-20">
-          <form onSubmit={this.handleSubmit} className="form-container-3 md:sticky mt-12 " style={{top: 10 + "VH"}}>
+        <section className="events-container m-auto md:flex bg-opacity-20">
+          <form onSubmit={this.handleSubmit} className="form-container-3 md:sticky" style={{top: 10 + "VH"}}>
 
-            <div className="relative sticky profile-image ">
+            <div className="relative sticky profile-image">
               {image}
               <input type="file" name="avatar" onChange={this.handleImage} className="absolute inset-0 opacity-0 max-w-xs"/>
             </div>
