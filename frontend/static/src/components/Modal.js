@@ -8,7 +8,7 @@ class Modal extends Component {
     super(props);
     this.state = {
       showModal: false,
-      memo: '',
+      memo: this.props.event.memo,
     }
 
     this.saveMemo = this.saveMemo.bind(this);
@@ -19,26 +19,28 @@ class Modal extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  saveMemo(e) {
-  const memo=this.props.memo;
-  this.props.saveMemo(memo);
-  // fire method passed down from parent to same the memo
-    this.setState({
-      showModal: false,
-      memo: '',
-    });
+  saveMemo() {
+    const event = this.props.event;
+    event.memo = this.state.memo;
+    this.props.saveMemo(event);
+      this.setState({
+        showModal: false,
+        memo: '',
+      });
   }
 
 
   render() {
+
+    const hasMemo = !!this.props.event.memo;
     return (
       <>
         <button
-          className="bg-indigo-500 rounded-lg text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          className="bg-indigo-500 rounded-full text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
           onClick={() => this.setState({showModal: true})}
         >
-          Add Comment
+          {hasMemo ? 'View Comment' : 'Add Comment'}
         </button>
         {this.state.showModal ? (
           <>
@@ -46,31 +48,23 @@ class Modal extends Component {
               className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
             >
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                {/*content*/}
-                    <button
-                      className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                      onClick={() => this.setState({showModal: false})}
-                    >
-                      <span className=" text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                        ×
-                      </span>
-                    </button>
+
                   </div>
                   {/*body*/}
                   <div className="relative p-6 flex-auto">
-                  <textarea id="story" name="memo" rows="3" cols="30" value={this.state.memo} onChange={this.handleInput}/>
+                  <textarea id="story" name="memo" rows="3" cols="30" value={this.state.memo} onChange={this.handleInput} disabled={hasMemo}/>
                   </div>
                   {/*footer*/}
-                  <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  <div className="flex items-center justify-end pb-14 border-t border-solid border-blueGray-200 rounded-b">
                     <button
-                      className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="text-red-500 background-transparent font-bold uppercase px-8 py-4 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={() => this.setState({showModal: false})}
                     >
                       Close
                     </button>
                     <button
-                      className="bg-green-700 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="bg-indigo-700 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={this.saveMemo}
                     >
@@ -79,7 +73,7 @@ class Modal extends Component {
                   </div>
                 </div>
 
-            <div className="opacity-5 fixed inset-0 z-40 bg-black"></div>
+            <div className="opacity-5 fixed inset-0 z-40 bg-indigo-200"></div>
           </>
         ) : null}
       </>

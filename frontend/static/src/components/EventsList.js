@@ -115,19 +115,6 @@ class EventsList extends Component {
           // console.log('hours', hours)
 
 
-
-
-
-          function getTimeFormat(time) {
-            let ta = time.trim().split(" ");
-            let slots = ta[0].split(":");
-            while(slots.length<2) slots.push(""); // make sure we have h:m:s slots
-            return slots.map( n => n.padStart(2, '0')).join(":") + " " + (ta.length>1 ? ta[1].trim().toUpperCase() : "");
-            }
-
-            let test = getTimeFormat(event.start_of_event);
-            console.log('test', test)
-
           return (
             <div key = {index}>
 
