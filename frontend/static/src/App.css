@@ -116,6 +116,14 @@ font-family: sans-serif, 'Ubuntu';
 margin-left: 2px;
 }
 
+.student-grade {
+  /* width: 76%; */
+  color: rgb(38, 50, 56);
+  font-weight: 5500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: sans-serif, 'Ubuntu';
+}
 
 
 .input-2 {

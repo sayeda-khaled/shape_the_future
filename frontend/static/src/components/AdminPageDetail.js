@@ -45,7 +45,7 @@ class AdminPageDetail extends Component {
 
       <div className="flex items-center">
         <label className="text-gray-500 block text-sm mr-2">Grade:</label>
-        <input type="number" min="1" max="5" name="grade" value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing} className="rounded border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+        <input type="number" min="1" max="5" name="grade" value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing} className="rounded student-grade border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
       </div>
       <div className="flex items-baseline">
         <label className="text-gray-500 block text-sm mt-4">Date:</label>
@@ -66,7 +66,7 @@ class AdminPageDetail extends Component {
         <button className="btn-edit-event bg-blue rounded-full ml-2 py-3 px-6 transform hover:scale-105 " onClick={(e) => this.props.deleteEvent(e, event.id)}>Delete Event</button>
       </div>
       <div className="flex items-baseline mb-2">
-        <label className="text-gray-500 block text-sm mr-4 py-2">Volunteer:</label>
+        <label className="text-gray-500 block text-sm mr-2 py-2">Volunteer:</label>
         <div className="font-sans text-m">{event.volunteer_name}</div>
       </div>
 
