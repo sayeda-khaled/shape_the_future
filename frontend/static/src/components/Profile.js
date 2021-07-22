@@ -160,7 +160,7 @@ class Profile extends Component {
 
             <div className="relative sticky profile-image">
               {image}
-              <input type="file" name="avatar" onChange={this.handleImage} className="absolute inset-0 opacity-0 max-w-xs"/>
+              <input type="file" name="avatar" onChange={this.handleImage} className="absolute inset-0 opacity-0"/>
             </div>
             <div className=" ml-20">
             <label className="text-gray-500 block text-xs	ml-14 pb-1">User Name</label>
@@ -169,7 +169,7 @@ class Profile extends Component {
             {
             this.state.isEditingProfile
               ?  <button type='button' className="btn-edit-profile rounded ml-36 transform hover:scale-105" onClick={this.saveProfileInfo}>Save</button>
-              : <button type='button' className="btn-edit-profile rounded ml-36 transform hover:scale-105"  onClick={(e) => this.setState({isEditingProfile: true})}>Edit</button>
+              : <button type='button' className="btn-edit-profile rounded ml-32 transform hover:scale-105"  onClick={(e) => this.setState({isEditingProfile: true})}>Edit</button>
             }
 
           </form>

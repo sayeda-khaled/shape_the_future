@@ -118,8 +118,8 @@ class EventsList extends Component {
           return (
             <div key = {index}>
 
-              <section >
-                  <form onSubmit={(e) => this.signUp(e, event)} className="form-1 bg-purple-100 m-6 p-4 rounded-3xl m-auto block max-w-md mt-20 transform hover:scale-105 shadow-2xl-dark">
+              <section className="pt-8" >
+                  <form onSubmit={(e) => this.signUp(e, event)} className="form-1 bg-purple-100 p-4 rounded-3xl m-auto block max-w-md mb-6 transform hover:scale-105 shadow-2xl-dark">
                     <div className="mb-3">
                         <label for="exampleFormControlInput1" className="form-label text-gray-500 block text-sm">Grade:</label>
                         <p className="form-control pb-3" id="exampleFormControlInput1" name="grade">{event.grade} </p>
