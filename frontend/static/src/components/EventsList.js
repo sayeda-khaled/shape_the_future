@@ -131,7 +131,7 @@ class EventsList extends Component {
                         <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">From:</label>
                         <time className="form-control pb-3" id="exampleFormControlInput1">{startTime}  {startMeridiem}</time>
 
-                        <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">To::</label>
+                        <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">To:</label>
                         <time className="form-control pb-3" id="exampleFormControlInput1">{endTime} {endMeridiem}</time>
 
 

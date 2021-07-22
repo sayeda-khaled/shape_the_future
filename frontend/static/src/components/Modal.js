@@ -45,7 +45,7 @@ class Modal extends Component {
         {this.state.showModal ? (
           <>
             <div
-              className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+              className=" bg-indigo-400 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
             >
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
 
@@ -56,6 +56,24 @@ class Modal extends Component {
                   </div>
                   {/*footer*/}
                   <div className="flex items-center justify-end pb-14 border-t border-solid border-blueGray-200 rounded-b">
+
+                    {hasMemo
+
+                    ?(
+                      <>
+                    <button
+                      className="text-red-500 background-transparent font-bold uppercase px-8 py-4 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={() => this.setState({showModal: false})}
+                    >
+                      Close
+                    </button>
+                    </>
+                  )
+
+
+                  : (
+                    <>
                     <button
                       className="text-red-500 background-transparent font-bold uppercase px-8 py-4 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
@@ -70,10 +88,13 @@ class Modal extends Component {
                     >
                       Submit
                     </button>
+                    </>
+                  )
+                }
                   </div>
                 </div>
 
-            <div className="opacity-5 fixed inset-0 z-40 bg-indigo-200"></div>
+            <div className="opacity-5 fixed inset-0 z-40 bg-indigo-400"></div>
           </>
         ) : null}
       </>
