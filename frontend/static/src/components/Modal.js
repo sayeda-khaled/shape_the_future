@@ -45,17 +45,17 @@ class Modal extends Component {
         {this.state.showModal ? (
           <>
             <div
-              className=" bg-indigo-400 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+              className=" bg-gray-100 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
             >
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
 
                   </div>
                   {/*body*/}
-                  <div className="relative p-6 flex-auto">
-                  <textarea id="story" name="memo" rows="3" cols="30" value={this.state.memo} onChange={this.handleInput} disabled={hasMemo}/>
+                  <div className="relative flex-auto">
+                  <textarea id="story" name="memo" className="pt-8 pb-24" rows="4" cols="35" value={this.state.memo} onChange={this.handleInput} disabled={hasMemo}/>
                   </div>
                   {/*footer*/}
-                  <div className="flex items-center justify-end pb-14 border-t border-solid border-blueGray-200 rounded-b">
+                  <div className="flex items-center pb-3 border-t rounded-b">
 
                     {hasMemo
 
