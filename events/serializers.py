@@ -28,7 +28,7 @@ class EventSerializer(serializers.ModelSerializer):
 
 class StaffEventSerializer(serializers.ModelSerializer):
     volunteer_name = serializers.ReadOnlyField(source="volunteer.username")
-    primary_contact = serializers.ReadOnlyField(source="primary_contact.username")
+    primary_contact = serializers.ReadOnlyField(source="student.primary_contact.last_name")
         #
         # primary_contact = serializers.SlugRelatedField(
         #     many=True,

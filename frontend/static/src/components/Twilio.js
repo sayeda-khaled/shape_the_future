@@ -53,7 +53,7 @@ class Twilio extends Component {
 
 
                         <button
-                          className="text-red-500 background-transparent font-bold uppercase px-2 py-1 text-sm outline-none focus:outline-none ml-20 mb-1 pt-2 ease-linear transition-all duration-150"
+                          className="text-red-500 background-transparent font-bold uppercase px-2 py-1 text-base outline-none focus:outline-none ml-20 mb-1 pt-2 ease-linear transition-all duration-150"
                           type="button"
                           onClick={() => this.setState({showModal: false})}
                         >

@@ -67,7 +67,7 @@ class StudentListDetail extends Component {
   render() {
     const students = this.props.student;
     const parents = this.props.parent;
-    // console.log(students.active);
+    console.log(students);
 
     return(
         <li className="bg-purple-100 m-6 p-4 rounded-xl transform hover:scale-105 shadow-2xl-dark">
@@ -81,7 +81,7 @@ class StudentListDetail extends Component {
                   <label className="text-gray-500 block text-sm mr-2">School Student ID:</label>
                     <input type="number" name="student_id" value={this.state.student_id} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                     <label className="text-gray-500 block text-sm mr-2">Primary Contact:</label>
-                    <input type="text" name="primary_contact" value={this.state.primary_contact} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
+                    <input type="text" name="primary_contact" value={`${this.state.contact_name}, ${this.state.contact_name_firstname}`} onChange={this.handleInput} disabled={!this.state.isEditing} className="form-control border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                 <div className="flex items-center" >
                   <label className="text-gray-500 block text-sm mr-2">Grade:</label>
                     <input type="number" min="1" max="5" name="grade" value={this.state.grade} onChange={this.handleInput} disabled={!this.state.isEditing} className="border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
