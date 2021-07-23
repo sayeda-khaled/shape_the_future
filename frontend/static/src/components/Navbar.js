@@ -61,6 +61,7 @@ class Navigation extends Component {
                  <>
                    <NavLink to='/login' className="font-extrabold sm:mr-4 px-4 py-2 rounded-md hover:underline">Login</NavLink>
                    <NavLink to='/register' className="font-extrabold sm:mr-4 px-4 py-2 rounded-md hover:underline">Register</NavLink>
+
                  </>
              }
            </nav>

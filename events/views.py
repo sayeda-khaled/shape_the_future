@@ -56,10 +56,15 @@ class VolunteerEventDetailAPIView(generics.RetrieveUpdateAPIView):
 
 
 class StaffEventListAPIView(generics.ListCreateAPIView):
-    queryset = Event.objects.all().order_by('date_of_event')
+    # queryset = Event.objects.all().order_by('date_of_event')
     # Event.objects.filter(date_of_event=datetime.today())
     serializer_class = StaffEventSerializer
     permission_classes = (IsAdminUser,)
+
+
+    def get_queryset(self):
+        user = self.request.user.is_staff
+        return Event.objects.exclude(date_of_event__lt=datetime.today()).order_by('date_of_event')
 
 
 class StaffEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -67,11 +72,7 @@ class StaffEventDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StaffEventSerializer
     permission_classes = (IsAdminUser,)
 
-    # def perform_create(self, serializer):
-    #     serializer.save(is_staff=self.request.user)
-    #
-    # def perform_update(self, serializer):
-    #     instance = serializer.save(is_staff=self.request.user)
+
 
 
 class ParentListAPIView(generics.ListAPIView):
