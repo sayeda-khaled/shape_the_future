@@ -18,8 +18,8 @@ background-color: #FFFFFF;
 width: 400px;
 height: 500px;
 margin: 7em auto;
-padding-top: 4em;
-padding-bottom: 2em;
+padding-top: 3em;
+padding-bottom: 3em;
 padding-left: 2em;
 padding-right: 2em;
 border-radius: 1.5em;
@@ -236,7 +236,7 @@ border: 2px solid rgba(0, 0, 0, 0.18) !important;
 cursor: pointer;
 border-radius: 5em;
 color: white;
-background: linear-gradient(to right, #5D5CB5, #5E5DB7);
+background: linear-gradient(to right, #6365E7, #6365E7);
 border: 0;
 padding-left: 40px;
 padding-right: 40px;
@@ -249,11 +249,20 @@ font-weight: bold;
 box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
 
+#twilio-about{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 13px;
+}
+
+p span {
+  display: block;
+}
+
 .btn-submit-register {
 cursor: pointer;
 border-radius: 5em;
 color: white;
-background: linear-gradient(to right,  #5E5DB7, #5E5DB7);
+background: linear-gradient(to right, #6365E7, #6365E7);
 border: 0;
 padding-left: 40px;
 padding-right: 40px;
@@ -461,4 +470,8 @@ body{
 
 option {
     text-decoration: none;
+}
+
+.twilio-image{
+  max-width: 15rem;
 }
