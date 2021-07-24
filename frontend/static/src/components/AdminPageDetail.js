@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import { format } from 'date-fns';
+import {format} from 'date-fns';
 
 class AdminPageDetail extends Component {
 
@@ -19,15 +19,13 @@ class AdminPageDetail extends Component {
 
   handleInput(event) {
     this.setState({
-      [event.target.name]: event.target.value
-    });
+      [event.target.name]: event.target.value});
   }
 
   saveEvent() {
     const event = this.props.event;
     event.grade = this.state.grade;
     event.date = this.state.date;
-    // event.volunteer = this.state.volunteer;
     this.props.editEvent(event);
     this.setState({isEditing: false});
   }

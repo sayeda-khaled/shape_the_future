@@ -32,29 +32,16 @@ class VolunteerPage extends Component {
   }
 
 
-  // handleMemoInput(e, memoEvent) {
-  //   const events = [...this.state.events]
-  //   const memoEventId = events.indexOf(memoEvent)
-  //   events[memoEventId].memo = e.target.value
-  //   this.setState(events)
-  // }
-
   handleInput(e, event) {
     const events = [...this.state.events];
     const index = events.indexOf(event);
     events[index].memo = e.target.value;
-    // memo.push(event);
     this.setState({events});
     this.setState({ memo: '' });
-    // this.setState({
-    //   [event.target.name]: event.target.value
-    // });
   }
 
   saveMemo(event) {
-    // console.log(event)
     const id = event.id;
-
 
     const options = {
       method: 'PATCH',
@@ -90,7 +77,6 @@ class VolunteerPage extends Component {
         throw new Error('Network response was not ok');
       }
       const events = [...this.state.events];
-      // console.log(events);
       const index = events.findIndex(event => event.id === id);
       events[index].volunteer = null;
       this.setState({events});
@@ -175,6 +161,3 @@ class VolunteerPage extends Component {
 }
 
 export default VolunteerPage;
-
-// <input type="text" name="memo" autoComplete="off" value={event.memo} onChange={(e) => this.handleInput(e, event)} className="form-control"/>
-// <button  type='button' onClick={(e) => this.saveMemo(e, event)} className="btn-signup bg-blue pb-2 transform hover:scale-105">Save</button>

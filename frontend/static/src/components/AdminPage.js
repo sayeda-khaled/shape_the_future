@@ -47,11 +47,11 @@ class AdminPage extends Component {
       e.preventDefault();
       const event = {
         grade: this.state.grade,
-        date_of_event: this.state.date, //This is the key at the backend..
+        date_of_event: this.state.date,
         start_of_event: this.state.startTime,
         end_of_event: this.state.endTime,
       };
-      // console.log(event);
+
       const options = {
         method: 'POST',
         headers: {
@@ -98,7 +98,6 @@ class AdminPage extends Component {
           events[index].startTime = event.startTime;
           events[index].endTime = event.endTime;
           this.setState({ events });
-          // this.getEvents();
         });
       }
 
@@ -127,9 +126,6 @@ class AdminPage extends Component {
         }
 
       assignStudent(eventID, studentID) {
-
-      // make a UPDATE request to the backend that saves the student to the event
-
         const options = {
           method: 'PATCH',
           headers: {
@@ -154,10 +150,6 @@ class AdminPage extends Component {
       const events = this.state.events.map(event => (
         <AdminPageDetail key={event.id} event={event} deleteEvent={this.deleteEvent} editEvent={this.editEvent} students={this.state.students} assignStudent={this.assignStudent}/>
       ));
-      // const students = this.state.students.map(student => (
-      //   <AdminPageDetail className="students" key={student.id} assignStudent={this.assignStudent} student={student}/>
-      //
-      // ));
 
 
       return (
@@ -189,18 +181,14 @@ class AdminPage extends Component {
                         <input type="time" name="endTime"  min="08:00" max="15:00" required autoComplete="off"  value={this.state.endTime} onChange={this.handleInput} rows="3"  className="input-1 border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"/>
                       </div>
 
-
                   <button type="button" onClick={this.addEvent} className="btn-submit-events transform hover:scale-105 font-extrabold">Submit</button>
 
                 </form>
               </section>
               </section>
-
-
         </>
         )
       }
-
     }
 
     export default AdminPage;

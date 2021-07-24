@@ -109,7 +109,6 @@ class Profile extends Component {
         throw new Error('Error');
       }
       return response.json()
-      // this.setState({isEditing: false});
     })
   }
 

@@ -17,7 +17,6 @@ class EventsList extends Component {
       }
     this.handleInput = this.handleInput.bind(this);
     this.signUp = this.signUp.bind(this);
-    // this.submitEvent = this.submitEvent.bind(this);
     }
 
     componentDidMount(){
@@ -66,21 +65,6 @@ class EventsList extends Component {
 
       }
 
-      //
-      // const date = new Date("2021-07-21").toISOString()
-      // let formattedDate = format(parseISO(date), 'MMMM dd, yyyy');
-
-      //
-      // function formattedTime(seconds) {
-      //   var helperDate = dateFns.addSeconds(new Date(0), seconds);
-      //   return dateFns.format(helperDate, 'mm:ss');
-      // }
-
-      // let formattedTime = getTimeFormat(event.start_of_event);
-
-    // let startTime = event.start_of_event;
-    // if(parseInt(startTime.slice(0,2)) > 12)
-
       render() {
 
         const events = this.state.events.map((event, index)=> {
@@ -110,10 +94,6 @@ class EventsList extends Component {
             endHour = ('0' + endHour.toString()).slice(-2);
             endTime = endHour + endTime.slice(2);
           }
-
-          // startTime.splice(0, 2, hours);
-          // console.log('hours', hours)
-
 
           return (
             <div key = {index}>

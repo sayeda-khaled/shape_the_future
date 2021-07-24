@@ -29,8 +29,7 @@ class Navigation extends Component {
     )
 
   }
-  // bg-gradient-to-r from-indigo-700 to-green-50
-  // bg-indigo-700
+
   render() {
     const { isStaff, isVolunteer } = this.props;
     let userNavBar;
