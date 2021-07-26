@@ -18,11 +18,11 @@ class Twilio extends Component {
         return (
           <>
             <button id="twilio-about"
-              className="bg-indigo-600 ml-14 rounded-full text-white active:bg-pink-600 pr-2 pl-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+              className="bg-purple-200 text-gray-600 ml-10 rounded-full text-white active:bg-pink-600 pr-2 pl-2 mb-2 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
               type="button"
               onClick={() => this.setState({showModal: true})}
             >
-               Find More About SMS Reminders
+               Find Information About SMS Reminders
             </button>
             {this.state.showModal
               ? (
