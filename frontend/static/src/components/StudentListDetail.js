@@ -20,18 +20,20 @@ class StudentListDetail extends Component {
   }
 
   saveStudent() {
-    const student = this.state;
+    const student = {...this.state};
     delete student.isEditing;
     this.props.editStudent(student);
     this.setState({isEditing: false});
   }
 
   deactivateStudent() {
-    const student = this.props.student;
-    this.props.deactivateStudent(student);
-    this.setState(prevState => ({
-      isActive: !prevState.isActive
-    }));
+    this.setState((prevState) => ({
+      active: !prevState.active
+    }), () => {
+      const student = { ...this.state };
+      delete student.isEditing;
+      this.props.deactivateStudent(student);
+    });
   }
 
   assignParent(student) {
@@ -63,7 +65,7 @@ class StudentListDetail extends Component {
       </>
       <>
         <button className="btn-edit flex-col ml-.5 mt-2 rounded transform hover:scale-105 " onClick={() => this.props.deleteStudent(students.id)}>Delete</button>
-        <button className="btn-edit flex-col ml-2 mt-2 rounded transform hover:scale-105 " onClick={() => this.deactivateStudent(students.id)}>{students.active && 'Deactivate'} {!students.active && 'Activate'}</button>
+        <button className="btn-edit flex-col ml-2 mt-2 rounded transform hover:scale-105 " onClick={() => this.deactivateStudent(students.id)}>{students.active ? 'Deactivate' : 'Activate'}</button>
       </>
 
       {

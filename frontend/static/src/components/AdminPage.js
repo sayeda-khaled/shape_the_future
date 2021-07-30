@@ -90,13 +90,12 @@ class AdminPage extends Component {
           if(!response.ok) {
             throw new Error('Network response was not ok');
           }
+          return response.json();
+        })
+        .then(data => {
           const events = [...this.state.events];
-          console.log(events);
-          const index = events.findIndex(event => event.id === event.id);
-          events[index].grade = event.grade;
-          events[index].date = event.date;
-          events[index].startTime = event.startTime;
-          events[index].endTime = event.endTime;
+          const index = events.findIndex(event => event.id === data.id);
+          events[index] = data;
           this.setState({ events });
         });
       }
@@ -155,8 +154,8 @@ class AdminPage extends Component {
       return (
         <>
 
-          <section className="events-container md:flex bg-opacity-20">
-            <ul className="w-5/12 ml-12">{events}</ul>
+          <main className="events-container md:flex bg-opacity-20">
+                <ul className="w-5/12 ml-12">{events}</ul>
 
                 <section className="form-container-1 sticky" style={{top:3+"VH"}}>
                     <form className="form-1" onSubmit={this.addEvent}>
@@ -185,7 +184,7 @@ class AdminPage extends Component {
 
                 </form>
               </section>
-              </section>
+            </main>
         </>
         )
       }

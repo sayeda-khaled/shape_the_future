@@ -100,8 +100,6 @@ class StudentList extends Component {
   }
 
   deactivateStudent(student) {
-    const id = student.id;
-
     const options = {
       method: 'PATCH',
       headers: {
@@ -110,14 +108,13 @@ class StudentList extends Component {
       },
       body: JSON.stringify(student)
     }
-    fetch(`/api/v1/students/${id}/`, options).then(response => response.json()).then(data => {
-
+    fetch(`/api/v1/students/${student.id}/`, options)
+    .then(response => response.json())
+    .then(data => {
       const students = [...this.state.students];
-      console.log(students);
-      const index = students.findIndex(student => student.id === id);
-      students[index].active = false;
-      this.setState({students});
-
+      const index = students.findIndex(student => student.id === data.id);
+      students[index] = data;
+      this.setState({ students });
     });
   }
 

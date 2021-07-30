@@ -23,9 +23,8 @@ class AdminPageDetail extends Component {
   }
 
   saveEvent() {
-    const event = this.props.event;
-    event.grade = this.state.grade;
-    event.date = this.state.date;
+    const event = { ...this.state };
+    delete event.isEditing;
     this.props.editEvent(event);
     this.setState({isEditing: false});
   }
