@@ -88,32 +88,15 @@ class VolunteerPage extends Component {
   render() {
 
     const events = this.state.events.map((event, index)=> {
-      const dt = new Date(event.date_of_event);
-      const dtDateOnly = new Date(dt.valueOf() + dt.getTimezoneOffset() * 60 * 1000);
-      let formattedDate = format(dtDateOnly, 'MMMM dd, yyyy')
+      const dateTimeStart = new Date(`${event.date_of_event} ${event.start_of_event}`);
+      const dateTimeEnd = new Date(`${event.date_of_event} ${event.end_of_event}`);
 
-      let startTime = event.start_of_event.slice(0,-3);
-      let startHour = parseInt(startTime.slice(0,2));
+      // to format date only (does not include time in format)
+      let formattedDate = format(dateTimeStart, 'MMMM dd, yyyy');
 
-      let startMeridiem = 'a.m.';
-      let endMeridiem = 'a.m.';
-
-      if(startHour >= 12) {
-        startMeridiem = 'p.m.';
-        startHour = startHour - 12;
-        startHour = ('0' + startHour.toString()).slice(-2);
-        startTime = startHour + startTime.slice(2);
-      }
-
-      let endTime = event.end_of_event.slice(0, -3);
-      let endHour = parseInt(endTime.slice(0,2));
-
-      if(endHour > 12) {
-        endMeridiem = 'p.m.';
-        endHour = endHour - 12;
-        endHour = ('0' + endHour.toString()).slice(-2);
-        endTime = endHour + endTime.slice(2);
-      }
+      // to format start and end times (does not include date in format)
+      const formattedStartTime = format(dateTimeStart, 'hh:mm aaaa');
+      const formattedEndTime = format(dateTimeEnd, 'hh:mm aaaa');
 
 
     return (
@@ -129,10 +112,10 @@ class VolunteerPage extends Component {
               <time className="form-control pb-3" rows="3">{formattedDate}</time>
 
               <label for="exampleFormControlTextarea1" className="form-label text-gray-500 block text-sm">From:</label>
-              <time className="form-control pb-3" rows="3">{startTime}  {startMeridiem}</time>
+              <time className="form-control pb-3" rows="3">{formattedStartTime}</time>
 
               <label for="exampleFormControlTextarea1" className="form-label mr-4 text-gray-500 block text-sm">To:</label>
-              <time className="form-control pb-3" rows="3">{endTime} {endMeridiem}</time>
+              <time className="form-control pb-3" rows="3">{formattedEndTime}</time>
 
 
               {
