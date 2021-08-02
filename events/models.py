@@ -16,8 +16,9 @@ class Event(models.Model):
     volunteer = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, blank=True, null=True)
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name="event", blank=True, null=True)
     memo = models.TextField(blank = True)
-    # def __str__(self):
-    #     return self.volunteer
+
+    def __str__(self):
+        return str(self.date_of_event)
 
 
 # class Memo(models.Model):

@@ -1,7 +1,5 @@
 import {Component} from 'react';
 
-import Cookies from 'js-cookie';
-
 import {format} from 'date-fns';
 
 class ParentPage extends Component {

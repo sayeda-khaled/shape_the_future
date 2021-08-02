@@ -1,7 +1,5 @@
 import { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import Twilio from './Twilio.js';
-import { Route, Switch, withRouter } from 'react-router-dom';
 
 
 class Registration extends Component{

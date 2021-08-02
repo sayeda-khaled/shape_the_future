@@ -1,5 +1,4 @@
 import {Component} from 'react';
-import {format} from 'date-fns';
 
 class AdminPageDetail extends Component {
 
@@ -33,10 +32,10 @@ class AdminPageDetail extends Component {
     const {id, student} = this.state;
     this.props.assignStudent(id, Number(student));
   }
+  // const students = this.props.student;
 
   render() {
     const event = this.state;
-    const students = this.props.student;
     const options = this.props.students.map(student => <option value={student.id} selected={event.student === student.id}>{`${student.last_name}, ${student.first_name}`}</option>)
     return (<li className="bg-purple-100 m-6 p-4 rounded transform hover:scale-105 shadow-2xl-dark">
 

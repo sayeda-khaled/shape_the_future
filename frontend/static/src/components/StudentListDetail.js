@@ -41,9 +41,10 @@ class StudentListDetail extends Component {
     this.props.assignParent(id, (parent));
   }
 
+  // const parents = this.props.parent;
+
   render() {
     const students = this.props.student;
-    const parents = this.props.parent;
     console.log(students);
 
     return (<li className="bg-purple-100 m-6 p-4 rounded-xl transform hover:scale-105 shadow-2xl-dark">

@@ -2,8 +2,6 @@ import { Component } from 'react';
 import AdminPageDetail from './AdminPageDetail.js';
 
 import Cookies from 'js-cookie';
-import { format } from 'date-fns';
-
 
 
 class AdminPage extends Component {
